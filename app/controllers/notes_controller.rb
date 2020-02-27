@@ -1,12 +1,13 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[index show edit create update destroy]
 
-  # GET /notes
+  # GET /users/:username/notes
   def index
-    @notes = Note.all
+    @notes = @user.notes
   end
 
-  # GET /notes/1
+  # GET /users/:username/notes/:slug
   def show
   end
 
@@ -15,11 +16,11 @@ class NotesController < ApplicationController
     @note = Note.new
   end
 
-  # GET /notes/1/edit
+  # GET /notes/:username/notes/edit
   def edit
   end
 
-  # POST /notes
+  # POST /notes/:username/notes/edit
   def create
     @note = Note.new(note_params)
 
@@ -30,7 +31,7 @@ class NotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /notes/1
+  # PUT /notes/:username/notes/:slug
   def update
     if @note.update(note_params)
       redirect_to @note, notice: 'Note was successfully updated.'
@@ -39,20 +40,23 @@ class NotesController < ApplicationController
     end
   end
 
-  # DELETE /notes/1
+  # DELETE /notes/:username/notes/:slug
   def destroy
     @note.destroy
     redirect_to notes_url, notice: 'Note was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def note_params
-      params.require(:note).permit(:title, :content, :user_id)
-    end
+  def set_note
+    @note = Note.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find_by(username: params[:username])
+  end
+
+  def note_params
+    params.require(:note).permit(:title, :content)
+  end
 end
