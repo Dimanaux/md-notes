@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[index show edit create update destroy]
+  before_action :set_user, only: %i[index show edit update destroy]
 
   # GET /users/:username/notes
   def index
@@ -14,15 +14,16 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @note.user = current_user
   end
 
   # GET /notes/:username/notes/edit
   def edit
   end
 
-  # POST /notes/:username/notes/edit
+  # POST /notes
   def create
-    @note = Note.new(note_params)
+    @note = Note.new(note_params.merge(user: current_user))
 
     if @note.save
       redirect_to @note, notice: 'Note was successfully created.'
@@ -46,6 +47,10 @@ class NotesController < ApplicationController
     redirect_to notes_url, notice: 'Note was successfully destroyed.'
   end
 
+  def note_url(note)
+    user_note_url(note.user, note)
+  end
+
   private
 
   def set_note
@@ -53,7 +58,7 @@ class NotesController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(username: params[:user_username])
   end
 
   def note_params
