@@ -3,4 +3,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   validates :username, presence: true
+
+  def to_param
+    username
+  end
 end
