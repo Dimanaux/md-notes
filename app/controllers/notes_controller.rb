@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: %i[show edit update destroy]
+  expose :note
   before_action :set_user, only: %i[index show edit update destroy]
+  before_action :set_note, only: %i[show edit update destroy]
 
   # GET /users/:username/notes
   def index
@@ -23,9 +24,10 @@ class NotesController < ApplicationController
 
   # POST /notes
   def create
-    @note = Note.new(note_params.merge(user: current_user))
+    result = Notes::Create.call(note_params.merge(user: current_user))
+    @note = result.notes
 
-    if @note.save
+    if result.success?
       redirect_to @note, notice: 'Note was successfully created.'
     else
       render :new
@@ -54,7 +56,7 @@ class NotesController < ApplicationController
   private
 
   def set_note
-    @note = Note.find(params[:id])
+    @note = Note.find_by(user: @user, slug: params[:slug])
   end
 
   def set_user
@@ -62,6 +64,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :content)
+    params.require(:note).permit(:title, :content, :slug)
   end
 end
