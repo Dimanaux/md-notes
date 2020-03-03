@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  expose :note
+  expose_decorated :note
   before_action :set_user, only: %i[index show edit update destroy]
   before_action :set_note, only: %i[show edit update destroy]
 
@@ -14,8 +14,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
-    @note.user = current_user
+    self.note = Note.new(user: current_user)
   end
 
   # GET /notes/:username/notes/edit
@@ -25,10 +24,10 @@ class NotesController < ApplicationController
   # POST /notes
   def create
     result = Notes::Create.call(note_params.merge(user: current_user))
-    @note = result.notes
+    self.note = result.note
 
     if result.success?
-      redirect_to @note, notice: 'Note was successfully created.'
+      redirect_to note, notice: "Note was successfully created."
     else
       render :new
     end
@@ -36,8 +35,8 @@ class NotesController < ApplicationController
 
   # PUT /notes/:username/notes/:slug
   def update
-    if @note.update(note_params)
-      redirect_to @note, notice: 'Note was successfully updated.'
+    if note.update(note_params)
+      redirect_to note, notice: "Note was successfully updated."
     else
       render :edit
     end
@@ -45,18 +44,14 @@ class NotesController < ApplicationController
 
   # DELETE /notes/:username/notes/:slug
   def destroy
-    @note.destroy
-    redirect_to notes_url, notice: 'Note was successfully destroyed.'
-  end
-
-  def note_url(note)
-    user_note_url(note.user, note)
+    note.destroy
+    redirect_to notes_url, notice: "Note was successfully destroyed."
   end
 
   private
 
   def set_note
-    @note = Note.find_by(user: @user, slug: params[:slug])
+    self.note = Note.find_by(user: @user, slug: params[:slug])
   end
 
   def set_user

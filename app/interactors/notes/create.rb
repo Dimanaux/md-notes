@@ -20,9 +20,9 @@ module Notes
     end
 
     def fail_if_errors
-      return if note.persisted?
+      return if note.errors.empty?
 
-      context.fail!(error: 'You already have note with similar title')
+      context.fail!(error: "You already have note with similar title")
     end
   end
 end

@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
 = form_for note do |f|
   - if note.errors.any?
     #error_explanation
@@ -13,3 +16,8 @@
     = f.label :content
     = f.text_area :content
   .actions = f.submit
+
+javascript:
+  const simplemde = new SimpleMDE({
+    element: document.getElementById("note_content")
+  });
