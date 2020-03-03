@@ -3,7 +3,6 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   validates :username, presence: true
-  validates :slug, presence: true
 
   has_many :notes
 
