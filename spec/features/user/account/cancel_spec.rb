@@ -4,7 +4,7 @@ feature "Cancel Account" do
   include_context "current user signed in"
 
   background do
-    visit edit_user_registration_path(current_user)
+    visit edit_user_registration_path
   end
 
   scenario "User cancels account" do
