@@ -19,7 +19,7 @@ feature "Password Reset" do
     open_email(user.email)
 
     expect(current_email).to have_subject("Reset password instructions")
-    expect(current_email).to have_body_text(user.full_name)
+    expect(current_email).to have_body_text(user.username)
 
     visit_in_email("Change my password")
     update_password
