@@ -16,9 +16,9 @@ table
         td = note.title
         td = note.content
         td = note.user
-        td = link_to 'Show', note
-        td = link_to 'Edit', edit_note_path(note)
-        td = link_to 'Destroy', note, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show', user_note_path(note.user, note)
+        td = link_to 'Edit', edit_user_note_path(note.user, note)
+        td = link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

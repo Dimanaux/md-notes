@@ -24,23 +24,14 @@ class NotesController < ApplicationController
 
   # POST /notes
   def create
-    result = Notes::Create.call(note_params.merge(user: current_user))
-    @note = result.notes
-
-    if result.success?
-      redirect_to @note, notice: 'Note was successfully created.'
-    else
-      render :new
-    end
+    Notes::Save.call(note: note.update(note_params), user: current_user)
+    respond_with current_user, note
   end
 
   # PUT /notes/:username/notes/:slug
   def update
-    if @note.update(note_params)
-      redirect_to @note, notice: 'Note was successfully updated.'
-    else
-      render :edit
-    end
+    Notes::Save.call(note: note.update(note_params), user: current_user)
+    respond_with current_user, note
   end
 
   # DELETE /notes/:username/notes/:slug
