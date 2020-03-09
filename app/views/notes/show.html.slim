@@ -2,14 +2,14 @@ p#notice = notice
 
 p
   strong Title:
-  = @note.title
+  = note.title
 p
   strong Content:
-  = @note.content
+  = note.content
 p
   strong User:
-  = @note.user
+  = note.user
 
-= link_to 'Edit', edit_note_path(@note)
+= link_to 'Edit', edit_user_note_path(note.user, note)
 '|
-= link_to 'Back', user_notes_path(@user)
+= link_to 'Back', user_notes_path(note.user)
