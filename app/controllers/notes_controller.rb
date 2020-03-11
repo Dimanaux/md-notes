@@ -6,6 +6,12 @@ class NotesController < ApplicationController
   def index
   end
 
+  # GET /notes
+  def all
+    self.notes = Note.all
+    render 'index'
+  end
+
   # GET /users/:username/notes/:slug
   def show
   end

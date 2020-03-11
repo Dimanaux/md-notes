@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :notes, only: %i[index show edit update destroy], param: :slug
   end
   resources :notes, only: %i[new create]
+  get '/notes', to: 'notes#all'
 end
