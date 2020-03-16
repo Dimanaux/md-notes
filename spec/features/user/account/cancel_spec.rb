@@ -3,6 +3,8 @@ require "rails_helper"
 feature "Cancel Account" do
   include_context "current user signed in"
 
+  before { current_user.reload }
+
   scenario "User cancels account" do
     visit edit_user_registration_path(current_user)
     click_link "Cancel my account"

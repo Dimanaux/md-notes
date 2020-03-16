@@ -1,6 +1,6 @@
 module Users
   class NotesController < ApplicationController
-    expose :note, parent: :user
+    expose :note, :fetch_note
     expose :notes, from: :user
     expose :user, :fetch_user
 
@@ -12,6 +12,7 @@ module Users
     end
 
     def new
+      self.note = Note.new
     end
 
     def edit
@@ -19,7 +20,7 @@ module Users
     end
 
     def create
-      note.assign_attributes(note_params.merge(user: current_user))
+      self.note = Note.new(note_params.merge(user: current_user))
       Notes::Save.call(note: note)
       respond_with note.user, note
     end
@@ -32,7 +33,7 @@ module Users
 
     def destroy
       note.destroy
-      redirect_to user_notes_url(note.user), notice: 'Note was successfully destroyed.'
+      respond_with note, location: -> { user_notes_path(user) }
     end
 
     private
@@ -46,7 +47,11 @@ module Users
     end
 
     def note_params
-      params.require(:note).permit(:title, :content, :slug)
+      if params.key?(:note)
+        params.require(:note).permit(:title, :content, :slug)
+      else
+        params.permit(:user_username, :slug)
+      end
     end
   end
 end

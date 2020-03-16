@@ -15,7 +15,8 @@ module Notes
     end
 
     def raise_error
-      context.fail!(error: 'You already have note with similar title')
+      note.errors.add(:title, I18n.t(".notes.save.errors.title"))
+      context.fail!(error: I18n.t(".notes.save.errors.title"))
     end
   end
 end

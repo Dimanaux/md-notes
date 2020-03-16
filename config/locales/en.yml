@@ -1,0 +1,5 @@
+en:
+  notes:
+    save:
+      errors:
+        title: You already have a note with similar title.

@@ -10,6 +10,7 @@ p
   strong User:
   = note.user
 
-= link_to 'Edit', edit_user_note_path(user_username: note.user.username, slug: note.slug)
-'|
-= link_to 'Back', url_for(:back)
+.grid-container.fluid
+  => button_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' }, method: :delete, class: 'alert button'
+  => button_to 'Edit', edit_user_note_path(note.user, note), class: 'button'
+  => link_to 'Back', url_for(:back)
