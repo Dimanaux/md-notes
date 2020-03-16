@@ -3,11 +3,9 @@ require "rails_helper"
 feature "Update Account" do
   include_context "current user signed in"
 
-  background do
-    visit edit_user_registration_path(current_user)
-  end
-
   scenario "User updates account with valid data" do
+    visit edit_user_registration_path(current_user)
+
     fill_form(:user, :edit, username: "New Name")
     click_on "Update"
 
@@ -15,6 +13,8 @@ feature "Update Account" do
   end
 
   scenario "User enters not matched passwords" do
+    visit edit_user_registration_path(current_user)
+
     fill_form(:user, :edit, password: "qwerty", password_confirmation: "123123")
     click_on "Update"
 

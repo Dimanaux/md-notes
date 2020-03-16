@@ -8,11 +8,12 @@ feature "Update Note" do
   scenario "User creates note" do
     visit edit_user_note_path(current_user, note)
 
-    fill_in :note_title, with: "#{note.title} updated"
+    fill_in :note_title, with: "My updated title"
     fill_in :note_content, with: "#{note.content} - said old content"
 
     click_button "Update Note"
 
-    expect(page).to have_content("updated")
+    expect(page).to have_content("Note was successfully updated")
+    expect(page).to have_content("My updated title")
   end
 end
