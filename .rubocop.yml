@@ -24,6 +24,10 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Enabled: false
 
+RSpec/ExpectActual:
+  Exclude:
+    - spec/routing/**/*.rb
+
 RSpec/RepeatedDescription:
   Enabled: false
 
@@ -48,6 +52,8 @@ Style/SymbolArray:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   ConsistentQuotesInMultiline: true
+  Exclude:
+    - config/initializers/simple_form_foundation.rb
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
@@ -63,6 +69,8 @@ Style/StringMethods:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - config/initializers/simple_form_foundation.rb
 
 Metrics/BlockLength:
   Enabled: false
