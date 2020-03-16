@@ -5,7 +5,6 @@ feature "Update Account" do
 
   scenario "User updates account with valid data" do
     visit edit_user_registration_path(current_user)
-
     fill_form(:user, :edit, username: "New Name")
     click_on "Update"
 

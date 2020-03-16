@@ -5,5 +5,4 @@ Rails.application.routes.draw do
     resources :notes, param: :slug, module: :users
   end
   resources :notes, only: %i[index]
-  get '/notes', to: 'notes#all'
 end
