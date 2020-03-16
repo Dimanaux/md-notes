@@ -3,5 +3,6 @@ FactoryBot.define do
     title { "MyString" }
     content { "MyText" }
     user { nil }
+    slug { title.parameterize }
   end
 end

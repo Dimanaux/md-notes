@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    byebug
     @user = User.find_by(username: params[:username])
   end
 
