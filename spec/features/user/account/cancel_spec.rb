@@ -6,7 +6,7 @@ feature "Cancel Account" do
   before { current_user.reload }
 
   scenario "User cancels account" do
-    visit edit_user_registration_path(current_user)
+    visit edit_user_registration_path
     click_link "Cancel my account"
 
     expect(page).to have_content("Sign in")
