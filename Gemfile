@@ -74,7 +74,7 @@ group :development, :test do
   gem "coffeelint"
   gem "dotenv-rails"
   gem "factory_bot_rails"
-  gem "faker"
+  gem "ffaker"
   gem "jasmine", "> 2.0"
   gem "jasmine-jquery-rails"
   gem "pry-rails"

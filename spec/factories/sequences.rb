@@ -1,4 +1,4 @@
 FactoryBot.define do
-  sequence(:email) { Faker::Internet.email }
-  sequence(:title) { |n| "#{Faker::Lorem.words} #{n}" }
+  sequence(:email) { FFaker::Internet.email }
+  sequence(:title) { |n| "#{FFaker::Lorem.phrase} #{n}" }
 end
