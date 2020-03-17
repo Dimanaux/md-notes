@@ -8,7 +8,7 @@ feature "Destroy Note" do
   scenario "User destroys note" do
     visit user_note_path(current_user, note)
 
-    click_button "Destroy"
+    click_link "Destroy"
 
     expect(page).to have_content("Note was successfully destroyed")
   end
