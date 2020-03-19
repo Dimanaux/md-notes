@@ -12,6 +12,7 @@ module Users
         respond_with ratings
       end
 
+      # /users/:username/notes/:slug/rating
       def create
         ::Notes::Ratings::Save.call(rating: rating, user: current_user)
 

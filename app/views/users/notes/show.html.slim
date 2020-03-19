@@ -1,3 +1,4 @@
+
 p
   strong Title:
   = note.title
@@ -9,14 +10,10 @@ p
   = note.user
 p
   strong Rating:
-  span#rating
+  span.js-note-rating#rating data-note-username=note.user.username data-note-slug=note.slug
+/ span.js-note-rating data-rating=note.rating = note.rating
 
 .grid-container.fluid
   => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' }, method: :delete, class: 'alert button'
   => link_to 'Edit', edit_user_note_path(note.user, note), class: 'button'
   => link_to 'Back', url_for(:back)
-
-javascript:
-  $(function() {
-    fetchRating();
-  });
