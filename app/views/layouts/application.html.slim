@@ -14,9 +14,6 @@ html class="no-js" lang="en"
 
     = javascript_tag "window.App = {}"
 
-    / = javascript_include_tag "application"
-    / = javascript_include_tag "application" 'data-turbolinks-track' => true
-
     == analytics_init if GoogleAnalytics.valid_tracker?
 
   body

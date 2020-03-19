@@ -14,13 +14,13 @@ module Users
 
       # /users/:username/notes/:slug/rating
       def create
-        ::Notes::Ratings::Save.call(rating: rating, user: current_user)
+        ::Notes::Ratings::Update.call(rating: rating, user: current_user)
 
         respond_with user, note, rating
       end
 
       def update
-        ::Notes::Ratings::Save.call(rating: rating, user: current_user)
+        ::Notes::Ratings::Update.call(rating: rating, user: current_user)
 
         respond_with rating
       end
