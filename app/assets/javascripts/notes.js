@@ -3,7 +3,7 @@
 
 function fetchRating() {
     $.ajax({
-        url: '/users/era/notes/note-1/ratings',
+        url: 'ratings',
         type: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -21,7 +21,7 @@ function fetchRating() {
 
 function addRating(value) {
     $.ajax({
-        url: '/users/era/notes/note-1/ratings',
+        url: 'ratings',
         type: 'POST',
         headers: {
             'Accept': 'application/json',
