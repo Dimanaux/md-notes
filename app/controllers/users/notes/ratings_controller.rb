@@ -1,48 +1,39 @@
-class RatingsController < ApplicationController
-  before_action :set_rating, only: [:show, :edit, :update, :destroy]
+module Users
+  module Notes
+    class RatingsController < ApplicationController
+      expose :user, find_by: :username # author
+      expose :note, find_by: :slug, parent: :user
+      expose :ratings, from: :note
+      expose :rating, parent: :note
 
-  respond_to :html
+      respond_to :json
 
-  def index
-    @ratings = Rating.all
-    respond_with(@ratings)
-  end
+      def index
+        respond_with ratings
+      end
 
-  def show
-    respond_with(@rating)
-  end
+      def create
+        ::Notes::Ratings::Save.call(rating: rating, user: current_user)
 
-  def new
-    @rating = Rating.new
-    respond_with(@rating)
-  end
+        respond_with user, note, rating
+      end
 
-  def edit
-  end
+      def update
+        ::Notes::Ratings::Save.call(rating: rating, user: current_user)
 
-  def create
-    @rating = Rating.new(rating_params)
-    @rating.save
-    respond_with(@rating)
-  end
+        respond_with rating
+      end
 
-  def update
-    @rating.update(rating_params)
-    respond_with(@rating)
-  end
+      def destroy
+        rating.destroy
+        respond_with rating
+      end
 
-  def destroy
-    @rating.destroy
-    respond_with(@rating)
-  end
+      private
 
-  private
-
-  def set_rating
-    @rating = Rating.find(params[:id])
-  end
-
-  def rating_params
-    params.require(:rating).permit(:user_id, :note_id, :value)
+      def rating_params
+        params.require(:rating).permit(:user_id, :note_id, :value)
+      end
+    end
   end
 end

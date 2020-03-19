@@ -2,7 +2,7 @@ module Users
   class NotesController < ApplicationController
     expose :note, find_by: :slug, parent: :user
     expose :notes, from: :user
-    expose :user, find_by: :username
+    expose :user, find_by: :username # note's author
 
     def index
     end
@@ -17,13 +17,13 @@ module Users
     end
 
     def create
-      Notes::Create.call(note: note)
+      ::Notes::Create.call(note: note)
 
       respond_with note.user, note
     end
 
     def update
-      Notes::Update.call(note: note, note_params: note_params)
+      ::Notes::Update.call(note: note, note_params: note_params)
 
       respond_with note.user, note
     end
