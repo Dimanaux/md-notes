@@ -1,4 +1,4 @@
 require "rails_helper"
 
-RSpec.describe UserDecorator do
+describe UserDecorator do
 end

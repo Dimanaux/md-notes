@@ -1,21 +1,12 @@
 class NoteDecorator < ApplicationDecorator
-  delegate_all # :title, :content, :created_at, :slug, :to_param
-
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  delegate_all
 
   def author
     h.link_to object.user.username, object.user
   end
 
   def rating
-    return 0 if object.rating_count == 0
+    return 0 if object.rating_count.zero?
     (object.rating.to_f / object.rating_count).round
   end
 

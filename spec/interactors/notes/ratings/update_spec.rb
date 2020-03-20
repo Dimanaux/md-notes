@@ -5,8 +5,10 @@ describe Notes::Ratings::Update do
   let(:rate) { create(:rating, value: 5, note: note) }
 
   describe ".call" do
-    before { rate.value = 3 }
-    before { described_class.call(rating: rate) }
+    before do
+      rate.value = 3
+      described_class.call(rating: rate)
+    end
 
     it "updates note's rating" do
       expect(note.rating).to eq(8)
