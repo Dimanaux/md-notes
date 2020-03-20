@@ -12,7 +12,6 @@ module Users
         respond_with ratings
       end
 
-      # /users/:username/notes/:slug/rating
       def create
         ::Notes::Ratings::Create.call(rating: rating, user: current_user)
 
@@ -20,15 +19,16 @@ module Users
       end
 
       def update
+        rating.assign_attributes(rating_params)
         ::Notes::Ratings::Update.call(rating: rating)
 
-        respond_with rating
+        respond_with user, note, rating
       end
 
       def destroy
         ::Notes::Ratings::Destroy.call(rating: rating)
 
-        respond_with rating
+        respond_with user, note, rating
       end
 
       private

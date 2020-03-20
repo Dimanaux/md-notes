@@ -1,4 +1,3 @@
-
 p
   strong Title:
   = note.title
@@ -7,11 +6,13 @@ p
   = note.content
 p
   strong User:
-  = note.user
+  = note.author
 p
   strong Rating:
-  span#js-note-rating data-note-username=note.user.username data-note-slug=note.slug data-note-rating=note.rating
-/ span.js-note-rating data-rating=note.rating = note.rating
+  span#js-note-rating[data-note-username=note.user.username
+                      data-note-slug=note.slug
+                      data-note-rating=note.rating
+                      data-my-rating-id=note.rate_by(current_user)&.id]
 
 .grid-container.fluid
   => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' }, method: :delete, class: 'alert button'
