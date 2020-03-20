@@ -1,22 +1,22 @@
 module Notes
   module Ratings
-    class Update
+    class Destroy
       include Interactor
 
-      delegate :rating, :old_rate, :old_rate=, to: :context
+      delegate :rating, to: :context
 
       after :update_note_rating
 
       def call
-        self.old_rate = rating.value_was
-        rating.save
+        rating.destroy
       end
 
       private
 
       def update_note_rating
         note = rating.note
-        note.rating += rating.value - old_rate
+        note.rating -= rating.value
+        note.rating_count -= 1
         note.save
       end
     end
