@@ -14,26 +14,27 @@ module Users
 
       # /users/:username/notes/:slug/rating
       def create
-        ::Notes::Ratings::Update.call(rating: rating, user: current_user)
+        ::Notes::Ratings::Create.call(rating: rating, user: current_user)
 
         respond_with user, note, rating
       end
 
       def update
-        ::Notes::Ratings::Update.call(rating: rating, user: current_user)
+        ::Notes::Ratings::Update.call(rating: rating)
 
         respond_with rating
       end
 
       def destroy
-        rating.destroy
+        ::Notes::Ratings::Destroy.call(rating: rating)
+
         respond_with rating
       end
 
       private
 
       def rating_params
-        params.require(:rating).permit(:user_id, :note_id, :value)
+        params.require(:rating).permit(:note_id, :value)
       end
     end
   end
