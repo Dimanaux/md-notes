@@ -11,6 +11,7 @@ development:
 
 test:
   host: localhost
+  port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
   database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
   <<: *defaults
 

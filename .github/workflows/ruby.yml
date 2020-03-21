@@ -48,8 +48,12 @@ jobs:
         run: |
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
+        env:
+          DATABASE_PORT: ${{ job.services.postgres.ports[5432] }}
       - name: Run tests
         run: bundler exec rake
+        env:
+          DATABASE_PORT: ${{ job.services.postgres.ports[5432] }}
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
