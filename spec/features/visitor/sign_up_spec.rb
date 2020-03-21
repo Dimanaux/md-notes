@@ -1,10 +1,10 @@
 require "rails_helper"
 
-feature "Sign Up" do
+describe "Sign Up" do
   let(:user_attributes) { attributes_for(:user).slice(:username, :email, :password, :password_confirmation) }
   let(:registered_user) { User.find_by(email: user_attributes[:email]) }
 
-  scenario "Visitor signs up" do
+  it "Visitor signs up" do
     visit new_user_registration_path
 
     fill_form(:user, user_attributes)

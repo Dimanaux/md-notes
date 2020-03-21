@@ -1,9 +1,9 @@
 require "rails_helper"
 
-feature "Sign Out" do
-  include_context "current user signed in"
+describe "Sign Out" do
+  include_context "when user signed in"
 
-  scenario "User signs out" do
+  it "User signs out" do
     visit "/"
     click_link "Sign out"
 

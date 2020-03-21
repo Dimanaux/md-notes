@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Password Reset" do
+describe "Password Reset" do
   let(:new_password) { "qwe123" }
   let(:user) { create :user }
 
@@ -10,7 +10,7 @@ feature "Password Reset" do
     click_button "Update password"
   end
 
-  scenario "Visitor resets his password" do
+  it "Visitor resets his password" do
     visit new_user_password_path
 
     fill_in "Enter your email address", with: user.email
