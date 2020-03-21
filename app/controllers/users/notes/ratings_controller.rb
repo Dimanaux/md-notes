@@ -8,10 +8,6 @@ module Users
 
       respond_to :json
 
-      def index
-        respond_with ratings
-      end
-
       def create
         ::Notes::Ratings::Create.call(rating: rating, user: current_user)
 
@@ -22,7 +18,7 @@ module Users
         rating.assign_attributes(rating_params)
         ::Notes::Ratings::Update.call(rating: rating)
 
-        respond_with user, note, rating
+        respond_with rating
       end
 
       def destroy
