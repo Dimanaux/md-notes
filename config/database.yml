@@ -12,6 +12,7 @@ development:
 test:
   host: localhost
   port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
   database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
   <<: *defaults
 
