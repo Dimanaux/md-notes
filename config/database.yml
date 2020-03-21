@@ -11,6 +11,7 @@ development:
 
 test:
   database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>_test
   <<: *defaults
 
 production: &deploy
