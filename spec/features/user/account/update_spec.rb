@@ -14,7 +14,7 @@ feature "Update Account" do
   end
 
   scenario "User enters not matched passwords" do
-    visit edit_user_registration_path(current_user)
+    visit edit_user_registration_path
 
     fill_form(:user, :edit, password: "qwerty", password_confirmation: "123123")
     click_on "Update"
