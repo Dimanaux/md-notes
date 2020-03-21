@@ -1,7 +1,7 @@
 //= require jquery2
 //= require jquery-ujs
 
-class NoteRating {
+class Rating {
     constructor(element) {
         let data = element[0].dataset;
         this.renderSlots(element);
@@ -49,13 +49,12 @@ class NoteRating {
     }
 }
 
-
 $(function() {
     if ($('#js-note-rating').length <= 0) {
         return;
     }
 
-    const noteRating = new NoteRating($('#js-note-rating'));
+    const noteRating = new Rating($('#js-note-rating'));
     noteRating.colorStars();
 
     $('[data-star]').click(e => {
