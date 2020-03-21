@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       db:
-        image: postgres:11
+        image: postgres:latest
         ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
@@ -41,9 +41,6 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
       - name: Build and run tests
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
