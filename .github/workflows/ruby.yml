@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   quality:
+    runs-on: ubuntu-latest
     name: Quality
     steps:
       - uses: actions/checkout@v2
