@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 Rails:
   Enabled: true
@@ -12,10 +14,31 @@ AllCops:
     - vendor/**/*
     - tmp/**/*
 
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+  SupportedStyles:
+    - with_first_parameter
+    - with_fixed_indentation
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+  SupportedStylesAlignWith:
+    - keyword
+    - variable
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Enabled: false
+
 Rails/HasAndBelongsToMany:
   Enabled: false
 
 Rails/OutputSafety:
+  Enabled: false
+
+Rails/UnknownEnv:
   Enabled: false
 
 RSpec/MultipleExpectations:
@@ -24,30 +47,38 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Enabled: false
 
-RSpec/RepeatedDescription:
+RSpec/ExpectActual:
+  Exclude:
+    - spec/routing/**/*_spec.rb
+
+RSpec/DescribeClass:
   Enabled: false
+  Exclude:
+    - spec/features/**/*_spec.rb
 
 RSpec/MessageSpies:
   EnforcedStyle: receive
 
+RSpec/RepeatedDescription:
+  Enabled: false
+
 Style/AndOr:
   Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/MethodCalledOnDoEndBlock:
-  Enabled: true
 
 Style/CollectionMethods:
   Enabled: true
 
-Style/SymbolArray:
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
   Enabled: true
 
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-  ConsistentQuotesInMultiline: true
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
@@ -58,23 +89,15 @@ Style/EmptyMethod:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
+
 Style/StringMethods:
   Enabled: true
 
-Metrics/LineLength:
-  Max: 120
-
-Metrics/BlockLength:
-  Enabled: false
-
-Layout/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
-  SupportedStyles:
-    - with_first_parameter
-    - with_fixed_indentation
-
-Lint/EndAlignment:
-  EnforcedStyleAlignWith: variable
-  SupportedStylesAlignWith:
-    - keyword
-    - variable
+Style/SymbolArray:
+  Enabled: true
