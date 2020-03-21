@@ -3,6 +3,21 @@ name: Rspec
 on: [push]
 
 jobs:
+  quality:
+    name: Quality
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+       with:
+         ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install Rubocop
+        run: |
+          gem install bundler
+          bundle
+      - name: Check code
+        run: |
+          cp .env.example .env
+          bin/quality
   test:
     runs-on: ubuntu-latest
     services:
@@ -35,4 +50,10 @@ jobs:
         cp .env.example .env
         bundle exec rails db:create
         bundle exec rails db:migrate
-        bundle exec rails test
+        bin/rspec
+    - name: Upload coverage results
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: coverage-report
+        path: coverage
