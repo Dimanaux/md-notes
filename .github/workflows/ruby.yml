@@ -7,41 +7,23 @@ env:
 name: Rspec
 on: [push]
 jobs:
-  # rubocop-test:
-  #   name: Quality
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - uses: actions/setup-ruby@v1
-  #       with:
-  #         ruby-version: ${{ env.RUBY_VERSION }}
-  #     - name: Set up environment
-  #       run: cp .env.example .env
-  #     - name: Install Rubocop
-  #       run: |
-  #         gem install bundler
-  #         bundle
-  #     - name: Check code
-  #       run: bin/quality
   test:
     runs-on: ubuntu-latest
     services:
       db:
         image: postgres:latest
         ports: ['5432:5432']
-        password: ""
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     steps:
       - uses: actions/checkout@v1
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
+          ruby-version: 2.6.5
       - name: Build and run tests
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
@@ -51,5 +33,6 @@ jobs:
           sudo apt-get -yqq install libpq-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
           bundle exec rails db:prepare
-          bundle exec rails test
+          bin/rspec

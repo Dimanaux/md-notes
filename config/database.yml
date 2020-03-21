@@ -10,9 +10,7 @@ development:
   <<: *defaults
 
 test:
-  password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
   database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
-  url: <%= ENV.fetch("DATABASE_URL", nil) %>
   <<: *defaults
 
 production: &deploy
