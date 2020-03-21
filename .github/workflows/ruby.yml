@@ -56,6 +56,8 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Yarn install
         run: yarn --frozen-lockfile
+      - name: Prepare environment
+        run: cp .env.example .env
       - name: Rails test
         env: # Or as an environment variable
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
