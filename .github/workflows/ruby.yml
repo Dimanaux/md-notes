@@ -6,7 +6,7 @@ env:
   DATABASE_NAME: md-notes_test
 
 name: Rspec
-on: [push,pull_request]
+on: [push]
 jobs:
   rubocop-test:
     name: Quality
@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Set up environment
+        run: cp .env.example .env
       - name: Install Rubocop
         run: |
           gem install bundler
@@ -41,7 +43,9 @@ jobs:
       - name: Install dependencies
         run: |
           gem install bundler
-          bundler install
+          bundle
+      - name: Set up environment
+        run: cp .env.example .env
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
