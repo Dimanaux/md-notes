@@ -23,7 +23,7 @@ jobs:
   #         bundle
   #     - name: Check code
   #       run: bin/quality
-test:
+  test:
     runs-on: ubuntu-latest
     services:
       db:
