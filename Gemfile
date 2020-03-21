@@ -60,6 +60,7 @@ group :test do
   gem "launchy"
   gem "poltergeist"
   gem "rspec-its"
+  gem 'simplecov', require: false
   gem "shoulda-matchers"
   gem "terminal-notifier-guard"
   gem "webmock", require: false
