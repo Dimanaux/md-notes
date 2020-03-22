@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Create Note" do
-  include_context "current user signed in"
+  include_context "when user signed in"
 
   let(:note) { create(:note, user: current_user) }
 
@@ -26,6 +26,6 @@ feature "Create Note" do
 
     click_button "Create Note"
 
-    expect(page).to have_content("Title has already been taken")
+    expect(page).to have_content("already been taken")
   end
 end

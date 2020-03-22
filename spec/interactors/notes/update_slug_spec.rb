@@ -8,7 +8,7 @@ describe Notes::UpdateSlug do
 
     it "updates slug when title changed" do
       expect { described_class.call(note: note) }
-        .to change { note.slug }.to "some-new-title"
+        .to change(note, :slug).to "some-new-title"
     end
   end
 end

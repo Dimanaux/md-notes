@@ -1,7 +1,4 @@
 class IpWhitelistConstraint
-  attr_reader :ips
-  private :ips
-
   def initialize
     @ips = ENV.fetch("IP_WHITELIST", "").split(",")
   end
@@ -11,6 +8,8 @@ class IpWhitelistConstraint
   end
 
   private
+
+  attr_reader :ips
 
   def ip(request)
     request.respond_to?(:remote_ip) ? request.remote_ip : request.ip
