@@ -1,7 +1,8 @@
 class Note < ApplicationRecord
-  validates :slug, presence: true, uniqueness: { scope: :user }
-
   belongs_to :user
+
+  validates :slug, :title, presence: true, uniqueness: { scope: :user }
+  validates :content, presence: true
 
   def to_param
     slug

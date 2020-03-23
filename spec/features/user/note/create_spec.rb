@@ -26,6 +26,6 @@ feature "Create Note" do
 
     click_button "Create Note"
 
-    expect(page).to have_content("You already have a note with similar title")
+    expect(page).to have_content("already been taken")
   end
 end

@@ -1,5 +1,5 @@
 module Notes
-  class Save
+  class UpdateSlug
     include Interactor
 
     delegate :note, to: :context
@@ -15,8 +15,7 @@ module Notes
     end
 
     def raise_error
-      note.errors.add(:title, I18n.t(".notes.save.errors.title"))
-      context.fail!(error: I18n.t(".notes.save.errors.title"))
+      context.fail!(error: note.errors.full_messages.join(", "))
     end
   end
 end
