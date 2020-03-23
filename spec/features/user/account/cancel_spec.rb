@@ -1,12 +1,12 @@
 require "rails_helper"
 
-feature "Cancel Account" do
-  include_context "current user signed in"
+describe "Cancel Account" do
+  include_context "when user signed in"
 
   before { current_user.reload }
 
   scenario "User cancels account" do
-    visit edit_user_registration_path(current_user)
+    visit edit_user_registration_path
     click_link "Cancel my account"
 
     expect(page).to have_content("Sign in")

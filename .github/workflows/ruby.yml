@@ -1,22 +1,60 @@
-name: Ruby
+name: Rspec
 
 on: [push]
 
 jobs:
-  build:
-
+  quality:
     runs-on: ubuntu-latest
-
+    name: Quality
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.5
+      - name: Install Rubocop
+        run: |
+          gem install bundler
+          bundle
+      - name: Check code
+        run: |
+          cp .env.example .env
+          bin/quality
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
+    - name: Set up Ruby 2.6.5
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.5
     - name: Build and test with Rake
+      env:
+        PGHOST: 127.0.0.1
+        PGUSER: postgres
+        RAILS_ENV: test
+        POSTGRES_PASSWORD: postgres
       run: |
+        sudo apt-get -yqq install libpq-dev
         gem install bundler
         bundle install --jobs 4 --retry 3
         cp .env.example .env
-        bin/quality
-        # bin/rspec
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bin/rspec
+    - name: Upload coverage results
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: coverage-report
+        path: coverage
