@@ -4,5 +4,5 @@
 = simple_form_for [note.user, note] do |f|
   = f.error_notification
   = f.input :title
-  = f.input :content, as: :text, html: { id: "js-note-content-edit" }
+  = f.input :content, as: :text
   = f.submit
