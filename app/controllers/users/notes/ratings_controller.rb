@@ -30,7 +30,7 @@ module Users
       private
 
       def rating_params
-        params.require(:rating).permit(:note_id, :value)
+        params.require(:rating).permit(:value)
       end
     end
   end
