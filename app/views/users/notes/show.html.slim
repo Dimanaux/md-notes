@@ -6,13 +6,13 @@ p
   = note.content
 p
   strong User:
-  = note.author
+  = link_to note.user.username, note.user
 p
   strong Rating:
   span#js-note-rating[data-note-username=note.user.username
                       data-note-slug=note.slug
-                      data-note-rating=note.rating
-                      data-my-rating-id=note.rate_by(current_user)&.id]
+                      data-note-rating=note.average_rating
+                      data-my-rating-id=note.rating_by(current_user)&.id]
 
 .grid-container.fluid
   => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' },

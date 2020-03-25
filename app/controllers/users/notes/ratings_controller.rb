@@ -9,20 +9,23 @@ module Users
       respond_to :json
 
       def create
-        ::Notes::Ratings::Create.call(rating: rating, user: current_user)
+        ::Notes::Rate.call(
+          rating: rating, rating_params: { user: current_user }
+        )
 
         respond_with user, note, rating
       end
 
       def update
-        rating.assign_attributes(rating_params)
-        ::Notes::Ratings::Update.call(rating: rating)
+        ::Notes::Rate.call(
+          rating: rating, rating_params: rating_params
+        )
 
         respond_with rating
       end
 
       def destroy
-        ::Notes::Ratings::Destroy.call(rating: rating)
+        ::Notes::Unrate.call(rating: rating)
 
         respond_with user, note, rating
       end

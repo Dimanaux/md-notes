@@ -1,12 +1,12 @@
 module Notes
   module Ratings
-    class Destroy
+    class Save
       include Interactor
 
       delegate :rating, to: :context
 
       def call
-        rating.destroy
+        rating.save
       end
     end
   end
