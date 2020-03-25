@@ -24,8 +24,15 @@ class User < ApplicationRecord
     users
   end
 
+  alias subscriptions= users=
+  alias subscribers followers
+
   def subscribe_to(other_user)
     subscriptions << other_user
+  end
+
+  def subscribed_to?(other_user)
+    subscriptions.include? other_user
   end
 
   def unsubscribe_from(other_user)
