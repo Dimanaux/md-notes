@@ -15,6 +15,30 @@ ActiveRecord::Schema.define(version: 20200324220719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.integer "rating_count", default: 0
+    t.integer "rating", default: 0
+    t.index ["slug", "user_id"], name: "index_notes_on_slug_and_user_id", unique: true
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "note_id"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_ratings_on_note_id"
+    t.index ["user_id", "note_id"], name: "index_ratings_on_user_id_and_note_id", unique: true
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "subscriptions", id: false, force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "subscription_id", null: false
@@ -49,4 +73,7 @@ ActiveRecord::Schema.define(version: 20200324220719) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "notes", "users"
+  add_foreign_key "ratings", "notes"
+  add_foreign_key "ratings", "users"
 end

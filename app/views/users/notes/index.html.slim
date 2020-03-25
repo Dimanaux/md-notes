@@ -1,0 +1,26 @@
+h1 Listing notes
+
+table
+  thead
+    tr
+      th Title
+      th Content
+      th User
+      th
+      th
+      th
+
+  tbody
+    - notes.each do |note|
+      tr
+        td = note.title
+        td = note.content
+        td = note.user.username
+        td = link_to 'Show', user_note_path(note.user, note)
+        td = link_to 'Edit', edit_user_note_path(note.user, note)
+        td = link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+- if user_signed_in?
+  = link_to 'New Note', new_user_note_path(current_user)

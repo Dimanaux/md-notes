@@ -1,0 +1,15 @@
+p
+  strong Title:
+  = note.title
+p
+  strong Content:
+  = note.content
+p
+  strong User:
+  = note.user
+
+.grid-container.fluid
+  => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' },
+              method: :delete, class: 'alert button'
+  => link_to 'Edit', edit_user_note_path(note.user, note), class: 'button'
+  => link_to 'Back', url_for(:back)

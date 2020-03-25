@@ -1,0 +1,7 @@
+h1 Editing note
+
+= render 'form'
+
+= link_to 'Show', user_note_path(note.user, note)
+'|
+= link_to 'Back', url_for(:back)

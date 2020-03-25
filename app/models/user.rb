@@ -2,7 +2,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
+
+  has_many :notes, dependent: :destroy
 
   has_and_belongs_to_many(:users,
     :join_table => "subscriptions",
