@@ -1,7 +1,7 @@
 require "rails_helper"
 
-feature "Cancel Account" do
-  include_context "current user signed in"
+describe "Cancel Account" do
+  include_context "when user signed in"
 
   before { current_user.reload }
 

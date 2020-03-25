@@ -9,7 +9,7 @@ module Notes
     private
 
     def note
-      context.note || context.rating.note
+      @note ||= context.note || context.rating.note
     end
   end
 end

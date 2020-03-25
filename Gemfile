@@ -60,7 +60,9 @@ group :test do
   gem "launchy"
   gem "poltergeist"
   gem "rspec-its"
+  gem "rspec-rails"
   gem "shoulda-matchers"
+  gem "simplecov", require: false
   gem "terminal-notifier-guard"
   gem "webmock", require: false
 end
@@ -77,8 +79,8 @@ group :development, :test do
   gem "ffaker"
   gem "jasmine", "> 2.0"
   gem "jasmine-jquery-rails"
-  gem "rspec-rails", "~> 3.5"
   gem "rubocop", require: false
+  gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "scss_lint", require: false
   gem "slim_lint", require: false
