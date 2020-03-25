@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Destroy Note" do
-  include_context "current user signed in"
+  include_context "when user signed in"
 
   let(:note) { create(:note, user: current_user) }
 
