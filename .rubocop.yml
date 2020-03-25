@@ -6,13 +6,16 @@ Rails:
   Enabled: true
 
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.6.5
   DisplayCopNames: true
   Exclude:
     - bin/**/*
     - db/**/*
     - vendor/**/*
     - tmp/**/*
+
+# Capybara/FeatureMethods:
+#   Enabled: false
 
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
