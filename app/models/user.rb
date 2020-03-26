@@ -13,6 +13,9 @@ class User < ApplicationRecord
     association_foreign_key: "subscription_id"
   )
 
+  # has_many :followers, class_name: "User", foreign_key: "follower_id"
+  # has_many :subscriptions, class_name: "User", ...
+
   def followers
     User.joins("INNER JOIN subscriptions ON users.id = subscriptions.follower_id")
         .where("subscriptions.subscription_id = ?", id)
