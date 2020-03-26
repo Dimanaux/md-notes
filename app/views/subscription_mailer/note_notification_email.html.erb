@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New note from <%= @note.user.username %>!</h1>
+    <p>Dear <%= @user.username %>,</p>
+    <p>
+      You can read new note
+      <%= link_to @note.title, user_note_url(@note.user, @note) %>
+      right now!
+    </p>
+    <p>
+      You have received this mail since you are subscribed
+      to <%= @note.user.username %>'s updates.
+    </p>
+  </body>
+</html>
