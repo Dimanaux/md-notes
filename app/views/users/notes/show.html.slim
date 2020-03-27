@@ -13,6 +13,12 @@ p
                       data-note-slug=note.slug
                       data-note-rating=note.average_rating
                       data-my-rating-id=note.rating_by(current_user)&.id]
+    - (1..5).each do |star|
+      span data-star=star
+        - if star <= note.average_rating
+          | ★
+        - else
+          | ☆
 
 .grid-container.fluid
   => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' },
