@@ -4,10 +4,9 @@
 class Rating {
     constructor(element) {
         let data = element[0].dataset;
-        this.username = data.noteUsername;
-        this.noteSlug = data.noteSlug;
+        this.method = data.method;
+        this.path = data.path;
         this.rating = data.noteRating;
-        this.myRatingId = data.myRatingId;
     }
 
     csrfToken() {
@@ -22,11 +21,9 @@ class Rating {
     }
 
     addRating(value) {
-        let httpVerb = this.myRatingId ? 'PATCH' : 'POST';
-        let path  = `/users/${this.username}/notes/${this.noteSlug}/ratings/${this.myRatingId || ''}`;
         $.ajax({
-            type: httpVerb,
-            url: path,
+            type: this.method,
+            url: this.path,
             dataType: 'json',
             contentType: 'application/json',
             headers: { 'X-CSRF-Token': this.csrfToken() },
@@ -34,9 +31,8 @@ class Rating {
                 rating: { value: value }
             }),
             success: response => {
-                this.rating = value;
+                this.rating = response.average_rating;
                 this.colorStars();
-                this.myRatingId = response.id;
             }
         });
     }
