@@ -21,7 +21,7 @@ module Api
               rating: rating, rating_params: rating_params
             )
 
-            respond_with rating
+            render json: rating.note, status: :ok
           end
 
           def destroy
