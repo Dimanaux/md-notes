@@ -4,7 +4,6 @@
 class Rating {
     constructor(element) {
         let data = element[0].dataset;
-        this.renderSlots(element);
         this.username = data.noteUsername;
         this.noteSlug = data.noteSlug;
         this.rating = data.noteRating;
@@ -41,12 +40,6 @@ class Rating {
             }
         });
     }
-
-    renderSlots(parent) {
-        for (let star = 1; star <= 5; star++) {
-            parent.append(`<span data-star="${star}"></span>`);
-        }
-    }
 }
 
 $(function() {
@@ -55,7 +48,6 @@ $(function() {
     }
 
     const noteRating = new Rating($('#js-note-rating'));
-    noteRating.colorStars();
 
     $('[data-star]').click(e => {
         noteRating.addRating(e.target.dataset.star);
