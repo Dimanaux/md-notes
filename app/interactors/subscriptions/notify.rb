@@ -5,7 +5,7 @@ module Subscriptions
     delegate :note, to: :context
 
     def call
-      note.user.each do |follower|
+      note.user.followers.each do |follower|
         NotifySingle.call(follower: follower, note: note)
       end
     end
