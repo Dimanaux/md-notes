@@ -2,8 +2,8 @@ class SubscriptionMailer < ApplicationMailer
   default from: "md_notes_notifications@example.com"
 
   def note_notification_email
-    @user = params[:user]
+    @follower = params[:follower]
     @note = params[:note]
-    mail(to: @user.email, subject: "Welcome to My Awesome Site")
+    mail(to: @follower.email, subject: "md_notes notifications")
   end
 end

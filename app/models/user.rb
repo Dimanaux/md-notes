@@ -13,33 +13,26 @@ class User < ApplicationRecord
     association_foreign_key: "subscription_id"
   )
 
+  # TODO: use 2 has_many relations instead of has_and_belongs_to_many
   # has_many :followers, class_name: "User", foreign_key: "follower_id"
   # has_many :subscriptions, class_name: "User", ...
+  # has_many keys are: :class_name, :anonymous_class,
+  # :foreign_key, :validate, :autosave, :table_name, :before_add,
+  # :after_add, :before_remove, :after_remove, :extend, :primary_key,
+  # :dependent, :as, :through, :source, :source_type, :inverse_of,
+  # :counter_cache, :join_table, :foreign_type, :index_errors
 
   def followers
     User.joins("INNER JOIN subscriptions ON users.id = subscriptions.follower_id")
         .where("subscriptions.subscription_id = ?", id)
   end
 
-  def subscriptions
-    # User.joins("INNER JOIN subscriptions ON users.id = subscriptions.subscription_id")
-    #     .where("subscriptions.follower_id = ?", id)
-    users
-  end
-
+  alias subscriptions users
   alias subscriptions= users=
   alias subscribers followers
 
-  def subscribe_to(other_user)
-    subscriptions << other_user
-  end
-
   def subscribed_to?(other_user)
     subscriptions.include? other_user
-  end
-
-  def unsubscribe_from(other_user)
-    subscriptions.destroy(other_user)
   end
 
   def to_param

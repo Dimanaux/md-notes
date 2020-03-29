@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>New note from <%= @note.user.username %>!</h1>
-    <p>Dear <%= @user.username %>,</p>
+    <p>Dear <%= @follower.username %>,</p>
     <p>
       You can read new note
       <%= link_to @note.title, user_note_url(@note.user, @note) %>
