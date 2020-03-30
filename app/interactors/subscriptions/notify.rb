@@ -6,7 +6,7 @@ module Subscriptions
 
     def call
       note.user.followers.each do |follower|
-        NotifySingle.call(follower: follower, note: note)
+        NotifySingle.call(follower: follower.follower, note: note)
       end
     end
   end

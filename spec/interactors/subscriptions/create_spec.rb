@@ -21,11 +21,11 @@ describe Subscriptions::Create do
       before { call }
 
       it "user has other one as a follower" do
-        expect(user.followers).to include(other_user)
+        expect(user.followers.map(&:follower)).to include(other_user)
       end
 
       it "other user has user as a subscription" do
-        expect(other_user.subscriptions).to include(user)
+        expect(other_user.subscriptions.map(&:followee)).to include(user)
       end
     end
   end

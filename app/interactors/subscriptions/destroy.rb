@@ -5,7 +5,7 @@ module Subscriptions
     delegate :follower, :followee, to: :context
 
     def call
-      follower.subscriptions.destroy(followee)
+      Subscription.find_by(follower: follower, followee: followee).destroy
     end
   end
 end

@@ -7,7 +7,9 @@ describe User do
 
   describe ".subscribed_to?" do
     context "when follower has subscription to user" do
-      let(:follower) { create(:user, subscriptions: [user]) }
+      let(:follower) { create(:user) }
+
+      before { create(:subscription, followee: user, follower: follower) }
 
       it "returns true" do
         expect(follower.subscribed_to?(user)).to be true
@@ -20,28 +22,6 @@ describe User do
       it "returns false" do
         expect(not_follower.subscribed_to?(user)).to be false
       end
-    end
-  end
-
-  describe ".followers" do
-    let(:followers) { create_list(:user, 5) }
-
-    before do
-      followers.each { |follower| follower.subscriptions = [user] }
-    end
-
-    it "returns followers" do
-      expect(user.followers).to match_array followers
-    end
-  end
-
-  describe ".subscriptions" do
-    let(:subscriptions) { create_list(:user, 5) }
-
-    before { user.subscriptions = subscriptions }
-
-    it "returns subscriptions" do
-      expect(user.subscriptions).to match_array subscriptions
     end
   end
 end

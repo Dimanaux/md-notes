@@ -5,7 +5,7 @@ module Subscriptions
     delegate :follower, :followee, to: :context
 
     def call
-      follower.subscriptions << followee
+      Subscription.create(follower: follower, followee: followee)
     end
   end
 end
