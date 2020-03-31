@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :users, only: %i[show], constraints: { user_id: /[\w\.-]+/ } do
     resources :notes, module: :users
+    resources :subscriptions, only: %i[create destroy], module: :users
   end
   resources :notes, only: %i[index]
 end
