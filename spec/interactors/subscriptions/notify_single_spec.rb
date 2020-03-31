@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe Subscriptions::NotifySingle do
   describe ".call" do
-    let(:fake) { double("Job") }
+    let(:fake) { instance_double("ActionMailer::MessageDelivery") }
 
     before do
       allow(SubscriptionMailer).to receive(:note_notification_email).and_return(fake)

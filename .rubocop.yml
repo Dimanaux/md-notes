@@ -14,8 +14,8 @@ AllCops:
     - vendor/**/*
     - tmp/**/*
 
-# Capybara/FeatureMethods:
-#   Enabled: false
+Capybara/FeatureMethods:
+  Enabled: false
 
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
