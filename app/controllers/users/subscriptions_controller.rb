@@ -6,12 +6,14 @@ module Users
       ::Subscriptions::Create.call(
         followee: user, follower: current_user
       )
+      redirect_to user
     end
 
     def destroy
       ::Subscriptions::Destroy.call(
         followee: user, follower: current_user
       )
+      redirect_to user
     end
   end
 end
