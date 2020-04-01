@@ -1,7 +1,13 @@
 require "rails_helper"
 
-RSpec.describe Note, type: :model do
+describe Note, type: :model do
   describe "validations" do
+    it { is_expected.to validate_presence_of :content }
     it { is_expected.to validate_presence_of :slug }
+    it { is_expected.to validate_uniqueness_of(:slug).scoped_to(:user_id) }
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to :user }
   end
 end
