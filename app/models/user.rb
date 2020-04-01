@@ -17,7 +17,7 @@ class User < ApplicationRecord
   alias subscribers followers
 
   def subscribed_to?(other_user)
-    subscriptions.where(followee: other_user).any?
+    followees_subscriptions.where(followee: other_user).any?
   end
 
   def to_param

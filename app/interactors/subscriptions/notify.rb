@@ -7,7 +7,7 @@ module Subscriptions
     def call
       note.user.followers.each do |follower|
         SubscriptionMailer.note_notification_email(
-          follower: follower.follower, note: note
+          follower: follower, note: note
         ).deliver_later
       end
     end

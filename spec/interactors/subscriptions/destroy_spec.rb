@@ -16,18 +16,18 @@ describe Subscriptions::Destroy do
     end
 
     it "decreses follower's subscriptions count" do
-      expect { call }.to change { follower.subscriptions.count }.by(-1)
+      expect { call }.to change { follower.followees.count }.by(-1)
     end
 
     context "when unsubscribed" do
       before { call }
 
       it "user doesn't have the other as a follower" do
-        expect(user.followers.map(&:follower)).not_to include(follower)
+        expect(user.followers).not_to include(follower)
       end
 
       it "other user doesn't have the first one as a subscription" do
-        expect(follower.subscriptions.map(&:followee)).not_to include(user)
+        expect(follower.followees).not_to include(user)
       end
     end
   end
