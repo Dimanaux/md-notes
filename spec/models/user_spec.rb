@@ -10,9 +10,9 @@ describe User do
     it { is_expected.to have_many :notes }
   end
 
-  let(:user) { create(:user) }
-
   describe ".subscribed_to?" do
+    let(:user) { create(:user) }
+
     context "when follower has subscription to user" do
       let(:follower) { create(:user) }
 
