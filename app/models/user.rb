@@ -5,9 +5,14 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   has_many :notes, dependent: :destroy
-  has_many :followers, foreign_key: :followee_id, class_name: "Subscription", dependent: :destroy, inverse_of: :followee
-  has_many :subscriptions, foreign_key: :follower_id, dependent: :destroy, inverse_of: :follower
-  has_many :followees, through: :subscriptions
+  has_many :followers_subscribtions, foreign_key: :followee_id,
+            class_name: "Subscription", dependent: :destroy,
+            inverse_of: :followee
+  has_many :followees_subscriptions, foreign_key: :follower_id,
+            class_name: "Subscription", dependent: :destroy,
+            inverse_of: :follower
+  has_many :followers, through: :followers_subscribtions
+  has_many :followees, through: :followees_subscriptions
 
   alias subscribers followers
 
