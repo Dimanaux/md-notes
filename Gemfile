@@ -3,13 +3,13 @@ source "https://rubygems.org"
 ruby "~> 2.6.5"
 
 gem "pg"
-gem "rails", "5.1.6.2"
+gem "rails", "5.2.4.2"
 
 # assets
 gem "autoprefixer-rails"
 gem "coffee-rails"
 gem "foundation-icons-sass-rails"
-gem "foundation-rails"
+gem "foundation-rails", "~> 6.2.3"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
@@ -83,7 +83,7 @@ group :development, :test do
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "scss_lint", require: false
-  gem "slim_lint", require: false
+  gem "slim_lint", "~> 0.11.0", require: false
 end
 
 group :development do
