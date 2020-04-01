@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200325195536) do
+ActiveRecord::Schema.define(version: 2020_03_30_194722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20200325195536) do
     t.index ["note_id"], name: "index_ratings_on_note_id"
     t.index ["user_id", "note_id"], name: "index_ratings_on_user_id_and_note_id", unique: true
     t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_subscriptions_on_followee_id"
+    t.index ["follower_id", "followee_id"], name: "index_subscriptions_on_follower_id_and_followee_id", unique: true
+    t.index ["follower_id"], name: "index_subscriptions_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,4 +79,6 @@ ActiveRecord::Schema.define(version: 20200325195536) do
   add_foreign_key "notes", "users"
   add_foreign_key "ratings", "notes"
   add_foreign_key "ratings", "users"
+  add_foreign_key "subscriptions", "users", column: "followee_id"
+  add_foreign_key "subscriptions", "users", column: "follower_id"
 end
