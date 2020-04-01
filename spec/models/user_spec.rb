@@ -1,9 +1,16 @@
 require "rails_helper"
 
 describe User do
-  let(:user) { create(:user) }
+  describe "validations" do
+    it { is_expected.to validate_presence_of :username }
+    it { is_expected.to validate_uniqueness_of :username }
+  end
 
-  it { is_expected.to validate_presence_of :username }
+  describe "associations" do
+    it { is_expected.to have_many :notes }
+  end
+
+  let(:user) { create(:user) }
 
   describe ".subscribed_to?" do
     context "when follower has subscription to user" do
