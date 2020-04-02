@@ -10,7 +10,9 @@ describe "Cancel Account" do
     click_link "Cancel my account"
 
     expect(page).to have_content("Sign in")
-    expect(page).to have_content("Bye! Your account has been successfully cancelled. We hope to see you again soon.")
+    expect(page).to have_content(
+      "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+    )
 
     click_link "Sign in"
     fill_form(:user, current_user.attributes.slice(:email, :password))

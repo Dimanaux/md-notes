@@ -30,9 +30,9 @@ Layout/EndAlignment:
     - variable
 
 Layout/LineLength:
-  Max: 120
+  Max: 90
   Exclude:
-    - config/initializers/simple_form_foundation.rb
+    - config/**/*
 
 Metrics/BlockLength:
   Enabled: false
@@ -100,8 +100,6 @@ Style/MethodCalledOnDoEndBlock:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   ConsistentQuotesInMultiline: true
-  Exclude:
-    - config/initializers/simple_form_foundation.rb
 
 Style/StringMethods:
   Enabled: true
