@@ -2,7 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true,
+                       format: { with: /\A[\w-]+\z/, message: I18n.t("errors.username") }
 
   has_many :notes, dependent: :destroy
   has_many :ratings, dependent: :destroy

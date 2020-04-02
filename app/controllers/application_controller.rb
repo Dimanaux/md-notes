@@ -1,7 +1,5 @@
-require "application_responder"
-
 class ApplicationController < ActionController::Base
-  self.responder = ApplicationResponder
+  responders :flash
   respond_to :html
 
   include Authentication
@@ -9,6 +7,4 @@ class ApplicationController < ActionController::Base
   include BulletHelper
 
   protect_from_forgery with: :exception
-
-  responders :flash
 end
