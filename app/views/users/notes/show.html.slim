@@ -19,10 +19,7 @@ p
   ]
     - (1..5).each do |star|
       span data-star=star
-        - if star <= note.average_rating
-          | ★
-        - else
-          | ☆
+        = (star <= note.average_rating ? '★' : '☆')
 
 .grid-container.fluid
   => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' },

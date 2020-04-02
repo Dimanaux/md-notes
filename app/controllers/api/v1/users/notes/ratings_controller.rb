@@ -13,7 +13,7 @@ module Api
               rating: rating, rating_params: { user: current_user }
             )
 
-            respond_with user, note, rating
+            respond_with :api, :v1, user, note, rating
           end
 
           def update
@@ -27,7 +27,7 @@ module Api
           def destroy
             ::Notes::Unrate.call(rating: rating)
 
-            respond_with user, note, rating
+            respond_with :api, :v1, user, note, rating
           end
 
           private
