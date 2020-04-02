@@ -1,5 +1,3 @@
-require "application_responder"
-
 class ApplicationController < ActionController::Base
   responders :flash
   respond_to :html
