@@ -1,7 +1,7 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
-  self.responder = ApplicationResponder
+  responders :flash
   respond_to :html
 
   include Authentication
