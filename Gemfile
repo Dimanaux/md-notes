@@ -79,9 +79,9 @@ group :development, :test do
   gem "ffaker"
   gem "jasmine", "> 2.0"
   gem "jasmine-jquery-rails"
-  gem "rubocop", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rspec", require: false
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
   gem "scss_lint", require: false
   gem "slim_lint", "~> 0.11.0", require: false
 end

@@ -1,4 +1,4 @@
-$(function (argument) {
+$(() => {
     let noteContent = $('#js-note-content')[0];
     if (noteContent) {
         noteContent.innerHTML = marked(noteContent.innerHTML);
@@ -6,7 +6,7 @@ $(function (argument) {
 
     let noteContentEdit = document.getElementById("note_content");
     if (noteContentEdit) {
-        const simplemde = new SimpleMDE({
+        new SimpleMDE({
             element: document.getElementById("note_content")
         });
     }
