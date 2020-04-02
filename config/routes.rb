@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [], constraints: { user_id: /[\w\.-]+/ } do
+      resources :users, only: [] do
         resources :notes, only: [], module: :users do
           resources :ratings, module: :notes, only: %i[create update destroy]
         end
