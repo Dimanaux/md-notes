@@ -89,12 +89,12 @@ SimpleForm.setup do |config|
     b.use :label
   end
 
-    # Don't forget to edit this file to adapt it to your needs (specially
+  # Don't forget to edit this file to adapt it to your needs (specially
   # all the grid-related classes)
   #
   # Please note that hints are commented out by default since Foundation
-  # doesn't provide styles for hints. You will need to provide your own CSS styles for hints.
-  # Uncomment them to enable hints.
+  # doesn't provide styles for hints. You will need to provide
+  # your own CSS styles for hints. Uncomment them to enable hints.
 
   config.wrappers :vertical_form, class: :input, hint_class: :field_with_hint, error_class: :error, valid_class: :valid do |b|
     b.use :html5

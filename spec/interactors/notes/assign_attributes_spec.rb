@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Notes::AssignAttributes do
   subject(:assign_attributes) do
