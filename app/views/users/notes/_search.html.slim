@@ -1,0 +1,10 @@
+.top-bar
+  form.menu action=action
+    li
+      input[type="search" name="note[title]" placeholder="Title"
+            value=params['note']['title']]
+    li
+      input[type="search" name="note[content]" placeholder="Text"
+            value=params['note']['content']]
+    li
+      input type="submit" class="button" value="Search"
