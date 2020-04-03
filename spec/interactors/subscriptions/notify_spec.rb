@@ -5,9 +5,7 @@ describe Subscriptions::Notify do
     let(:user) { create(:user) }
     let(:note) { create(:note, author: user) }
     let(:follower) { create(:user) }
-    let(:fake_delivery) do
-      instance_double("ActionMailer::MessageDelivery")
-    end
+    let(:fake_delivery) { instance_double("ActionMailer::MessageDelivery") }
 
     before do
       create(:subscription, followee: user, follower: follower)
