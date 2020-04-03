@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_194722) do
+ActiveRecord::Schema.define(version: 2020_03_30_194114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2020_03_30_194722) do
     t.bigint "followee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followee_id", "follower_id"], name: "index_subscriptions_on_followee_id_and_follower_id", unique: true
     t.index ["followee_id"], name: "index_subscriptions_on_followee_id"
-    t.index ["follower_id", "followee_id"], name: "index_subscriptions_on_follower_id_and_followee_id", unique: true
     t.index ["follower_id"], name: "index_subscriptions_on_follower_id"
   end
 
