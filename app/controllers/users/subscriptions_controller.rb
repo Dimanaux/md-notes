@@ -1,7 +1,7 @@
 module Users
   class SubscriptionsController < ApplicationController
     expose :followee, model: User, find_by: :username
-    expose :follower, ->{ current_user }
+    expose :follower, -> { current_user }
     expose :subscription, build_params: :build_params
 
     def create
