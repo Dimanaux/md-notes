@@ -11,7 +11,7 @@ describe Subscriptions::Notify do
 
     before do
       followers.each do |follower|
-        Subscription.create(followee: user, follower: follower)
+        create(:subscription, followee: user, follower: follower)
       end
       allow(SubscriptionMailer).to(
         receive(:note_notification_email).and_return(fake_delivery)

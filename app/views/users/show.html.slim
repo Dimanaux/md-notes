@@ -4,8 +4,10 @@
     p = user.username
 
     - if current_user.subscribed_to?(user)
-      = link_to "Unsubscribe", user_subscription_path(user),
-                data: { confirm: 'Are you sure?' }, method: :delete
+      = link_to "Unsubscribe",
+                user_subscription_path(user, current_user.subscription_for(user)),
+                data: { confirm: 'Are you sure?' },
+                method: :delete
     - else
       = link_to "Subscribe", user_subscriptions_path(user), method: :post
 

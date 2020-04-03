@@ -7,16 +7,20 @@ module Users
     def create
       subscription.save
 
-      redirect_to user
+      respond_with subscription, followee_location
     end
 
     def destroy
       subscription.destroy
 
-      redirect_to user
+      respond_with subscription, followee_location
     end
 
     private
+
+    def followee_location
+      { location: user_path(followee) }
+    end
 
     def build_params
       { followee: followee, follower: current_user }

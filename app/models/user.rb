@@ -16,12 +16,6 @@ class User < ApplicationRecord
   has_many :followers, through: :followers_subscribtions
   has_many :followees, through: :followees_subscriptions
 
-  alias subscribers followers
-
-  def subscribed_to?(other_user)
-    followees_subscriptions.where(followee: other_user).any?
-  end
-
   def to_param
     username
   end
