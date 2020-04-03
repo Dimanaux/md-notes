@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 2020_03_02_122144) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.bigint "user_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.index ["slug", "user_id"], name: "index_notes_on_slug_and_user_id", unique: true
-    t.index ["user_id"], name: "index_notes_on_user_id"
+    t.index ["author_id"], name: "index_notes_on_author_id"
+    t.index ["slug", "author_id"], name: "index_notes_on_slug_and_author_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,5 +54,5 @@ ActiveRecord::Schema.define(version: 2020_03_02_122144) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "notes", "users"
+  add_foreign_key "notes", "users", column: "author_id"
 end

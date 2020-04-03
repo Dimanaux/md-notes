@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true,
                        format: { with: /\A[\w-]+\z/, message: I18n.t("errors.username") }
 
-  has_many :notes, dependent: :destroy
+  has_many :notes, foreign_key: "author_id", dependent: :destroy
 
   def to_param
     username

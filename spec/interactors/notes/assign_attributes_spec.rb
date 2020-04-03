@@ -6,7 +6,7 @@ describe Notes::AssignAttributes do
   end
 
   let(:user) { create(:user) }
-  let(:note) { create(:note, user: user) }
+  let(:note) { create(:note, author: user) }
   let(:note_params) do
     { title: "note 0943", content: "no content" }
   end
