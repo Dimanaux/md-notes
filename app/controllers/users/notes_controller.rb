@@ -2,7 +2,7 @@ module Users
   class NotesController < ApplicationController
     expose_decorated :note, find_by: :slug, parent: :user
     expose :notes, from: :user
-    expose :user, find_by: :username # note's author
+    expose :user, find_by: :username
 
     def index
     end
