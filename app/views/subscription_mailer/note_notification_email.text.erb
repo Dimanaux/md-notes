@@ -1,10 +1,10 @@
-New note from <%= @note.user.username %>!
+New note from <%= @note.author.username %>!
 ===============================================
 
 Dear <%= @follower.username %>,
 You can read new note right now!
 
-Follow this link: <%= link_to @note.title, user_note_url(@note.user, @note) %>
+Follow this link: <%= link_to @note.title, user_note_url(@note.author, @note) %>
 
 You have received this mail since you are subscribed
-to <%= @note.user.username %>'s updates.
+to <%= @note.author.username %>'s updates.

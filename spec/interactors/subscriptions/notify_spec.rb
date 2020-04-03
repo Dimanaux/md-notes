@@ -3,7 +3,7 @@ require "rails_helper"
 describe Subscriptions::Notify do
   describe ".call" do
     let(:user) { create(:user) }
-    let(:note) { create(:note, user: user) }
+    let(:note) { create(:note, author: user) }
     let(:followers) { create_list(:user, 3) }
     let(:fake_delivery) do
       instance_double("ActionMailer::MessageDelivery")

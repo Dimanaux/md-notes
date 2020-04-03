@@ -5,7 +5,7 @@ module Subscriptions
     delegate :note, to: :context
 
     def call
-      note.user.followers.each do |follower|
+      note.author.followers.each do |follower|
         SubscriptionMailer.note_notification_email(
           follower: follower, note: note
         ).deliver_later

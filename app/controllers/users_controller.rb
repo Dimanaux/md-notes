@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
+  expose :user, find_by: :username
+
   def show
-    @user = User.find_by(username: params[:id])
-  end
-
-  private
-
-  def user_params
-    params.permit(%i[id])
   end
 end

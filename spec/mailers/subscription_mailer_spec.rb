@@ -2,10 +2,12 @@ require "rails_helper"
 
 describe SubscriptionMailer do
   describe ".note_notification_email" do
-    subject(:mail) { described_class.note_notification_email(note: note, follower: follower) }
+    subject(:mail) do
+      described_class.note_notification_email(note: note, follower: follower)
+    end
 
     let(:author) { build(:user) }
-    let(:note) { build(:note, user: author) }
+    let(:note) { build(:note, author: author) }
     let(:follower) { build(:user, followees: [author]) }
 
     it "sets the subject" do
