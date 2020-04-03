@@ -4,15 +4,13 @@ describe Subscriptions::Notify do
   describe ".call" do
     let(:user) { create(:user) }
     let(:note) { create(:note, author: user) }
-    let(:followers) { create_list(:user, 3) }
+    let(:follower) { create(:user) }
     let(:fake_delivery) do
       instance_double("ActionMailer::MessageDelivery")
     end
 
     before do
-      followers.each do |follower|
-        create(:subscription, followee: user, follower: follower)
-      end
+      create(:subscription, followee: user, follower: follower)
       allow(SubscriptionMailer).to(
         receive(:note_notification_email).and_return(fake_delivery)
       )
@@ -20,12 +18,10 @@ describe Subscriptions::Notify do
     end
 
     it "sends emails to followers" do
-      followers.each do |follower|
-        expect(SubscriptionMailer).to(
-          receive(:note_notification_email)
-            .with(note: note, follower: follower)
-        )
-      end
+      expect(SubscriptionMailer).to(
+        receive(:note_notification_email)
+          .with(note: note, follower: follower)
+      )
       expect(fake_delivery).to receive(:deliver_later)
       described_class.call(note: note)
     end
