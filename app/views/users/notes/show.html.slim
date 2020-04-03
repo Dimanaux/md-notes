@@ -5,8 +5,8 @@ p
   strong Content:
   = note.content
 p
-  strong User:
-  = link_to note.user.username, note.user
+  strong Author:
+  = note.author
 p
   strong Rating:
   span#js-note-rating[
@@ -22,7 +22,7 @@ p
         = (star <= note.average_rating ? '★' : '☆')
 
 .grid-container.fluid
-  => link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' },
+  => link_to 'Destroy', user_note_path(note.author, note), data: { confirm: 'Are you sure?' },
               method: :delete, class: 'alert button'
-  => link_to 'Edit', edit_user_note_path(note.user, note), class: 'button'
+  => link_to 'Edit', edit_user_note_path(note.author, note), class: 'button'
   => link_to 'Back', notes_path

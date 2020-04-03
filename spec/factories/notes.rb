@@ -3,6 +3,6 @@ FactoryBot.define do
     title { FFaker::Lorem.phrase }
     content { "MyText" }
     slug { title.parameterize }
-    association :user
+    association :author, factory: :user
   end
 end

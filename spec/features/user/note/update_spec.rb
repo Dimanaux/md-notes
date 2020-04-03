@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Update Note" do
   include_context "when user signed in"
 
-  let(:note) { create(:note, user: current_user) }
+  let(:note) { create(:note, author: current_user) }
 
   scenario "User creates note" do
     visit edit_user_note_path(current_user, note)
