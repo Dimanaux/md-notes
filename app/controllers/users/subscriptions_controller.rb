@@ -1,19 +1,25 @@
 module Users
   class SubscriptionsController < ApplicationController
-    expose :user, find_by: :username
+    expose :followee, model: User, find_by: :username
+    expose :follower, ->{ current_user }
+    expose :subscription, build_params: :build_params
 
     def create
-      ::Subscriptions::Create.call(
-        followee: user, follower: current_user
-      )
+      subscription.save
+
       redirect_to user
     end
 
     def destroy
-      ::Subscriptions::Destroy.call(
-        followee: user, follower: current_user
-      )
+      subscription.destroy
+
       redirect_to user
+    end
+
+    private
+
+    def build_params
+      { followee: followee, follower: current_user }
     end
   end
 end
