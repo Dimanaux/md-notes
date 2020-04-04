@@ -1,5 +1,6 @@
 class NoteDecorator < ApplicationDecorator
   delegate_all
+  decorates_association :author
 
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:

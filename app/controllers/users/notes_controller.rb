@@ -1,6 +1,6 @@
 module Users
   class NotesController < ApplicationController
-    expose :note, find_by: :slug, parent: :user
+    expose_decorated :note, find_by: :slug, parent: :user
     expose :notes, from: :user
     expose :user, find_by: :username
 
