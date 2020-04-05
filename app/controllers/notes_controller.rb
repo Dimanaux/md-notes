@@ -8,10 +8,6 @@ class NotesController < ApplicationController
   private
 
   def find_notes
-    ::Notes::Find.new(note_params[:note]).call
-  end
-
-  def note_params
-    params.permit(note: [:title, :content])
+    PgSearch.multisearch(params[:query])
   end
 end
