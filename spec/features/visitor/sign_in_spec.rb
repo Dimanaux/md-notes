@@ -27,6 +27,8 @@ describe "Sign In" do
   it "Visitor signs in with unconfirmed email address" do
     sign_in(unconfirmed_user.email, user.password)
 
-    expect(page).to have_content("You have to confirm your email address before continuing.")
+    expect(page).to have_content(
+      "You have to confirm your email address before continuing."
+    )
   end
 end

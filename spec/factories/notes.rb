@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :note do
-    title { FFaker::Lorem.phrase }
+    title
     content { "MyText" }
     slug { title.parameterize }
-    association :user
+    association :author, factory: :user
   end
 end

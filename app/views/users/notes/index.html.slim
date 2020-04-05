@@ -17,10 +17,11 @@ table
       tr
         td = note.title
         td = note.content
-        td = note.user.username
-        td = link_to 'Show', user_note_path(note.user, note)
-        td = link_to 'Edit', edit_user_note_path(note.user, note)
-        td = link_to 'Destroy', user_note_path(note.user, note), data: { confirm: 'Are you sure?' }, method: :delete
+        td = note.author.username
+        td = link_to 'Show', user_note_path(note.author, note)
+        td = link_to 'Edit', edit_user_note_path(note.author, note)
+        td = link_to 'Destroy', user_note_path(note.author, note),
+                     data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

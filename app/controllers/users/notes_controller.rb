@@ -19,19 +19,19 @@ module Users
     def create
       Notes::Create.call(note: note)
 
-      respond_with note.user, note
+      respond_with note.author, note
     end
 
     def update
       Notes::Update.call(note: note, note_params: note_params)
 
-      respond_with note.user, note
+      respond_with note.author, note
     end
 
     def destroy
       note.destroy
 
-      respond_with note.user, note
+      respond_with note.author, note
     end
 
     private
