@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[show] do
     scope module: :users do
       resources :notes
-      resources :subscriptions, only: %i[create destroy]
     end
   end
+  resources :subscriptions, only: %i[create destroy]
   resources :notes, only: %i[index]
 end
