@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
   include PgSearch::Model
-  multisearchable against: %i[title content]
+  multisearchable against: %i[title content slug]
 
   belongs_to :author, class_name: "User"
 
