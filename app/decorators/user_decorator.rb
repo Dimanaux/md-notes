@@ -6,7 +6,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def subscription_for(other_user)
-    object.followees_subscriptions.find_by(followee: other_user)
+    object.subscriptions.find_by(followee: other_user)
   end
 
   def subscribed_to?(other_user)

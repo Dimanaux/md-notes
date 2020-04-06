@@ -4,10 +4,10 @@
     p = user.username
 
     - if current_user.subscribed_to?(user)
-      = link_to "Unsubscribe",
-                user_subscription_path(user, current_user.subscription_for(user)),
-                data: { confirm: 'Are you sure?' },
-                method: :delete
+      = button_to "Unsubscribe", method: :delete,
+                  subscription_path(current_user.subscription_for(user)),
+                  data: { confirm: 'Are you sure?' }, class: "button"
     - else
-      = link_to "Subscribe", user_subscriptions_path(user), method: :post
-
+      = button_to "Subscribe", subscriptions_path, method: :post,
+                  params: { subscription: { followee_id: user.id } },
+                  class: "button"
