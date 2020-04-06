@@ -7,20 +7,16 @@ module Users
     def create
       subscription.save
 
-      respond_with subscription, followee_location
+      respond_with subscription, { location: user_path(followee) }
     end
 
     def destroy
       subscription.destroy
 
-      respond_with subscription, followee_location
+      respond_with subscription, { location: user_path(followee) }
     end
 
     private
-
-    def followee_location
-      { location: user_path(followee) }
-    end
 
     def build_params
       { followee: followee, follower: current_user }
