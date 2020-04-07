@@ -1,5 +1,3 @@
-require_relative "support/simplecov"
-
 ENV["RAILS_ENV"] ||= "test"
 
 require "spec_helper"
