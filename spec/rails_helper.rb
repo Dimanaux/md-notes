@@ -1,6 +1,6 @@
-ENV["RAILS_ENV"] ||= "test"
-
 require_relative "support/simplecov"
+
+ENV["RAILS_ENV"] ||= "test"
 
 require "spec_helper"
 require File.expand_path("../config/environment", __dir__)

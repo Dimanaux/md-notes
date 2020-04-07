@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_195536) do
+ActiveRecord::Schema.define(version: 2020_04_05_134548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2020_03_25_195536) do
     t.index ["slug", "author_id"], name: "index_notes_on_slug_and_author_id", unique: true
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "note_id"
@@ -36,6 +45,16 @@ ActiveRecord::Schema.define(version: 2020_03_25_195536) do
     t.index ["note_id"], name: "index_ratings_on_note_id"
     t.index ["user_id", "note_id"], name: "index_ratings_on_user_id_and_note_id", unique: true
     t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id", "follower_id"], name: "index_subscriptions_on_followee_id_and_follower_id", unique: true
+    t.index ["followee_id"], name: "index_subscriptions_on_followee_id"
+    t.index ["follower_id"], name: "index_subscriptions_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,4 +88,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_195536) do
   add_foreign_key "notes", "users", column: "author_id"
   add_foreign_key "ratings", "notes"
   add_foreign_key "ratings", "users"
+  add_foreign_key "subscriptions", "users", column: "followee_id"
+  add_foreign_key "subscriptions", "users", column: "follower_id"
 end
