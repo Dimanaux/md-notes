@@ -14,5 +14,7 @@ describe User do
 
   describe "associations" do
     it { is_expected.to have_many :notes }
+    it { is_expected.to have_many :followers }
+    it { is_expected.to have_many :followees }
   end
 end
