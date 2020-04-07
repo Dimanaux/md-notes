@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe NotePolicy, type: :policy do
+describe NotePolicy do
+  subject { described_class }
+
   let(:user) { build(:user) }
   let(:author) { build(:user) }
   let(:note) { build(:note, author: author) }
-
-  subject { described_class }
 
   permissions ".scope" do
     pending "add some examples to (or delete) #{__FILE__}"
@@ -22,7 +22,7 @@ describe NotePolicy, type: :policy do
   end
 
   permissions :create? do
-    context "when not authorized" do
+    context "when authorized" do
       it { is_expected.to permit(user, note) }
     end
 
