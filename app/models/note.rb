@@ -7,6 +7,8 @@ class Note < ApplicationRecord
   PER_PAGE = 12
   paginates_per PER_PAGE
 
+  scope :recent, -> { order(created_at: :desc) }
+
   def to_param
     slug
   end

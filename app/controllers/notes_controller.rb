@@ -8,6 +8,6 @@ class NotesController < ApplicationController
   private
 
   def fetch_notes
-    Note.order(:created_at).page params[:page]
+    Note.recent.page params[:page]
   end
 end
