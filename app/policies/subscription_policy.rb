@@ -8,7 +8,7 @@ class SubscriptionPolicy < ApplicationPolicy
   end
 
   def other_user
-    record
+    record.followee
   end
 
   def subscribed?

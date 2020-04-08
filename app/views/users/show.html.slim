@@ -1,12 +1,14 @@
+- subscription = Subscription.new(followee: user, follower: current_user)
+
 .row
   .columns
     h2 = title("User")
     p = user.username
 
-    - if SubscriptionPolicy.new(current_user, user).destroy?
+    - if policy(subscription).destroy?
       = button_to "Unsubscribe", subscription_path(current_user.subscription_for(user)),
                   method: :delete, data: { confirm: 'Are you sure?' }, class: "button"
-    - elsif policy(:subscription).create?
+    - elsif policy(subscription).create?
       = button_to "Subscribe", subscriptions_path, method: :post,
                   params: { subscription: { followee_id: user.id } },
                   class: "button"

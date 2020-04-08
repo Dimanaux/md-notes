@@ -4,13 +4,12 @@ describe SubscriptionPolicy do
   subject { described_class }
 
   let(:user) { create(:user) }
-  let(:other_user) { create(:user) }
+  let(:followee) { create(:user) }
+  let(:subscription) { build(:subscription, follower: user, followee: followee) }
 
   shared_context "with subscription" do
-    let(:follower) { create(:user) }
-
     before do
-      create(:subscription, follower: follower, followee: other_user)
+      subscription.save
     end
   end
 
@@ -20,25 +19,25 @@ describe SubscriptionPolicy do
 
   permissions :create? do
     context "when not subscribed" do
-      it { is_expected.to permit(user, other_user) }
+      it { is_expected.to permit(user, subscription) }
     end
 
     context "when subscribed" do
       include_context "with subscription"
 
-      it { is_expected.not_to permit(follower, other_user) }
+      it { is_expected.not_to permit(user, subscription) }
     end
   end
 
   permissions :destroy? do
     context "when not subscribed" do
-      it { is_expected.not_to permit(user, other_user) }
+      it { is_expected.not_to permit(user, subscription) }
     end
 
     context "when subscribed" do
       include_context "with subscription"
 
-      it { is_expected.to permit(follower, other_user) }
+      it { is_expected.to permit(user, subscription) }
     end
   end
 end
