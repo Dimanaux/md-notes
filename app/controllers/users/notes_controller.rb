@@ -4,6 +4,8 @@ module Users
     expose :notes, from: :user
     expose :user, find_by: :username
 
+    before_action :authorize_note
+
     def index
     end
 
@@ -35,6 +37,10 @@ module Users
     end
 
     private
+
+    def authorize_note
+      authorize note
+    end
 
     def note_params
       params.require(:note).permit(:title, :content, :slug)

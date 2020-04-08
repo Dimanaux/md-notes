@@ -1,10 +1,10 @@
 class SubscriptionPolicy < ApplicationPolicy
   def create?
-    !subscribed?
+    user && !subscribed?
   end
 
   def destroy?
-    subscribed?
+    user && subscribed?
   end
 
   def other_user

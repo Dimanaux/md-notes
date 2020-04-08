@@ -2,6 +2,7 @@ h1 Editing note
 
 = render "form"
 
-= link_to 'Show', user_note_path(note.author, note)
-'|
+- if policy(note).show?
+  = link_to 'Show', user_note_path(note.author, note)
+  '|
 = link_to 'Back', notes_path
