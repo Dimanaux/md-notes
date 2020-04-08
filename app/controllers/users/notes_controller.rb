@@ -1,7 +1,7 @@
 module Users
   class NotesController < ApplicationController
     expose :note, find_by: :slug, parent: :user
-    expose :notes, from: :user
+    expose :notes, -> { user.notes.recent.page params[:page] }
     expose :user, find_by: :username
 
     def index
