@@ -4,6 +4,9 @@ class Note < ApplicationRecord
   validates :slug, :title, presence: true, uniqueness: { scope: :author_id }
   validates :content, presence: true
 
+  PER_PAGE = 12
+  paginates_per PER_PAGE
+
   def to_param
     slug
   end
