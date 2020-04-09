@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_134548) do
+ActiveRecord::Schema.define(version: 2020_04_09_131956) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "notes", force: :cascade do |t|
     t.string "title"
@@ -22,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_134548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.float "average_rating", default: 0.0
     t.index ["author_id"], name: "index_notes_on_author_id"
     t.index ["slug", "author_id"], name: "index_notes_on_slug_and_author_id", unique: true
   end
@@ -33,6 +36,17 @@ ActiveRecord::Schema.define(version: 2020_04_05_134548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "note_id"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_ratings_on_note_id"
+    t.index ["user_id", "note_id"], name: "index_ratings_on_user_id_and_note_id", unique: true
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -74,6 +88,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_134548) do
   end
 
   add_foreign_key "notes", "users", column: "author_id"
+  add_foreign_key "ratings", "notes"
+  add_foreign_key "ratings", "users"
   add_foreign_key "subscriptions", "users", column: "followee_id"
   add_foreign_key "subscriptions", "users", column: "follower_id"
 end

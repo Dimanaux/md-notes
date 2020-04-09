@@ -8,6 +8,6 @@ class NotesController < ApplicationController
   private
 
   def find_notes
-    PgSearch.multisearch(params[:query])
+    Note.find(PgSearch.multisearch(params[:query]).pluck(:searchable_id))
   end
 end
