@@ -4,8 +4,7 @@ class Note < ApplicationRecord
   validates :slug, :title, presence: true, uniqueness: { scope: :author_id }
   validates :content, presence: true
 
-  PER_PAGE = 12
-  paginates_per PER_PAGE
+  paginates_per 12
 
   scope :recent, -> { order(created_at: :desc) }
 
