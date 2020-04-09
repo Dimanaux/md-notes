@@ -14,10 +14,4 @@ class SubscriptionPolicy < ApplicationPolicy
   def subscribed?
     user.decorate.subscribed_to?(other_user)
   end
-
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
 end

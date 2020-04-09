@@ -39,7 +39,7 @@ module Users
     private
 
     def authorize_note
-      authorize note
+      authorize! note
     end
 
     def note_params

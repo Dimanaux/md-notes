@@ -1,10 +1,5 @@
-class ApplicationPolicy
-  attr_reader :user, :record
-
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
+class ApplicationPolicy < ActionPolicy::Base
+  authorize :user, allow_nil: true
 
   def index?
     false
@@ -32,18 +27,5 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope.all
-    end
   end
 end

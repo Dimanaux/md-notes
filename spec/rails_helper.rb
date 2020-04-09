@@ -6,7 +6,7 @@ require "spec_helper"
 require File.expand_path("../config/environment", __dir__)
 require "rspec/rails"
 require "shoulda/matchers"
-require "pundit/rspec"
+require "action_policy/rspec/pundit_syntax"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 

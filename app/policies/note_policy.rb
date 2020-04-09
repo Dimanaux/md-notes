@@ -26,10 +26,4 @@ class NotePolicy < ApplicationPolicy
   def note
     record
   end
-
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
 end

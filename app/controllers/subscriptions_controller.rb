@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
   private
 
   def authorize_subscription
-    authorize subscription
+    authorize! subscription
   end
 
   def subscription_params

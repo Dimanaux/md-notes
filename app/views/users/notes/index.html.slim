@@ -17,17 +17,17 @@ table
         td = note.content
         td = note.author.username
         td
-          - if policy(note).show?
+          - if allowed_to?(:show?, note)
             = link_to 'Show', user_note_path(note.author, note)
         td
-          - if policy(note).edit?
+          - if allowed_to?(:edit?, note)
             = link_to 'Edit', edit_user_note_path(note.author, note)
         td
-          - if policy(note).destroy?
+          - if allowed_to?(:destroy?, note)
             = link_to 'Destroy', user_note_path(note.author, note),
                       data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-- if policy(:note).new?
+- if allowed_to?(:new?, :note)
   = link_to 'New Note', new_user_note_path(current_user)
