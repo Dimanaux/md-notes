@@ -1,9 +1,15 @@
 class SubscriptionPolicy < ApplicationPolicy
   def create?
-    user.present?
+    signed_in? && !subscribed?
   end
 
   def destroy?
-    false
+    signed_in? && subscribed?
+  end
+
+  private
+
+  def subscribed?
+    user.subscribed_to?(record.followee)
   end
 end

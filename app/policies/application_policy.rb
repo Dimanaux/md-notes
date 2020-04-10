@@ -1,4 +1,6 @@
 class ApplicationPolicy < ActionPolicy::Base
+  authorize :user, allow_nil: true
+
   def index?
     false
   end
@@ -25,5 +27,9 @@ class ApplicationPolicy < ActionPolicy::Base
 
   def destroy?
     false
+  end
+
+  def signed_in?
+    user.present?
   end
 end

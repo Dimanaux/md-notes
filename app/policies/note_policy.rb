@@ -8,14 +8,14 @@ class NotePolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    signed_in?
   end
 
   def update?
-    false
+    signed_in? && user == record.author
   end
 
   def destroy?
-    false
+    update?
   end
 end

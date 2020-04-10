@@ -4,6 +4,8 @@ module Users
     expose_decorated :notes, :user_notes
     expose :user, find_by: :username
 
+    before_action :authorize!
+
     def index
     end
 

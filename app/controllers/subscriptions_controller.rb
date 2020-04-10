@@ -1,6 +1,8 @@
 class SubscriptionsController < ApplicationController
   expose :subscription, parent: :current_user
 
+  before_action :authorize!
+
   def create
     subscription.save
 
