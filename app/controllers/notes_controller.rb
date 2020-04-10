@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  expose :notes, -> { find_notes }
+  expose_decorated :notes, :find_notes
 
   def index
     render "users/notes/index"
@@ -8,6 +8,6 @@ class NotesController < ApplicationController
   private
 
   def find_notes
-    Note.find(PgSearch.multisearch(params[:query]).pluck(:searchable_id))
+    Notes::Find.call(params.slice(:query, :page))
   end
 end
