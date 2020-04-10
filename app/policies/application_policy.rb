@@ -1,29 +1,29 @@
 class ApplicationPolicy < ActionPolicy::Base
   def index?
-   false
- end
+    false
+  end
 
   def show?
-   false
- end
+    false
+  end
 
   def create?
-   false
- end
+    false
+  end
 
   def new?
-   create?
- end
+    create?
+  end
 
   def update?
-   false
- end
+    false
+  end
 
   def edit?
-   update?
- end
+    update?
+  end
 
   def destroy?
-   false
+    false
   end
 end
