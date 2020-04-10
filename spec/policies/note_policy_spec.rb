@@ -1,21 +1,33 @@
 require "rails_helper"
 
-RSpec.describe NotePolicy, type: :policy do
-  # See https://actionpolicy.evilmartians.io/#/testing?id=rspec-dsl
-  #
-  # let(:user) { build_stubbed :user }
-  # let(:record) { build_stubbed :post, draft: false }
-  # let(:context) { {user: user} }
+describe NotePolicy do
+  let(:user) { build_stubbed(:user) }
+  let(:record) { build_stubbed(:note, author: nil) }
+  let(:context) { {user: user} }
 
   describe_rule :index? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    succeed "when user signed in"
+    succeed "when user not signed in"
   end
 
-  describe_rule :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe_rule :show? do
+    succeed "when user signed in"
+    succeed "when user not signed in"
   end
 
-  describe_rule :manage? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe_rule :update? do
+    succeed "when current user is author" do
+      let(:record) { build_stubbed(:note, author: user) }
+    end
+
+    failed "when current user is not author"
+  end
+
+  describe_rule :destroy? do
+    succeed "when current user is author" do
+      let(:record) { build_stubbed(:note, author: user) }
+    end
+
+    failed "when current user is not author"
   end
 end

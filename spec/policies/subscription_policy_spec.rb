@@ -1,21 +1,35 @@
 require "rails_helper"
 
-RSpec.describe SubscriptionPolicy, type: :policy do
-  # See https://actionpolicy.evilmartians.io/#/testing?id=rspec-dsl
-  #
-  # let(:user) { build_stubbed :user }
-  # let(:record) { build_stubbed :post, draft: false }
-  # let(:context) { {user: user} }
+describe SubscriptionPolicy do
+  let(:follower) { create(:user).decorate }
+  let(:followee) { create(:user) }
+  let(:record) { build(:subscription, follower: follower, followee: followee) }
+  let(:context) { {user: follower} }
 
-  describe_rule :index? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  shared_context "with subscription" do
+    before { record.save }
+  end
+  shared_context "with no subscription" do
+    before { record.destroy }
   end
 
   describe_rule :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    succeed "when not subscribed" do
+      include_context "with no subscription"
+    end
+
+    failed "when subscribed" do
+      include_context "with subscription"
+    end
   end
 
-  describe_rule :manage? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe_rule :destroy? do
+    failed "when not subscribed" do
+      include_context "with no subscription"
+    end
+
+    succeed "when subscribed" do
+      include_context "with subscription"
+    end
   end
 end
