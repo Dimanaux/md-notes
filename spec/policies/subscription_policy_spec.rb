@@ -4,11 +4,12 @@ describe SubscriptionPolicy do
   let(:follower) { create(:user).decorate }
   let(:followee) { create(:user) }
   let(:record) { build(:subscription, follower: follower, followee: followee) }
-  let(:context) { {user: follower} }
+  let(:context) { { user: follower } }
 
   shared_context "with subscription" do
     before { record.save }
   end
+
   shared_context "with no subscription" do
     before { record.destroy }
   end
