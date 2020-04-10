@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe SubscriptionPolicy do
-  let(:follower) { create(:user).decorate }
+  let(:follower) { create(:user) }
   let(:followee) { create(:user) }
   let(:record) { build(:subscription, follower: follower, followee: followee) }
   let(:context) { { user: follower } }

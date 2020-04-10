@@ -10,6 +10,6 @@ class SubscriptionPolicy < ApplicationPolicy
   private
 
   def subscribed?
-    user.subscribed_to?(record.followee)
+    user.decorate.subscribed_to?(record.followee)
   end
 end

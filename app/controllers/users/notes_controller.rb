@@ -4,7 +4,7 @@ module Users
     expose_decorated :notes, :user_notes
     expose :user, find_by: :username
 
-    before_action :authorize!
+    before_action :authorize_note
 
     def index
     end
@@ -37,6 +37,10 @@ module Users
     end
 
     private
+
+    def authorize_note
+      authorize! note
+    end
 
     def user_notes
       user.notes.recent.page params[:page]
