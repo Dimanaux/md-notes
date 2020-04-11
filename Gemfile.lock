@@ -451,7 +451,7 @@ DEPENDENCIES
   flamegraph
   formulaic
   foundation-icons-sass-rails
-  foundation-rails (~> 6.6.2)
+  foundation-rails (~> 6.6.2.0)
   google-analytics-rails
   guard-rspec
   health_check

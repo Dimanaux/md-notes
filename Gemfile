@@ -8,7 +8,7 @@ gem "rails", "5.2.4.2"
 # assets
 gem "autoprefixer-rails"
 gem "foundation-icons-sass-rails"
-gem "foundation-rails", "~> 6.6.2"
+gem "foundation-rails", "~> 6.6.2.0"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
