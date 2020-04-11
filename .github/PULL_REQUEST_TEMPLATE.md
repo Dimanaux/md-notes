@@ -1,11 +1,11 @@
 # Summary
 
-A brief description of the pull request.
+<A brief description of the pull request>
 
 Resolves Issue #...
 
-# Steps performed
+## Steps performed
 
 To do:
 
-- [ ] step 1
+- [ ] <step 1>
