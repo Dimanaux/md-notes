@@ -14,7 +14,7 @@ $(() => {
     let gravatars = document.querySelectorAll('img[data-email-hash]');
     for (let gravatar of gravatars) {
         let emailHash = gravatar.dataset.emailHash;
-        gravatar.src = gravatarImageUrl(emailHash);;
+        gravatar.src = gravatarImageUrl(emailHash);
     }
 });
 

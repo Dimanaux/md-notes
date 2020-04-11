@@ -10,6 +10,6 @@ class User {
     isSignedIn() {
         return this.get("id") != null;
     }
-};
+}
 
 App.currentUser = new User(App.currentUserData);
