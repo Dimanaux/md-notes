@@ -7,9 +7,8 @@ gem "rails", "5.2.4.2"
 
 # assets
 gem "autoprefixer-rails"
-gem "coffee-rails"
 gem "foundation-icons-sass-rails"
-gem "foundation-rails", "~> 6.5.3.0"
+gem "foundation-rails", "~> 6.6.2"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
@@ -72,7 +71,6 @@ group :development, :test do
   gem "bullet"
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "coffeelint"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "ffaker"

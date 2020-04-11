@@ -1,16 +1,19 @@
 doctype html
 
 html class="no-js" lang="en"
-
   head
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="robots" content="NOODP,NOYDIR"
 
+    - if content_for?(:title)
+      title = yield(:title)
+
     = display_meta_tags site: "RailsBase", keywords: %w(title site)
     = csrf_meta_tags
 
     = stylesheet_link_tag :application
+    = javascript_include_tag :application, 'data-turbolinks-track' => true
 
     = javascript_tag "window.App = {}"
 
