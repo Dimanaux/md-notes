@@ -12,10 +12,10 @@ html class="no-js" lang="en"
     = display_meta_tags site: "RailsBase", keywords: %w(title site)
     = csrf_meta_tags
 
-    = stylesheet_link_tag :application
-    = javascript_include_tag :application, 'data-turbolinks-track' => true
+    = javascript_tag "window.App = {};"
 
-    = javascript_tag "window.App = {}"
+    = stylesheet_link_tag :application
+    / = javascript_include_tag :application, 'data-turbolinks-track' => true
 
     == analytics_init if GoogleAnalytics.valid_tracker?
 
@@ -23,7 +23,7 @@ html class="no-js" lang="en"
     = render "navigation"
     = render "messages"
 
-    main.container
+    main.grid-container
       = yield
 
     = render "footer"

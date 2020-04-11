@@ -14,7 +14,7 @@ table
     - notes.each do |note|
       tr
         td = note.title
-        td = note.content
+        td = note.preview
         td = note.author.username
         td = link_to 'Show', user_note_path(note.author, note)
         td = link_to 'Edit', edit_user_note_path(note.author, note)

@@ -5,4 +5,8 @@ class NoteDecorator < ApplicationDecorator
   def created_at
     object.created_at.strftime("%Y.%m.%d")
   end
+
+  def preview
+    object.content.lines.first
+  end
 end
