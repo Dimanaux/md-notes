@@ -1,7 +1,7 @@
 module Users
   class NotesController < ApplicationController
     expose :note, find_by: :slug, parent: :user
-    expose :notes, from: :user
+    expose_decorated :notes, :user_notes
     expose :user, find_by: :username
 
     def index
@@ -35,6 +35,10 @@ module Users
     end
 
     private
+
+    def user_notes
+      user.notes.recent.page params[:page]
+    end
 
     def note_params
       params.require(:note).permit(:title, :content, :slug)

@@ -2,6 +2,8 @@ require "rails_helper"
 
 describe Subscriptions::Notify do
   describe ".call" do
+    subject(:notify) { described_class.call(note: note) }
+
     let(:user) { create(:user) }
     let(:note) { create(:note, author: user) }
     let(:follower) { create(:user) }
@@ -12,7 +14,6 @@ describe Subscriptions::Notify do
       allow(SubscriptionMailer).to(
         receive(:note_notification_email).and_return(fake_delivery)
       )
-      allow(fake_delivery).to receive(:deliver_later)
     end
 
     it "sends emails to followers" do
@@ -21,7 +22,7 @@ describe Subscriptions::Notify do
           .with(note: note, follower: follower)
       )
       expect(fake_delivery).to receive(:deliver_later)
-      described_class.call(note: note)
+      notify
     end
   end
 end

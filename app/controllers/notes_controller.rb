@@ -8,6 +8,10 @@ class NotesController < ApplicationController
   private
 
   def find_notes
-    Notes::Find.call(params.slice(:query, :page))
+    Notes::Find.call(notes_params.to_h)
+  end
+
+  def notes_params
+    params.permit(:query, :page)
   end
 end

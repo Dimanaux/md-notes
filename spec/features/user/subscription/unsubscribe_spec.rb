@@ -10,9 +10,9 @@ feature "Subscribe" do
   scenario "User subscribes to another user" do
     visit user_path(user)
 
-    expect(page).to have_link("Unsubscribe")
+    expect(page).to have_button("Unsubscribe")
 
-    click_link "Unsubscribe"
+    click_button "Unsubscribe"
 
     expect(page).to have_content("Subscription was successfully destroyed")
   end

@@ -8,9 +8,9 @@ feature "Subscribe" do
   scenario "User subscribes to another user" do
     visit user_path(user)
 
-    expect(page).to have_link("Subscribe")
+    expect(page).to have_button("Subscribe")
 
-    click_link "Subscribe"
+    click_button "Subscribe"
 
     expect(page).to have_content("Subscription was successfully created")
   end

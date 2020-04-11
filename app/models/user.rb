@@ -10,11 +10,11 @@ class User < ApplicationRecord
   has_many :followers_subscribtions,
            foreign_key: :followee_id, class_name: "Subscription",
            dependent: :destroy, inverse_of: :followee
-  has_many :followees_subscriptions,
-           foreign_key: :follower_id, class_name: "Subscription",
+  has_many :subscriptions,
+           foreign_key: :follower_id,
            dependent: :destroy, inverse_of: :follower
   has_many :followers, through: :followers_subscribtions
-  has_many :followees, through: :followees_subscriptions
+  has_many :followees, through: :subscriptions
 
   def to_param
     username

@@ -23,6 +23,8 @@ table
         td = link_to 'Destroy', user_note_path(note.author, note),
                      data: { confirm: 'Are you sure?' }, method: :delete
 
+= paginate notes
+
 br
 
 - if user_signed_in?
