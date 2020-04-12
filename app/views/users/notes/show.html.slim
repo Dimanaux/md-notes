@@ -1,23 +1,17 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-.grid-container.fluid
-  .grid-x.grid-margin-x
-    .cell.auto.large-offset-2
-      .card
-        .card-section
-          h1 = note.title
-          p#js-note-content
-            = note.content
-        .grid-x.grid-padding-x
-          .cell.small-auto
-            img data-email-hash=note.author.email_md5
-          .cell.auto
-            => link_to note.author.username, user_path(note.author)
-            span -
-            =< note.author.email
+p
+  strong Title:
+  = note.title
+p#js-note-content
+  = note.content
+p
+  strong Author:
+  =< link_to note.author.username, user_path(note.author)
 
-      => link_to 'Destroy', user_note_path(note.author, note),
-                  data: { confirm: 'Are you sure?' },
-                  method: :delete, class: 'alert button'
-      => link_to 'Edit', edit_user_note_path(note.author, note), class: 'button'
-      => link_to 'Back', notes_path
+.grid-container.fluid
+  => link_to 'Destroy', user_note_path(note.author, note),
+              data: { confirm: 'Are you sure?' },
+              method: :delete, class: 'alert button'
+  => link_to 'Edit', edit_user_note_path(note.author, note), class: 'button'
+  => link_to 'Back', notes_path
