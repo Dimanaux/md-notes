@@ -41,7 +41,6 @@ module Users
     private
 
     def authorize_resource!
-      byebug
       authorize! note
     end
 
