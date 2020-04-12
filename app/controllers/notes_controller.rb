@@ -8,10 +8,10 @@ class NotesController < ApplicationController
   private
 
   def find_notes
-    Notes::Find.call(notes_params.to_h)
+    NotesQuery.call(notes_params[:search_form])
   end
 
   def notes_params
-    params.permit(:query, :page)
+    params.permit(:page, search_form: [:query])
   end
 end

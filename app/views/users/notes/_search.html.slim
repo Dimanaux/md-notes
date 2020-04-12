@@ -1,6 +1,9 @@
 .top-bar
-  form.menu action=action
+  = simple_form_for :search_form,
+                    method: :get, url: action,
+                    html: { class: "menu" } do |f|
     li
-      input[type="search" name="query" placeholder="Search notes" value=params['query']]
+      = f.input :query, label: false, placeholder: "Search notes",
+                input_html: { value: params.fetch(:search_form, {})[:query] }
     li
-      input type="submit" class="button" value="Search"
+      = f.submit :Search, class: "button"
