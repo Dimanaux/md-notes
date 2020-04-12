@@ -4,7 +4,8 @@ module Users
     expose_decorated :notes, :user_notes
     expose :user, find_by: :username
 
-    before_action :authorize_note
+    skip_verify_authorized only: %i[index show]
+    skip_before_action :authorize_resource!, only: %i[index show]
 
     def index
     end
