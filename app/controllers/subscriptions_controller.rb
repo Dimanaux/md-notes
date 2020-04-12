@@ -1,8 +1,6 @@
 class SubscriptionsController < ApplicationController
   expose :subscription, parent: :current_user
 
-  before_action :authorize_subscription
-
   def create
     subscription.save
 
@@ -16,10 +14,6 @@ class SubscriptionsController < ApplicationController
   end
 
   private
-
-  def authorize_subscription
-    authorize! subscription
-  end
 
   def subscription_params
     params.require(:subscription).permit(:followee_id)

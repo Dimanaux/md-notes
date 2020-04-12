@@ -2,13 +2,22 @@ module Authorization
   extend ActiveSupport::Concern
 
   included do
-    include ActionPolicy::Controller
+    verify_authorized unless: :devise_controller?
+
     rescue_from ActionPolicy::Unauthorized, with: :user_not_authorized
   end
 
   private
 
-  def user_not_authorized(error)
-    redirect_to(root_path, alert: error.message)
+  def user_not_authorized
+    flash[:notice] = I18n.t(:unauthorized_error, scope: :action_policy)
+
+    redirect_to root_path
+  end
+
+  def policy_for(record:, **opts)
+    record = record.model while record.is_a?(Draper::Decorator)
+
+    super(record: record, **opts)
   end
 end

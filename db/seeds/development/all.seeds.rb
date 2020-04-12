@@ -1,12 +1,6 @@
-def create_user(username)
-  User.create(
-      username: username,
-      email: "#{username}@example.com",
-      password: "123456",
-      confirmed_at: 1.second.ago
-  )
+10.times do
+  user = FactoryBot.create(:user)
+  rand(5).times do
+    FactoryBot.create(:note, author: user)
+  end
 end
-
-create_user("user")
-
-(1..5).each { |no| create_user("user_#{no}") }
