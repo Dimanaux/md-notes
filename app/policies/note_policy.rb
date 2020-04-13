@@ -1,12 +1,4 @@
 class NotePolicy < ApplicationPolicy
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
     signed_in?
   end
