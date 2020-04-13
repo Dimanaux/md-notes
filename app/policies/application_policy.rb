@@ -1,8 +1,10 @@
-class ApplicationPolicy
-  attr_reader :user, :record
+class ApplicationPolicy < ActionPolicy::Base
+  authorize :user, allow_nil: true
 
-  def initialize(user, record)
-    @user = user
-    @record = record.to_model
+  alias_rule :new?, to: :create?
+  alias_rule :edit?, to: :update?
+
+  def signed_in?
+    user.present?
   end
 end
