@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe FilteredNotesQuery do
-  subject(:query) { FilteredNotesQuery.new(Note, params) }
+  subject(:query) { described_class.new(Note, params) }
 
   def note(title, content)
     create(:note, title: title, content: content)

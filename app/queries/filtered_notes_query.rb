@@ -20,7 +20,7 @@ class FilteredNotesQuery
   private
 
   def by_query(relation, query)
-    note_ids =  PgSearch.multisearch(query).pluck(:searchable_id)
+    note_ids = PgSearch.multisearch(query).pluck(:searchable_id)
 
     relation.where(id: note_ids)
   end
