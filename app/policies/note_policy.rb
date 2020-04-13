@@ -8,7 +8,7 @@ class NotePolicy < ApplicationPolicy
   end
 
   def create?
-    signed_in?
+    true
   end
 
   def update?
