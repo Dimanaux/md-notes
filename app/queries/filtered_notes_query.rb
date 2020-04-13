@@ -1,5 +1,5 @@
 class FilteredNotesQuery
-  ALLOWED_PARAMS = %i[by_query].freeze
+  ALLOWED_PARAMS = %i[query].freeze
 
   attr_reader :relation, :filter_params
   private :relation, :filter_params

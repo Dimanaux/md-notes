@@ -1,8 +1,10 @@
 module Users
   class NotesController < ApplicationController
     expose :note, find_by: :slug, parent: :user
-    expose_decorated :notes, :user_notes
+    expose_decorated :notes, :filtered_notes
     expose :user, find_by: :username
+
+    helper_method :filter_params
 
     def index
     end
@@ -36,8 +38,17 @@ module Users
 
     private
 
-    def user_notes
-      user.notes.recent.page params[:page]
+    def filtered_notes
+      FilteredNotesQuery.new(raw_notes, filter_params)
+        .all.recent.page(params[:page])
+    end
+
+    def raw_notes
+      user.notes
+    end
+
+    def filter_params
+      params.permit(search_form: [:query])[:search_form].to_h
     end
 
     def note_params
