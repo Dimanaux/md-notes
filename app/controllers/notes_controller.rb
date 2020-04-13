@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  expose_decorated :notes, :find_notes
+  expose_decorated :notes, :filtered_notes
 
   def index
     render "users/notes/index"
@@ -7,11 +7,15 @@ class NotesController < ApplicationController
 
   private
 
-  def find_notes
-    FilteredNotesQuery.call(notes_params[:search_form])
+  def filtered_notes
+    FilteredNotesQuery.new(raw_notes, filter_params).all.page(params[:page])
   end
 
-  def notes_params
-    params.permit(:page, search_form: [:query])
+  def raw_notes
+    Note.includes(:author)
+  end
+
+  def filter_params
+    params.require(:search_form).permit(:query).to_h
   end
 end

@@ -1,23 +1,27 @@
 class FilteredNotesQuery
-  def initialize(params)
-    @params = params || {}
+  ALLOWED_PARAMS = %i[by_query].freeze
+
+  attr_reader :relation, :filter_params
+  private :relation, :filter_params
+
+  def initialize(relation, filter_params = {})
+    @relation = relation
+    @filter_params = filter_params
   end
 
-  def self.call(params)
-    new(params).call
-  end
+  def all
+    filter_params.slice(*ALLOWED_PARAMS).reduce(relation) do |relation, (key, value)|
+      next relation if value.blank?
 
-  def call
-    notes.recent.page @params[:page]
+      send("by_#{key}", relation, value)
+    end
   end
 
   private
 
-  def notes
-    notes = Note.includes(:author)
-    return notes if @params[:query].blank?
+  def by_query(relation, query)
+    note_ids =  PgSearch.multisearch(query).pluck(:searchable_id)
 
-    notes_ids = PgSearch.multisearch(@params[:query]).pluck(:searchable_id)
-    notes.where(id: notes_ids)
+    relation.where(id: note_ids)
   end
 end
