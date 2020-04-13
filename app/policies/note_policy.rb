@@ -12,7 +12,7 @@ class NotePolicy < ApplicationPolicy
   end
 
   def update?
-    signed_in? && user == record.author
+    user == record.author
   end
 
   def destroy?
