@@ -1,4 +1,4 @@
-class NotesQuery
+class FilteredNotesQuery
   def initialize(params)
     @params = params || {}
   end

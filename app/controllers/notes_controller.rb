@@ -8,7 +8,7 @@ class NotesController < ApplicationController
   private
 
   def find_notes
-    NotesQuery.call(notes_params[:search_form])
+    FilteredNotesQuery.call(notes_params[:search_form])
   end
 
   def notes_params
