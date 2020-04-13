@@ -4,6 +4,6 @@
                     html: { class: "menu" } do |f|
     li
       = f.input :query, label: false, placeholder: "Search notes",
-                input_html: { value: params.fetch(:search_form, {})[:query] }
+                input_html: { value: filter_params[:query] }
     li
       = f.submit "Search", class: "button"
