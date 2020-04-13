@@ -9,16 +9,6 @@ describe NotePolicy do
     let(:record) { build_stubbed(:note, author: user) }
   end
 
-  describe_rule :index? do
-    succeed "when user signed in"
-    succeed "when user not signed in"
-  end
-
-  describe_rule :show? do
-    succeed "when user signed in"
-    succeed "when user not signed in"
-  end
-
   describe_rule :update? do
     succeed "when current user is author" do
       include_context "when author"

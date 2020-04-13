@@ -29,5 +29,5 @@ table
 
 br
 
-- if allowed_to?(:new?, Note.new)
+- if user_signed_in?
   = link_to 'New Note', new_user_note_path(current_user)

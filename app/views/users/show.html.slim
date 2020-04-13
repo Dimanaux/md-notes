@@ -1,13 +1,9 @@
-- subscription = Subscription.new(followee: user, follower: current_user)
-
 .row
   .columns
     h2 = title("User")
     p = user.username
 
-    - if !user_signed_in?
-      = link_to "Sign in to subscribe", new_user_session_path
-    - elsif current_user.subscribed_to?(user)
+    - if current_user&.subscribed_to?(user)
       = button_to "Unsubscribe", subscription_path(current_user.subscription_for(user)),
                   method: :delete, data: { confirm: 'Are you sure?' }, class: "button"
     - else
