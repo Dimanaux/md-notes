@@ -15,7 +15,7 @@ table
       tr
         td = note.title
         td = note.preview
-        td = note.author.username
+        td = link_to note.author.username, note.author
         td = link_to 'Show', user_note_path(note.author, note)
         td = link_to 'Edit', edit_user_note_path(note.author, note)
         td = link_to 'Destroy', user_note_path(note.author, note),
