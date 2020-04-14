@@ -1,0 +1,11 @@
+span#js-note-rating[
+    data-method=(note.already_rated_by?(current_user) ? "PATCH" : "POST")
+    data-path=(note.already_rated_by?(current_user) \
+                ? api_v1_user_note_rating_path(note.author, note, note.rating_by(current_user)) \
+                : api_v1_user_note_ratings_path(note.author, note))
+    data-note-rating=note.average_rating
+    data-my-rating-id=note.rating_by(current_user)&.id
+]
+  - (1..5).each do |star|
+    span data-star=star
+      = (star <= note.average_rating ? '★' : '☆')
