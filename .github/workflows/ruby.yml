@@ -12,16 +12,17 @@ jobs:
         with:
           ruby-version: 2.6.5
       - name: Install Rubocop
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Cache bundle
         uses: actions/cache@v1
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-        run: |
-          gem install bundler
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
       - name: Check code
         run: |
           cp .env.example .env
@@ -45,24 +46,27 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.5
-      - name: Build and test with Rake
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-        env:
-          PGHOST: 127.0.0.1
-          PGUSER: postgres
-          RAILS_ENV: test
-          POSTGRES_PASSWORD: postgres
+      - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           cp .env.example .env
+      - name: Cache bundle
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Test with RSpec
+        env:
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+          POSTGRES_PASSWORD: postgres
+        run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
           bin/rspec
