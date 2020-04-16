@@ -3,8 +3,5 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   include Authentication
-  include Authorization
   include BulletHelper
-
-  protect_from_forgery with: :exception
 end

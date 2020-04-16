@@ -17,9 +17,13 @@ table
         td = note.preview
         td = link_to note.author.username, note.author
         td = link_to 'Show', user_note_path(note.author, note)
-        td = link_to 'Edit', edit_user_note_path(note.author, note)
-        td = link_to 'Destroy', user_note_path(note.author, note),
-                     data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          - if allowed_to?(:edit?, note)
+            = link_to 'Edit', edit_user_note_path(note.author, note)
+        td
+          - if allowed_to?(:destroy?, note)
+            = link_to 'Destroy', user_note_path(note.author, note),
+                      data: { confirm: 'Are you sure?' }, method: :delete
 
 = paginate notes
 
