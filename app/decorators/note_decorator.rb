@@ -8,4 +8,8 @@ class NoteDecorator < ApplicationDecorator
   def rating_by(user)
     object.ratings.find_by(user: user)
   end
+
+  def created_at
+    object.created_at.strftime("%Y.%m.%d")
+  end
 end

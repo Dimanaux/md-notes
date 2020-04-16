@@ -1,7 +1,12 @@
 module Users
-  class NotesController < ApplicationController
+  class NotesController < AuthorizedController
+    skip_before_action :authenticate_user!, only: %i[index show]
+    skip_verify_authorized only: %i[index show]
+    skip_before_action :authorize_resource!, only: %i[index show]
+
     expose_decorated :note, find_by: :slug, parent: :user
-    expose :notes, from: :user
+    expose_decorated :notes, :user_notes
+
     expose :user, find_by: :username
 
     def index
@@ -35,6 +40,14 @@ module Users
     end
 
     private
+
+    def authorize_resource!
+      authorize! note
+    end
+
+    def user_notes
+      user.notes.recent.page params[:page]
+    end
 
     def note_params
       params.require(:note).permit(:title, :content, :slug)
