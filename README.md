@@ -128,6 +128,28 @@ brew bundle
   git commit -am "Update README.md"
   ```
 
+### Run in Docker
+
+1. Set environment variables
+
+```
+DATABASE_NAME=md_notes
+DATABASE_USER=md_notes
+DATABASE_PASSWORD=md_notes
+DATABASE_HOST=postgres
+```
+They can be found in [.env.example](.env.example).
+
+Or just run `cp .env.docker .env`
+
+2. Run application
+
+```bash
+docker-compose up -d
+```
+
+3. Visit [localhost:5000](localhost:5000)
+
 ## Deployment
 
 ### Heroku

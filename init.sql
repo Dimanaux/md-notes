@@ -1,0 +1,3 @@
+CREATE USER md_notes;
+ALTER USER md_notes WITH SUPERUSER;
+ALTER USER md_notes WITH PASSWORD 'md_notes';
