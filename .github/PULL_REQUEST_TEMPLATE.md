@@ -2,7 +2,7 @@
 
 <A brief description of the pull request>
 
-Resolves #
+Resolves #N th issue.
 
 ## Steps performed
 
