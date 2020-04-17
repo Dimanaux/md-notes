@@ -4,4 +4,4 @@ en:
       errors:
         title: You already have a note with similar title.
   errors:
-    username: Username can contain only these symbols A-Z, 0-9, - and _
+    username: Username can contain only A-Z, a-z, 0-9 or -

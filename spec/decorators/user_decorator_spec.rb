@@ -3,12 +3,12 @@ require "rails_helper"
 describe UserDecorator do
   subject(:decorated) { user.decorate }
 
-  let(:user) { create(:user, email: "jon.lee@example.com", username: "jon_lee") }
+  let(:user) { create(:user, email: "jon.lee@example.com", username: "jon-lee") }
 
   describe ".username_with_email" do
     subject { decorated.username_with_email }
 
-    it { is_expected.to include("jon_lee") }
+    it { is_expected.to include("jon-lee") }
 
     it { is_expected.to include("jon.lee@example.com") }
   end
