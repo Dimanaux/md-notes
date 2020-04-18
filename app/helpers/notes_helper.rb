@@ -1,6 +1,6 @@
 module NotesHelper
   def all_notes_url
-    notes_url(subdomain: '')
+    notes_url(subdomain: "")
   end
 
   def new_user_note_url(user)

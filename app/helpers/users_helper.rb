@@ -4,6 +4,6 @@ module UsersHelper
   end
 
   def edit_registration_url
-    edit_user_registration_url(subdomain: '')
+    edit_user_registration_url(subdomain: "")
   end
 end

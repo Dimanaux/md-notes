@@ -1,10 +1,10 @@
 class Subdomain
   def self.matches?(request)
     subdomain = request.subdomain
-    if subdomain.present? && valid?(subdomain)
-      set_param(request.params, subdomain)
-      true
-    end
+    return false unless subdomain.present? && valid?(subdomain)
+
+    set_param(request.params, subdomain)
+    true
   end
 
   FORBIDDEN_SUBDOMAINS = %w[api www].freeze
@@ -15,7 +15,7 @@ class Subdomain
   end
 
   def self.set_param(params, subdomain)
-    if params[:controller] == 'users'
+    if params[:controller] == "users"
       params[:id] = subdomain
     else
       params[:user_id] = subdomain

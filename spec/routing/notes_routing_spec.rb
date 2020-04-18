@@ -3,7 +3,7 @@ require "rails_helper"
 describe Users::NotesController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(get: "/users/user1/notes").to(
+      expect(get: "/notes").to(
         route_to("users/notes#index", user_id: "user1")
       )
     end
