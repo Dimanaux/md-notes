@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     email
-    username { FFaker::InternetSE.domain_word }
+    username
     password { "123456" }
     password_confirmation { password }
     confirmed_at { 1.hour.ago }

@@ -3,8 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   validates :username,
-            presence: true, uniqueness: true,
-            format: { with: /\A[A-Za-z0-9-]+\z/, message: I18n.t("errors.username") }
+            presence: true, uniqueness: true, length: { in: 4..16 },
+            format: { with: /\A[A-Za-z0-9-]*\z/, message: I18n.t("errors.username") }
 
   has_many :notes, foreign_key: "author_id", dependent: :destroy, inverse_of: :author
 

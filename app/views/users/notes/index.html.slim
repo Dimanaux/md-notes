@@ -30,4 +30,4 @@ table
 br
 
 - if user_signed_in?
-  = link_to 'New Note', new_note_path(subdomain: current_user.username)
+  = link_to 'New Note', new_user_note_url(current_user)

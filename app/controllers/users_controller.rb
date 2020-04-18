@@ -3,4 +3,10 @@ class UsersController < ApplicationController
 
   def show
   end
+
+  private
+
+  def expose_user_id_param!
+    request.params[:id] = request.subdomain
+  end
 end
