@@ -6,7 +6,7 @@ feature "Create Note" do
   let(:note) { create(:note, author: current_user) }
 
   scenario "User creates note" do
-    visit new_user_note_path(current_user)
+    visit new_user_note_url(current_user)
 
     fill_in "Title", with: "title 1"
     fill_in "Content", with: "content 1"
@@ -19,7 +19,7 @@ feature "Create Note" do
   end
 
   scenario "User creates note but slug taken" do
-    visit new_user_note_path(current_user)
+    visit new_user_note_url(current_user)
 
     fill_in "Title", with: note.title
     fill_in "Content", with: "content 2"

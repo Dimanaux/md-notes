@@ -2,7 +2,7 @@
 <p>Dear <%= @follower.username %>,</p>
 <p>
   You can read new note
-  <%= link_to @note.title, user_note_url(@note.author, @note) %>
+  <%= link_to @note.title, user_note_url(@note) %>
   right now!
 </p>
 <p>
