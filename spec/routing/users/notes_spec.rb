@@ -34,7 +34,9 @@ describe "users/notes", type: :routing do
     scenario "#edit" do
       visit edit_user_note_url(note)
 
-      expect(page).to have_current_url("#{current_user.username}.test.local/notes/let-me-spec/edit")
+      expect(page).to have_current_url(
+        "#{current_user.username}.test.local/notes/let-me-spec/edit"
+      )
     end
   end
 end

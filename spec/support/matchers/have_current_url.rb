@@ -1,6 +1,6 @@
 RSpec::Matchers.define :have_current_url do |expected_url|
   match do |page|
-    /^(https?:\/\/)?#{expected_url}\/?$/i.match? page.current_url
+    %r{^(https?://)?#{expected_url}/?$}i.match? page.current_url
   end
 
   failure_message do |page|
