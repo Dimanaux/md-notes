@@ -6,13 +6,13 @@ p
   = note.content
 p
   strong Author:
-  =< link_to note.author.username, user_path(note.author)
+  =< link_to note.author.username, user_profile_url(note.author)
 
 .grid-container.fluid
   - if allowed_to?(:destroy?, note)
-    => link_to 'Destroy', user_note_path(note.author, note),
+    => link_to 'Destroy', user_note_url(note),
                 data: { confirm: 'Are you sure?' },
                 method: :delete, class: 'alert button'
   - if allowed_to?(:edit?, note)
-    => link_to 'Edit', edit_user_note_path(note.author, note), class: 'button'
+    => link_to 'Edit', edit_user_note_url(note), class: 'button'
   => link_to 'Back', notes_path

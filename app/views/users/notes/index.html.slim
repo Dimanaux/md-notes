@@ -16,13 +16,13 @@ table
         td = note.title
         td = note.content
         td = note.author.username
-        td = link_to 'Show', user_note_path(note.author, note)
+        td = link_to 'Show', user_note_url(note)
         td
           - if allowed_to?(:edit?, note)
-            = link_to 'Edit', edit_user_note_path(note.author, note)
+            = link_to 'Edit', edit_user_note_url(note)
         td
           - if allowed_to?(:destroy?, note)
-            = link_to 'Destroy', user_note_path(note.author, note),
+            = link_to 'Destroy', user_note_url(note),
                       data: { confirm: 'Are you sure?' }, method: :delete
 
 = paginate notes
@@ -30,4 +30,4 @@ table
 br
 
 - if user_signed_in?
-  = link_to 'New Note', new_user_note_path(current_user)
+  = link_to 'New Note', new_note_path(subdomain: current_user.username)
