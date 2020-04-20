@@ -41,10 +41,13 @@ gem "memory_profiler"
 gem "puma"
 gem "rack-canonical-host"
 gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/rack-mini-profiler.git"
+gem "redcarpet"
 gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
 
 group :staging, :production do
   gem "newrelic_rpm"

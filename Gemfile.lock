@@ -304,6 +304,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.5.0)
     regexp_parser (1.7.0)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -432,6 +433,9 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    wicked_pdf (2.0.2)
+      activesupport
+    wkhtmltopdf-binary (0.12.5.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -486,6 +490,7 @@ DEPENDENCIES
   rails-assets-jquery-ujs!
   rails-assets-jquery2!
   rails-erd
+  redcarpet
   responders
   rollbar
   rspec-its
@@ -510,6 +515,8 @@ DEPENDENCIES
   uglifier (>= 2.7.2)
   web-console
   webmock
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.6.5p114
