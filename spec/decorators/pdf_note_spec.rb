@@ -19,7 +19,7 @@ RSpec.describe PdfNote do
   end
 
   describe ".content" do
-    before { allow(WickedPdf).to receive(:new).and_return(fake_pdf_engine) }
+    before { allow(described_class).to receive(:pdf_engine).and_return(fake_pdf_engine) }
 
     let(:fake_pdf_engine) { instance_double("WickedPdf") }
 

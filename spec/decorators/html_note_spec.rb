@@ -12,7 +12,7 @@ RSpec.describe HtmlNote do
   end
 
   describe ".content" do
-    before { allow(Redcarpet::Markdown).to receive(:new).and_return(fake_md) }
+    before { allow(described_class).to receive(:markdown_engine).and_return(fake_md) }
 
     let(:fake_md) { instance_double("Redcarpet::Markdown") }
 

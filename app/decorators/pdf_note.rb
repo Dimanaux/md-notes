@@ -6,7 +6,7 @@ class PdfNote < ApplicationDecorator
   end
 
   def content
-    PdfNote.pdf_engine.pdf_from_string(title + object.content)
+    @content ||= PdfNote.pdf_engine.pdf_from_string(title + object.content)
   end
 
   def self.pdf_engine
