@@ -15,10 +15,8 @@ module Users
       respond_to do |format|
         format.html { respond_with note.author, note }
         format.pdf do
-          markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
-          html = markdown.render(note.content)
-          pdf = WickedPdf.new.pdf_from_string(html)
-          send_data(pdf, filename: "#{note.author.username}-#{note.slug}.pdf")
+          pdf_note = PdfNote.new(HtmlNote.new(note))
+          send_data(pdf_note.content, filename: pdf_note.filename)
         end
       end
     end
