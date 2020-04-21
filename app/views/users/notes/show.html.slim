@@ -8,13 +8,13 @@ p
   strong Author:
   =< link_to note.author.username, user_path(note.author)
 
-= link_to "This page in PDF", format: :pdf
+= link_to "Export as PDF", format: :pdf
 
 .grid-container.fluid
   - if allowed_to?(:destroy?, note)
-    => link_to 'Destroy', user_note_path(note.author, note),
-                data: { confirm: 'Are you sure?' },
-                method: :delete, class: 'alert button'
+    => link_to "Destroy", user_note_path(note.author, note),
+                data: { confirm: "Are you sure?" },
+                method: :delete, class: "alert button"
   - if allowed_to?(:edit?, note)
-    => link_to 'Edit', edit_user_note_path(note.author, note), class: 'button'
-  => link_to 'Back', notes_path
+    => link_to "Edit", edit_user_note_path(note.author, note), class: "button"
+  => link_to "Back", notes_path
