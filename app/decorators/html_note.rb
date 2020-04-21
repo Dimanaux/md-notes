@@ -9,7 +9,7 @@ class HtmlNote < ApplicationDecorator
     @content ||= HtmlNote.markdown_engine.render(object.content)
   end
 
-  private
+  private_class_method :markdown_engine
 
   def self.markdown_engine
     @markdown_engine ||= Redcarpet::Markdown.new(
