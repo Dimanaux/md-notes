@@ -9,8 +9,6 @@ class PdfNote < ApplicationDecorator
     PdfNote.pdf_engine.pdf_from_string(title + object.content)
   end
 
-  private_class_method :pdf_engine
-
   def self.pdf_engine
     @pdf_engine ||= WickedPdf.new
   end
