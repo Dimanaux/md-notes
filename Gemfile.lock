@@ -482,7 +482,7 @@ DEPENDENCIES
   puma
   rack-canonical-host
   rack-mini-profiler!
-  rails (= 5.2.4.2)
+  rails (~> 5.2.4.2)
   rails-assets-jquery-ujs!
   rails-assets-jquery2!
   rails-erd
@@ -493,7 +493,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sass-rails (~> 5.0.0, >= 5.0.6)
+  sass-rails (~> 5.0.6)
   scss_lint
   seedbank
   shoulda-matchers
@@ -515,4 +515,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
