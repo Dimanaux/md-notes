@@ -1,9 +1,7 @@
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 p
   strong Title:
   = note.title
-p#js-note-content
+p data-behaviour="markdown"
   = note.content
 p
   strong Author:

@@ -1,7 +1,7 @@
 $(() => {
-    let noteContent = $('#js-note-content')[0];
-    if (noteContent) {
-        noteContent.innerHTML = marked(noteContent.innerHTML);
+    let markdownNodes = document.querySelectorAll('[data-behaviour=markdown]');
+    for (let element of markdownNodes) {
+        element.innerHTML = marked(element.innerHTML);
     }
 
     let noteContentEdit = document.getElementById("note_content");
