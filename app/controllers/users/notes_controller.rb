@@ -48,7 +48,7 @@ module Users
     end
 
     def filter_params
-      params.permit(search_form: [:query])[:search_form].to_h
+      params.fetch(:search_form, {}).permit(:query).to_h
     end
 
     def note_params
