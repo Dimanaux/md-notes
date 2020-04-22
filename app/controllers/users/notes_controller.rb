@@ -1,5 +1,9 @@
 module Users
-  class NotesController < ApplicationController
+  class NotesController < AuthorizedController
+    skip_before_action :authenticate_user!, only: %i[index show]
+    skip_verify_authorized only: %i[index show]
+    skip_before_action :authorize_resource!, only: %i[index show]
+
     expose :note, find_by: :slug, parent: :user
     expose_decorated :notes, :filtered_notes
     expose :user, find_by: :username
@@ -49,6 +53,10 @@ module Users
 
     def filter_params
       params.fetch(:search_form, {}).permit(:query).to_h
+    end
+
+    def authorize_resource!
+      authorize! note
     end
 
     def note_params

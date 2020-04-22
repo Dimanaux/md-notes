@@ -1,0 +1,3 @@
+en:
+  action_policy:
+    unauthorized_error: "You cannot perform this action."

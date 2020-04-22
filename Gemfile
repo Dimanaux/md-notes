@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "~> 2.6.5"
 
 gem "pg"
-gem "rails", "5.2.4.2"
+gem "rails", "~> 5.2.4.2"
 
 # assets
 gem "autoprefixer-rails"
@@ -11,7 +11,7 @@ gem "coffee-rails"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails", "~> 6.2.3"
 gem "premailer-rails"
-gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
+gem "sass-rails", "~> 5.0.6"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do
@@ -27,6 +27,7 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "action_policy", "~> 0.4.0"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
@@ -39,7 +40,6 @@ gem "kaminari"
 gem "memory_profiler"
 gem "pg_search"
 gem "puma"
-gem "pundit"
 gem "rack-canonical-host"
 gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/rack-mini-profiler.git"
 gem "responders"

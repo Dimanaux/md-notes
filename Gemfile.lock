@@ -9,6 +9,7 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
+    action_policy (0.4.3)
     actioncable (5.2.4.2)
       actionpack (= 5.2.4.2)
       nio4r (~> 2.0)
@@ -262,8 +263,6 @@ GEM
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
-    pundit (2.1.0)
-      activesupport (>= 3.0.0)
     rack (2.2.2)
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
@@ -443,6 +442,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_policy (~> 0.4.0)
   active_link_to
   autoprefixer-rails
   awesome_print
@@ -484,10 +484,9 @@ DEPENDENCIES
   poltergeist
   premailer-rails
   puma
-  pundit
   rack-canonical-host
   rack-mini-profiler!
-  rails (= 5.2.4.2)
+  rails (~> 5.2.4.2)
   rails-assets-jquery-ujs!
   rails-assets-jquery2!
   rails-erd
@@ -498,7 +497,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sass-rails (~> 5.0.0, >= 5.0.6)
+  sass-rails (~> 5.0.6)
   scss_lint
   seedbank
   shoulda-matchers
@@ -520,4 +519,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
