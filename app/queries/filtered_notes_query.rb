@@ -1,9 +1,6 @@
 class FilteredNotesQuery
   ALLOWED_PARAMS = %i[query].freeze
 
-  attr_reader :relation, :filter_params
-  private :relation, :filter_params
-
   def initialize(relation, filter_params = {})
     @relation = relation
     @filter_params = filter_params
@@ -18,6 +15,8 @@ class FilteredNotesQuery
   end
 
   private
+
+  attr_reader :relation, :filter_params
 
   def by_query(relation, query)
     note_ids = PgSearch.multisearch(query).pluck(:searchable_id)

@@ -1,7 +1,6 @@
 .top-bar
   = simple_form_for :search_form,
-                    method: :get, url: notes_path,
-                    html: { class: "menu" } do |f|
+                    method: :get, html: { class: "menu" } do |f|
     li
       = f.input :query, label: false, placeholder: "Search notes",
                 input_html: { value: filter_params[:query] }

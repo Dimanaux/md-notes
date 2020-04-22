@@ -13,15 +13,12 @@ feature "Search notes" do
     fill_in :search_form_query, with: "beta"
     click_button "Search"
 
-    # first note found
     expect(page).to have_content "alpha beta"
     expect(page).to have_content "gamma delta"
 
-    # second note found
     expect(page).to have_content "beta epsilon"
     expect(page).to have_content "theta delta"
 
-    # third note mustn't be found
     expect(page).not_to have_content "one two"
     expect(page).not_to have_content "three four"
   end
