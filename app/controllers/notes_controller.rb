@@ -10,8 +10,7 @@ class NotesController < ApplicationController
   private
 
   def filtered_notes
-    FilteredNotesQuery.new(raw_notes, filter_params)
-                      .all.recent.page(params[:page])
+    FilteredNotesQuery.new(raw_notes, filter_params).all
   end
 
   def raw_notes
