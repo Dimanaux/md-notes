@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  expose :user, find_by: :username
+  expose_decorated :user, find_by: :username
 
   def show
   end

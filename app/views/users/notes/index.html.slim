@@ -14,20 +14,20 @@ table
     - notes.each do |note|
       tr
         td = note.title
-        td = note.content
-        td = note.author.username
-        td = link_to 'Show', user_note_url(note)
+        td = note.preview
+        td = link_to note.author.username, user_profile_url(note.author)
+        td = link_to "Show", user_note_url(note)
         td
-          - if allowed_to?(:edit?, note)
-            = link_to 'Edit', edit_user_note_url(note)
+          - if allowed_to?(:edit?, note, with: NotePolicy)
+            = link_to "Edit", edit_user_note_url(note)
         td
-          - if allowed_to?(:destroy?, note)
-            = link_to 'Destroy', user_note_url(note),
-                      data: { confirm: 'Are you sure?' }, method: :delete
+          - if allowed_to?(:destroy?, note, with: NotePolicy)
+            = link_to "Destroy", user_note_url(note),
+                      data: { confirm: "Are you sure?" }, method: :delete
 
 = paginate notes
 
 br
 
 - if user_signed_in?
-  = link_to 'New Note', new_user_note_url(current_user)
+  = link_to "New Note", new_user_note_url(current_user)
