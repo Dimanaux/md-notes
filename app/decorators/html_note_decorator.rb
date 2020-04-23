@@ -1,4 +1,4 @@
-class HtmlNote < ApplicationDecorator
+class HtmlNoteDecorator < ApplicationDecorator
   delegate_all
 
   def title
