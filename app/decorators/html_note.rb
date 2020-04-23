@@ -6,12 +6,6 @@ class HtmlNote < ApplicationDecorator
   end
 
   def content
-    @content ||= HtmlNote.markdown_engine.render(object.content)
-  end
-
-  def self.markdown_engine
-    @markdown_engine ||= Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML, fenced_code_blocks: true
-    )
+    @content ||= MarkdownToHtmlService.render(object.content)
   end
 end

@@ -6,10 +6,6 @@ class PdfNote < ApplicationDecorator
   end
 
   def content
-    @content ||= PdfNote.pdf_engine.pdf_from_string(title + object.content)
-  end
-
-  def self.pdf_engine
-    @pdf_engine ||= WickedPdf.new
+    @content ||= HtmlToPdfService.render(title + object.content)
   end
 end
