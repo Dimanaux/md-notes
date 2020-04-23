@@ -4,9 +4,11 @@ module Users
     skip_verify_authorized only: %i[index show]
     skip_before_action :authorize_resource!, only: %i[index show]
 
+    expose_decorated :notes, :filtered_notes
     expose_decorated :note, find_by: :slug, parent: :user
-    expose_decorated :notes, :user_notes
     expose :user, find_by: :username
+
+    helper_method :filter_params
 
     def index
     end
@@ -40,12 +42,21 @@ module Users
 
     private
 
-    def authorize_resource!
-      authorize! note
+    def filtered_notes
+      FilteredNotesQuery.new(raw_notes, filter_params)
+                        .all.recent.page(params[:page])
     end
 
-    def user_notes
-      user.notes.recent.page params[:page]
+    def raw_notes
+      user.notes
+    end
+
+    def filter_params
+      params.fetch(:search_form, {}).permit(:query).to_h
+    end
+
+    def authorize_resource!
+      authorize! note
     end
 
     def note_params
