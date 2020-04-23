@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe HtmlNote do
+RSpec.describe HtmlNoteDecorator do
   subject(:html_note) { described_class.new(note) }
 
   let(:note) { instance_double("Note", title: "Main note", content: "empty") }
