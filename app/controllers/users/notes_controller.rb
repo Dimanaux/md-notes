@@ -15,7 +15,7 @@ module Users
       respond_to do |format|
         format.html { respond_with note.author, note }
         format.pdf do
-          pdf_note = PdfNote.new(HtmlNote.new(note))
+          pdf_note = PdfNote.new(HtmlNoteDecorator.new(note))
           send_data(pdf_note.content, filename: pdf_note.filename)
         end
       end
