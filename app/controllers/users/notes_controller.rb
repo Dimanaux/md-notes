@@ -4,8 +4,8 @@ module Users
     skip_verify_authorized only: %i[index show]
     skip_before_action :authorize_resource!, only: %i[index show]
 
-    expose :note, find_by: :slug, parent: :user
     expose_decorated :notes, :filtered_notes
+    expose_decorated :note, find_by: :slug, parent: :user
     expose :user, find_by: :username
 
     helper_method :filter_params
