@@ -16,8 +16,8 @@ table
     - notes.each do |note|
       tr
         td = note.title
-        td = note.content
-        td = note.author.username
+        td = note.preview
+        td = link_to note.author.username, note.author
         td = link_to 'Show', user_note_path(note.author, note)
         td
           - if allowed_to?(:edit?, note, with: NotePolicy)

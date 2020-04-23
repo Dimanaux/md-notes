@@ -1,17 +1,24 @@
-p
-  strong Title:
-  = note.title
-p data-behaviour="markdown"
-  = note.content
-p
-  strong Author:
-  =< link_to note.author.username, user_path(note.author)
-
-.grid-container.fluid
-  - if allowed_to?(:destroy?, note)
-    => link_to 'Destroy', user_note_path(note.author, note),
-                data: { confirm: 'Are you sure?' },
-                method: :delete, class: 'alert button'
-  - if allowed_to?(:edit?, note)
-    => link_to 'Edit', edit_user_note_path(note.author, note), class: 'button'
-  => link_to 'Back', notes_path
+.grid-x
+  .cell
+    article.card
+      .card-section
+        header: h1 = note.title
+        p data-behaviour="markdown"
+          = note.content.html_safe
+      .card-divider.grid-x.align-middle.align-justify
+        .cell.shrink
+          img data-email-hash=note.author.email_md5
+        .cell.small-5
+          | Posted by
+          =<> link_to note.author.username, user_path(note.author)
+          =<> "<#{note.author.email}>"
+          | on
+          =< note.created_at
+        .cell.shrink
+          - if allowed_to?(:destroy?, note)
+            => link_to "Destroy", user_note_path(note.author, note),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete, class: "alert button"
+          - if allowed_to?(:edit?, note)
+            = link_to "Edit", edit_user_note_path(note.author, note), class: "button"
+  => link_to "Back", notes_path
