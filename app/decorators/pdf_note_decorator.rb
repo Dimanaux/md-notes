@@ -1,4 +1,4 @@
-class PdfNote < ApplicationDecorator
+class PdfNoteDecorator < ApplicationDecorator
   delegate_all
 
   def filename
