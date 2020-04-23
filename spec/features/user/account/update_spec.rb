@@ -6,7 +6,6 @@ describe "Update Account" do
   scenario "User updates account with valid data" do
     visit edit_user_registration_path
     fill_form(:user, :edit, username: "new_username")
-
     click_on "Update"
 
     expect(page).to have_content("new_username")

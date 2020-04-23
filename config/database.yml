@@ -3,14 +3,19 @@ defaults: &defaults
   encoding: unicode
   min_messages: warning
   timeout: 5000
+  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
+  port: <%= ENV["POSTGRES_PORT"] || '5432' %>
   pool: <%= [ENV.fetch("MAX_THREADS", 5).to_i, ENV.fetch("DB_POOL", 5).to_i].max %>
 
 development:
-  database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_dev
+  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_dev
   <<: *defaults
 
 test:
-  database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
+  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_test
   password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
   <<: *defaults
 

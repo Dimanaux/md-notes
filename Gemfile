@@ -3,14 +3,14 @@ source "https://rubygems.org"
 ruby "~> 2.6.5"
 
 gem "pg"
-gem "rails", "5.2.4.2"
+gem "rails", "~> 5.2.4.2"
 
 # assets
 gem "autoprefixer-rails"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails", "~> 6.6.2.0"
 gem "premailer-rails"
-gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
+gem "sass-rails", "~> 5.0.6"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do

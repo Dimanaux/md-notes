@@ -6,7 +6,6 @@ class UserDecorator < ApplicationDecorator
   end
 
   def average_rating
-    # object.notes.average(:average_rating)
     5
   end
 
