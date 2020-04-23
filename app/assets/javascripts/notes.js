@@ -1,5 +1,5 @@
 $(() => {
-    let markdownNodes = document.querySelectorAll('[data-behaviour=markdown]');
+    let markdownNodes = document.querySelectorAll("[data-behaviour=markdown]");
     for (let element of markdownNodes) {
         element.innerHTML = marked(element.innerHTML);
     }
