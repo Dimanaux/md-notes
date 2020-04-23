@@ -3,8 +3,4 @@ class ApplicationPolicy < ActionPolicy::Base
 
   alias_rule :new?, to: :create?
   alias_rule :edit?, to: :update?
-
-  def signed_in?
-    user.present?
-  end
 end

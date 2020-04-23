@@ -10,7 +10,7 @@
           => user.username
           | has
           =<> link_to "#{user.notes_count} #{'note'.pluralize(user.notes_count)}",
-                      user_notes_path(user)
+                      user_notes_url(user)
           | with average score ★
           =< user.average_rating
       .cell

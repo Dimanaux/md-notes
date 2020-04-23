@@ -17,4 +17,12 @@ describe User do
     it { is_expected.to have_many :followers }
     it { is_expected.to have_many :followees }
   end
+
+  describe ".to_param" do
+    subject { user.to_param }
+
+    let(:user) { build(:user, username: "adams") }
+
+    it { is_expected.to eq "adams" }
+  end
 end
