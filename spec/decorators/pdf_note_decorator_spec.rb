@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PdfNote do
+RSpec.describe PdfNoteDecorator do
   subject(:pdf_note) { described_class.new(note) }
 
   let(:author) { instance_double("User", username: "arthur") }
