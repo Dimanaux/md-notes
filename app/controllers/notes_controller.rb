@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  expose :notes, :fetch_notes
+  expose_decorated :notes, :fetch_notes
 
   def index
     render "users/notes/index"
