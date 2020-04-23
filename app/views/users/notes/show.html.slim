@@ -21,6 +21,6 @@
                   method: :delete, class: "alert button"
           - if allowed_to?(:edit?, note)
             = link_to "Edit", edit_user_note_path(note.author, note), class: "button"
-            = link_to "Export as PDF", format: :pdf
+          = link_to "Export as PDF", format: :pdf
 
   => link_to "Back", notes_path
