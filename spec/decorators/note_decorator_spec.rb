@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe NoteDecorator do
   let(:note) { described_class.new(wrappee) }
-  let(:wrappee) { build(:note, content: "Multi\nline\ncontent\n", created_at: Date.new(1970, 1, 1)) }
+  let(:wrappee) do
+    build(:note, content: "Multi\nline\ncontent\n", created_at: Date.new(1970, 1, 1))
+  end
 
   describe ".created_at" do
     subject { note.created_at }
