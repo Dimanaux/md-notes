@@ -5,10 +5,8 @@ RSpec.describe PdfNote do
 
   let(:author) { instance_double("User", username: "arthur") }
   let(:note_attributes) do
-    {
-      slug: "topic-memories", author: author,
-      title: "Topic Memories;", content: "blank"
-    }
+    { slug: "topic-memories", author: author,
+      title: "Topic Memories;", content: "blank" }
   end
   let(:note) { instance_double("Note", note_attributes) }
 
@@ -19,13 +17,13 @@ RSpec.describe PdfNote do
   end
 
   describe ".content" do
-    before { allow(described_class).to receive(:pdf_engine).and_return(fake_pdf_engine) }
+    subject(:result) { pdf_note.content }
 
-    let(:fake_pdf_engine) { instance_double("WickedPdf") }
+    before { allow(HtmlToPdfService).to receive(:render).and_return("pdf") }
 
     it "passes html title and conent to the engine" do
-      expect(fake_pdf_engine).to receive(:pdf_from_string).with("Topic Memories;blank")
-      pdf_note.content
+      expect(HtmlToPdfService).to receive(:render).with("Topic Memories;blank")
+      expect(result).to eq "pdf"
     end
   end
 end

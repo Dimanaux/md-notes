@@ -12,13 +12,13 @@ RSpec.describe HtmlNote do
   end
 
   describe ".content" do
-    before { allow(described_class).to receive(:markdown_engine).and_return(fake_md) }
+    subject(:html_content) { html_note.content }
 
-    let(:fake_md) { instance_double("Redcarpet::Markdown") }
+    before { allow(MarkdownToHtmlService).to receive(:render).and_return("html") }
 
-    it "passes html title and conent to the engine" do
-      expect(fake_md).to receive(:render).with("empty")
-      html_note.content
+    it "passes markdown body to the service" do
+      expect(MarkdownToHtmlService).to receive(:render).with("empty")
+      expect(html_content).to eq "html"
     end
   end
 end
