@@ -5,4 +5,5 @@ SimpleCov.start "rails" do
   add_group "Decorators", "app/decorators"
   add_group "Interactors", "app/interactors"
   add_group "Policies", "app/policies"
+  add_group "Queries", "app/queries"
 end

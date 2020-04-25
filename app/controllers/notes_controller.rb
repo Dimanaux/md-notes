@@ -1,5 +1,7 @@
 class NotesController < ApplicationController
-  expose :notes, :fetch_notes
+  expose_decorated :notes, :filtered_notes
+
+  helper_method :filter_params
 
   def index
     render "users/notes/index"
@@ -7,7 +9,15 @@ class NotesController < ApplicationController
 
   private
 
-  def fetch_notes
-    Note.recent.page params[:page]
+  def filtered_notes
+    FilteredNotesQuery.new(raw_notes, filter_params).all
+  end
+
+  def raw_notes
+    Note.recent.includes(:author).page(params[:page])
+  end
+
+  def filter_params
+    params.fetch(:search_form, {}).permit(:query).to_h
   end
 end
