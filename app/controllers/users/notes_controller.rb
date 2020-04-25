@@ -14,6 +14,13 @@ module Users
     end
 
     def show
+      respond_to do |format|
+        format.html { respond_with note.author, note }
+        format.pdf do
+          pdf_note = PdfNoteDecorator.new(HtmlNoteDecorator.new(note))
+          send_data(pdf_note.content, filename: pdf_note.filename)
+        end
+      end
     end
 
     def new
