@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
 
   include Authentication
   include BulletHelper
+  include Internationalization
 end
