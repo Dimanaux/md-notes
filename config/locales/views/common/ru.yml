@@ -1,0 +1,9 @@
+ru:
+  common:
+    show: Посмотреть
+    edit: Редактировать
+    destroy: Удалить
+    back: Назад
+    sign_out: Выйти
+    sign_in: Войти
+    sign_up: Зарегистрироваться

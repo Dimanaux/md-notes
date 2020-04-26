@@ -1,0 +1,6 @@
+en:
+  users:
+    registrations:
+      new:
+        title:
+          html: "Create your <b>%{app_name}</b> account"

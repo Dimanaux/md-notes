@@ -1,0 +1,4 @@
+ru:
+  devise:
+    sessions:
+      user.signed_out: Вы успешно вышли из аккаунта
