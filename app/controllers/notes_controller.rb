@@ -14,7 +14,7 @@ class NotesController < ApplicationController
   end
 
   def raw_notes
-    Note.recent.includes(:author).page(params[:page])
+    Note.published.recent.includes(:author).page(params[:page])
   end
 
   def filter_params

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :user, aliases: [:author] do
     email
     username { FFaker::InternetSE.login_user_name }
     password { "123456" }

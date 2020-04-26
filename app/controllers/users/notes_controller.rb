@@ -30,13 +30,15 @@ module Users
     end
 
     def create
-      Notes::Create.call(note: note)
+      Notes::Create.call(note: note, publish: params[:publish])
 
       respond_with note.author, note
     end
 
     def update
-      Notes::Update.call(note: note, note_params: note_params)
+      Notes::Update.call(
+        note: note, note_params: note_params, publish: params[:publish]
+      )
 
       respond_with note.author, note
     end
@@ -55,7 +57,7 @@ module Users
     end
 
     def raw_notes
-      user.notes
+      user == current_user ? user.notes : user.notes.published
     end
 
     def filter_params

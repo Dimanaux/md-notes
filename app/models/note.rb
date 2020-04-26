@@ -11,11 +11,15 @@ class Note < ApplicationRecord
 
   paginates_per 12
 
-  scope :recent, -> { order(created_at: :desc) }
-  scope :published, -> { where("published_at IS NOT NULL AND published_at <= CURRENT_TIMESTAMP") }
+  scope :recent, -> { order(updated_at: :desc) }
+  scope :published, -> { where("published_at <= CURRENT_TIMESTAMP") }
 
   def published?
     published_at && published_at < Time.current
+  end
+
+  def unpublished?
+    !published?
   end
 
   def to_param

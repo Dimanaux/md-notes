@@ -1,4 +1,9 @@
-= simple_form_for [note.author, note] do |f|
-  = f.input :title
-  = f.input :content, as: :text
-  = f.submit class: "button primary"
+.monospaced
+  = simple_form_for [note.author, note] do |f|
+    = f.input :title
+    = f.input :content, as: :text
+    = f.submit class: "button"
+    - if !note.published?
+      =< f.submit "Publish", class: "button", name: :publish
+      p
+        | * Once published its address cannot be changed

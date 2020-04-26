@@ -5,7 +5,7 @@ module Notes
     delegate :note, to: :context
 
     def call
-      note.update(slug: slug) || raise_error
+      note.update(slug: slug) || raise_error if note.unpublished?
     end
 
     private

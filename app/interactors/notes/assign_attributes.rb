@@ -5,6 +5,9 @@ module Notes
     delegate :note, :note_params, to: :context
 
     def call
+      if context.publish
+        note_params[:published_at] = Time.current
+      end
       note.assign_attributes(note_params)
 
       raise_error if note.invalid?

@@ -3,6 +3,11 @@ FactoryBot.define do
     title
     content { FFaker::Lorem.paragraph(5) }
     slug { title.parameterize }
-    association :author, factory: :user
+    author
+    published_at { 1.minute.ago }
+
+    trait :unpublished do
+      published_at { nil }
+    end
   end
 end

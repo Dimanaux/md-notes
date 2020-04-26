@@ -13,3 +13,7 @@
     @include form-error;
   }
 }
+
+.monospaced {
+  font-family: $font-family-monospace;
+}

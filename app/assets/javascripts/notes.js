@@ -6,6 +6,10 @@ $(() => {
 
     let noteContentEdit = document.getElementById("note_content");
     if (noteContentEdit) {
-        new SimpleMDE({ element: noteContentEdit });
+        new SimpleMDE({
+            element: noteContentEdit,
+            forceSync: true,
+            showIcons: ["code", "table"]
+        });
     }
 });

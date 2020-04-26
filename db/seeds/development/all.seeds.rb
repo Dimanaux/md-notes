@@ -5,9 +5,8 @@
   end
 end
 
-User.create(
+User.where(email: "user@example.com").first_or_create(
   username: "user",
-  email: "user@example.com",
   password: 123456,
-  confirmed_at: 1.minute.ago
+  confirmed_at: Time.current
 )
