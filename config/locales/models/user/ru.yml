@@ -9,7 +9,11 @@ ru:
     labels:
       user:
         new:
+          username: Имя пользователя
           email: Введите email
+          password: Введите пароль
+          password_confirmation: Повторите пароль
+          remember_me: Запомнить меня
         edit:
           password: Введите пароль
           password_confirmation: Повторите пароль

@@ -1,0 +1,4 @@
+ru:
+  devise:
+    sessions:
+      user.signed_out: Successfully logged out

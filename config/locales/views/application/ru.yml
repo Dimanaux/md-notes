@@ -3,3 +3,5 @@ ru:
     navigation_main:
       home: В начало
       my_notes: Мои заметки
+    navigation_user:
+      edit_profile: Редактировать профиль

@@ -3,3 +3,5 @@ en:
     navigation_main:
       home: Home
       my_notes: My notes
+    navigation_user:
+      edit_profile: Edit profile

@@ -4,3 +4,15 @@ en:
       new:
         title:
           html: "Create your <b>%{app_name}</b> account"
+    sessions:
+      new:
+        sign_in:
+          html: "Enter your <b>%{app_name}</b> account"
+    shared:
+      links:
+        more_actions: Anything else?
+        new_user: "Create a new account"
+        no_confirmation: "Didn't receive confirmation instructions?"
+        no_unlock: "Didn't receive unlock instructions?"
+        password_recovery: "Forgot your password?"
+        sign_in_with: "Sign in with %{provider}"

@@ -1,9 +1,13 @@
 en:
   common:
-    show: Show
-    edit: Edit
-    destroy: Destroy
     back: Back
-    sign_out: Sign out
+    confirm: Are you sure?
+    destroy: Destroy
+    edit: Edit
+    menu: Menu
+    unsubscribe: Unsubscribe
+    show: Show
     sign_in: Sign in
+    sign_out: Sign out
     sign_up: Sign up
+    subscribe: Subscribe

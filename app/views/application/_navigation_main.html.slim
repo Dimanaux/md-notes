@@ -1,6 +1,6 @@
 .top-bar-left
   ul.menu
-    li = link_to "Rails Base example site", root_path
+    li = link_to Rails.root.basename, root_path
     = active_link_to t(".home"), notes_path, active: :exclusive, wrap_tag: :li
     - if user_signed_in?
       = active_link_to t(".my_notes"), user_notes_path(current_user), active: :exclusive, wrap_tag: :li

@@ -9,7 +9,11 @@ en:
     labels:
       user:
         new:
+          username: Username
           email: Enter your email address
+          password: Enter your password
+          password_confirmation: Confirm your new password
+          remember_me: Remember me
         edit:
           password: Enter new password
           password_confirmation: Confirm your new password

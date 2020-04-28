@@ -1,0 +1,18 @@
+ru:
+  users:
+    registrations:
+      new:
+        title:
+          html: "Создайте ваш аккаунт для <b>%{app_name}</b>"
+    sessions:
+      new:
+        sign_in:
+          html: "Войдите в ваш <b>%{app_name}</b> аккаунт"
+    shared:
+      links:
+        more_actions: Что-то ещё?
+        new_user: "Создать аккаунт"
+        no_confirmation: "Не получили письмо с подтверждением?"
+        no_unlock: "Не получили инструкции для разблокировки?"
+        password_recovery: "Забыли пароль?"
+        sign_in_with: "Войти с %{provider}"

@@ -1,9 +1,13 @@
 ru:
   common:
-    show: Посмотреть
-    edit: Редактировать
-    destroy: Удалить
     back: Назад
-    sign_out: Выйти
+    confirm: Вы уверены?
+    destroy: Удалить
+    edit: Редактировать
+    menu: Меню
+    unsubscribe: Отписаться
+    show: Посмотреть
     sign_in: Войти
+    sign_out: Выйти
     sign_up: Зарегистрироваться
+    subscribe: Подписаться
