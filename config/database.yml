@@ -11,13 +11,13 @@ defaults: &defaults
   pool: <%= [ENV.fetch("MAX_THREADS", 5).to_i, ENV.fetch("DB_POOL", 5).to_i].max %>
 
 development:
-  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_dev
   <<: *defaults
+  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_dev
 
 test:
+  <<: *defaults
   database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_test
   password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
-  <<: *defaults
 
 production: &deploy
   <<: *defaults
