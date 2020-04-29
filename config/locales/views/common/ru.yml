@@ -1,13 +1,16 @@
 ru:
   common:
     back: Назад
+    cancel: Отменить
     confirm: Вы уверены?
     destroy: Удалить
     edit: Редактировать
     menu: Меню
-    unsubscribe: Отписаться
+    new_note: Новая заметка
+    pdf: Загрузить в формате PDF
     show: Посмотреть
     sign_in: Войти
     sign_out: Выйти
     sign_up: Зарегистрироваться
     subscribe: Подписаться
+    unsubscribe: Отписаться

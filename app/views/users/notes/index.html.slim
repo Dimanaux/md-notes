@@ -3,9 +3,9 @@ h1 = title(t(".title"))
 table
   thead
     tr
-      th Title
-      th Content
-      th User
+      th = t("active_record.attributes.note.title")
+      th = t("active_record.attributes.note.content")
+      th = t("active_record.attributes.note.author")
       th
       th
       th
@@ -23,11 +23,11 @@ table
         td
           - if allowed_to?(:destroy?, note, with: NotePolicy)
             = link_to "Destroy", user_note_path(note.author, note),
-                      data: { confirm: "Are you sure?" }, method: :delete
+                      data: { confirm: t("common.confirm") }, method: :delete
 
 = paginate notes
 
 br
 
 - if user_signed_in?
-  = link_to "New Note", new_user_note_path(current_user)
+  = link_to t("common.new_note"), new_user_note_path(current_user)

@@ -1,10 +1,10 @@
 ru:
   active_record:
     models:
-      user:
+      user: Пользователь
     attributes:
       user:
-        username:
+        username: Имя пользователя
   simple_form:
     labels:
       user:

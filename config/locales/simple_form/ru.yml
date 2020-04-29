@@ -1,4 +1,4 @@
-en:
+ru:
   simple_form:
     'yes': Да
     'no': Нет
@@ -10,3 +10,8 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: 'Проверьте форму ещё раз:'
+  helpers:
+    submit:
+      note:
+        create: Создать заметку
+        update: Обновить заметку

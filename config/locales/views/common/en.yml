@@ -1,13 +1,16 @@
 en:
   common:
     back: Back
+    cancel: Cancel
     confirm: Are you sure?
     destroy: Destroy
     edit: Edit
     menu: Menu
-    unsubscribe: Unsubscribe
+    new_note: New note
+    pdf: Export as PDF
     show: Show
     sign_in: Sign in
     sign_out: Sign out
     sign_up: Sign up
     subscribe: Subscribe
+    unsubscribe: Unsubscribe

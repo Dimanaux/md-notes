@@ -3,3 +3,7 @@ ru:
     notes:
       index:
         title: Все заметки
+      edit:
+        title: Редактировать заметку
+      new:
+        title: Новая заметка

@@ -1,5 +1,9 @@
 en:
   users:
+    confirmations:
+      new:
+        title: "Didn't receive confirmation instructions?"
+        resend: "Resend confirmation instructions"
     registrations:
       new:
         title:

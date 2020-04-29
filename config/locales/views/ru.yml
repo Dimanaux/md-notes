@@ -1,4 +1,6 @@
 ru:
   devise:
     sessions:
-      user.signed_out: Вы успешно вышли из аккаунта
+      user:
+        signed_out: Вы успешно вышли из аккаунта
+        signed_in: Вы успешно вошли в аккаунт

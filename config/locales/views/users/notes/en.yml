@@ -2,4 +2,8 @@ en:
   users:
     notes:
       index:
-        title: "Listing notes"
+        title: Listing notes
+      edit:
+        title: Editing note
+      new:
+        title: New note

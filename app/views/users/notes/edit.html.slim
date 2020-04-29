@@ -1,5 +1,5 @@
-h1 Editing note
+h1 = t(".title")
 
 = render "form"
 
-= link_to 'Cancel', user_note_path(note.author, note)
+= link_to t("common.cancel"), user_note_path(note.author, note)

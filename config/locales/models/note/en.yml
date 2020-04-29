@@ -1,0 +1,21 @@
+en:
+  active_record:
+    models:
+      note: Note
+    attributes:
+      note:
+        title: Title
+        content: Content
+        author: Author
+  simple_form:
+    labels:
+      note:
+        new:
+          title: Title
+          content: Content
+        edit:
+          title: Title
+          content: Content
+    hints:
+      note:
+        edit:

@@ -1,4 +1,6 @@
-ru:
+en:
   devise:
     sessions:
-      user.signed_out: Successfully logged out
+      user:
+        signed_out: Successfully logged out
+        signed_in: Successfully logged in
