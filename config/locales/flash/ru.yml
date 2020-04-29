@@ -1,9 +1,9 @@
-en:
+ru:
   flash:
     devise:
       passwords:
         create:
-          alert: "Password could not be sent."
+          alert: "Пароль не может быть отправлен."
         update:
           alert: "Пароль не может быть обновлён."
       confirmations:
@@ -11,11 +11,11 @@ en:
           alert: "Confirmations could not be sent"
     actions:
       create:
-        notice: '%{resource_name} успешно создан.'
-        alert: '%{resource_name} не может быть создан.'
+        notice: "%{resource_name} успешно создан."
+        alert: "%{resource_name} не может быть создан."
       update:
-        notice: '%{resource_name} успешно обновлён.'
-        alert: '%{resource_name} не может быть обновлён.'
+        notice: "%{resource_name} успешно обновлён."
+        alert: "%{resource_name} не может быть обновлён."
       destroy:
-        notice: '%{resource_name} успешно удалён.'
-        alert: '%{resource_name} не может быть удалён.'
+        notice: "%{resource_name} успешно удалён."
+        alert: "%{resource_name} не может быть удалён."
