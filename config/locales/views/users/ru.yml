@@ -4,10 +4,18 @@ ru:
       new:
         title: "Не получили письмо с подтверждением?"
         resend: "Выслать инструкции с подтверждением ещё раз"
+    info:
+      html: "У пользователя %{username} %{notes_link} со средним рейтингом ★%{rating}"
     registrations:
       new:
         title:
           html: "Создайте ваш аккаунт для <b>%{app_name}</b>"
+      edit:
+        title: "Редактировать аккаунт %{username}"
+        cancel: Удалить мой аккаунт
+        unhappy: Не нравится?
+        locale:
+          title: Изменить языковые настройки
     sessions:
       new:
         sign_in:

@@ -24,4 +24,22 @@ class UserDecorator < ApplicationDecorator
   def subscribed_to?(other_user)
     subscription_for(other_user).present?
   end
+
+  def notes_link
+    notes_count_as_string = """
+      #{notes_count}
+      #{I18n.t('active_record.models.note').pluralize(notes_count)}
+    """
+    h.link_to(notes_count_as_string, h.user_notes_path(object))
+  end
+
+  def info
+    I18n.t(
+      "users.info.html",
+      username: username,
+      notes_link: notes_link,
+      rating: average_rating,
+      note_path: h.user_notes_path(object)
+    ).html_safe
+  end
 end

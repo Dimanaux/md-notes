@@ -15,8 +15,10 @@ ru:
           password_confirmation: Повторите пароль
           remember_me: Запомнить меня
         edit:
+          username: Имя пользователя
           password: Введите пароль
           password_confirmation: Повторите пароль
+          locale: Язык
     hints:
       user:
         edit:

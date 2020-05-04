@@ -7,3 +7,6 @@ ru:
         title: Редактировать заметку
       new:
         title: Новая заметка
+      search:
+        label: Поиск
+        placeholder: Поиск по заметкам

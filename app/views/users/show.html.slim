@@ -6,15 +6,7 @@
   .cell
     .grid-x
       .cell
-        p
-          / TODO
-          / = t(".info.html", user: user.username, notes_count: user.notes_count, rating: user.average_rating)
-          => user.username
-          | has
-          =<> link_to "#{user.notes_count} #{'note'.pluralize(user.notes_count)}",
-                      user_notes_path(user)
-          | with average score ★
-          =< user.average_rating
+        p = user.info
       .cell
         - if current_user&.subscribed_to?(user)
           = button_to t("common.unsubscribe"), subscription_path(current_user.subscription_for(user)),

@@ -8,7 +8,9 @@ en:
     menu: Menu
     new_note: New note
     pdf: Export as PDF
+    save: Save
     show: Show
+    search: Search
     sign_in: Sign in
     sign_out: Sign out
     sign_up: Sign up

@@ -4,3 +4,6 @@ ru:
       user:
         signed_out: Вы успешно вышли из аккаунта
         signed_in: Вы успешно вошли в аккаунт
+    registrations:
+      user:
+        updated: Настройки успешно сохранены

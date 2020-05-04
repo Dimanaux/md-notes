@@ -1,6 +1,6 @@
 .grid-x
   .cell
-    h2 = title("Edit #{current_user.username}")
+    h2 = title(t(".title", username: current_user.username))
 
 .grid-x.grid-margin-x
   .cell.medium-4
@@ -24,20 +24,20 @@
   .cell.medium-4.medium-offset-1
     .cell
       h6
-        b Cancel my account
+        b = t(".cancel")
       p
-        | Unhappy?
-        =< link_to "Cancel my account.",
+        = t(".unhappy")
+        =< link_to t(".cancel"),
             registration_path(resource_name),
-            data: { confirm: "Are you sure?" },
+            data: { confirm: t("common.confirm") },
             method: :delete
     .cell
       h6
-        b Change my language
+        b = t(".locale.title")
       = simple_form_for resource,
           as: resource_name,
           url: registration_path(resource_name),
           html: { method: :put } do |f|
         .form-inputs
           = f.input :locale, collection: I18n.available_locales, include_blank: false
-          = f.button :submit, "Change language preferences"
+          = f.button :submit, t("common.save")

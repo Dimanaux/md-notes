@@ -15,8 +15,10 @@ en:
           password_confirmation: Confirm your new password
           remember_me: Remember me
         edit:
+          username: Username
           password: Enter new password
           password_confirmation: Confirm your new password
+          locale: Language
     hints:
       user:
         edit:
