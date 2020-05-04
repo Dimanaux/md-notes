@@ -12,7 +12,7 @@ en:
           html: "Create your <b>%{app_name}</b> account"
       edit:
         title: "Edit %{username} account"
-        cancel: Delete my account
+        cancel: Cancel my account
         unhappy: Unhappy?
         locale:
           title: Change language preferences
