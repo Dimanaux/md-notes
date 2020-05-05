@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Subdomain do
+describe SubdomainConstraint do
   describe ".matches?" do
     subject { described_class.matches?(request) }
 
