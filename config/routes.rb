@@ -1,9 +1,7 @@
-require "subdomain"
-
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  constraints(Subdomain) do
+  constraints(SubdomainConstraint) do
     get "/", to: "users#show", as: :user
     scope module: :users do
       resources :notes
