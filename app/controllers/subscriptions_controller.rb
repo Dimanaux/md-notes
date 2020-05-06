@@ -6,13 +6,17 @@ class SubscriptionsController < ApplicationController
   def create
     subscription.save
 
-    respond_with subscription, location: user_path(subscription.followee)
+    respond_with subscription, location: user_root_url(
+      subdomain: subscription.followee.username
+    )
   end
 
   def destroy
     subscription.destroy
 
-    respond_with subscription, location: user_path(subscription.followee)
+    respond_with subscription, location: user_root_url(
+      subdomain: subscription.followee.username
+    )
   end
 
   private

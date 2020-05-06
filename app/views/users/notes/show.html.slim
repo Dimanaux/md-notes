@@ -10,7 +10,7 @@
           img data-email-hash=note.author.email_md5
         .cell.small-5
           | Posted by
-          =<> link_to note.author.username, user_url(subdomain: note.author.username)
+          =<> link_to note.author.username, user_root_url(subdomain: note.author.username)
           =<> "<#{note.author.email}>"
           | on
           =< note.created_at

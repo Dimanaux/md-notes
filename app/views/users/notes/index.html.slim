@@ -17,7 +17,7 @@ table
       tr
         td = note.title
         td = note.preview
-        td = link_to note.author.username, user_url(subdomain: note.author.username)
+        td = link_to note.author.username, user_root_url(subdomain: note.author.username)
         td = link_to "Show", note_url(note, subdomain: note.author.username)
         td
           - if allowed_to?(:edit?, note, with: NotePolicy)

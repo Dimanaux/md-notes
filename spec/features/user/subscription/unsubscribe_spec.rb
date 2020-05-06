@@ -8,7 +8,7 @@ feature "Subscribe" do
   before { create(:subscription, follower: current_user, followee: user) }
 
   scenario "User subscribes to another user" do
-    visit user_url(subdomain: user.username)
+    visit user_root_url(subdomain: user.username)
 
     expect(page).to have_button("Unsubscribe")
 
