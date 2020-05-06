@@ -8,13 +8,13 @@ describe "users/notes", type: :routing do
     let(:note) { create(:note, slug: "some-note", author: author) }
 
     scenario "#index" do
-      visit user_notes_url(author)
+      visit notes_url(subdomain: author.username)
 
       expect(page).to have_current_url("user-2.test.local/notes")
     end
 
     scenario "#show" do
-      visit user_note_url(note)
+      visit note_url(note, subdomain: note.author.username)
 
       expect(page).to have_current_url("user-2.test.local/notes/some-note")
     end
@@ -26,13 +26,13 @@ describe "users/notes", type: :routing do
     let(:note) { create(:note, author: current_user, slug: "let-me-spec") }
 
     scenario "#new" do
-      visit new_user_note_url(current_user)
+      visit new_note_url(subdomain: current_user.username)
 
       expect(page).to have_current_url("#{current_user.username}.test.local/notes/new")
     end
 
     scenario "#edit" do
-      visit edit_user_note_url(note)
+      visit edit_note_url(note, subdomain: note.author.username)
 
       expect(page).to have_current_url(
         "#{current_user.username}.test.local/notes/let-me-spec/edit"

@@ -6,7 +6,7 @@ feature "Destroy Note" do
   let(:note) { create(:note, author: current_user) }
 
   scenario "User destroys note" do
-    visit user_note_url(note)
+    visit note_url(note, subdomain: note.author.username)
 
     click_link "Destroy"
 

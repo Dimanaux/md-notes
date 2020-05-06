@@ -6,7 +6,7 @@ feature "Subscribe" do
   let(:user) { create(:user) }
 
   scenario "User subscribes to another user" do
-    visit user_profile_url(user)
+    visit user_url(subdomain: user.username)
 
     expect(page).to have_button("Subscribe")
 

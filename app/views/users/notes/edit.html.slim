@@ -4,4 +4,4 @@ h1 Editing note
 
 = link_to "Back", notes_path
 '|
-= link_to "Cancel", user_note_url(note)
+= link_to "Cancel", note_url(note, subdomain: note.author.username)

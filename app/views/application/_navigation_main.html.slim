@@ -1,7 +1,7 @@
 .top-bar-left
   ul.menu
-    li = link_to "Rails Base example site", application_root_url
-    li = link_to "Home", all_notes_url
+    li = link_to "Rails Base example site", root_url
+    li = link_to "Home", notes_url(subdomain: "")
     - if user_signed_in?
-      li = link_to "My notes", user_notes_url(current_user)
-      li = link_to "New note", new_user_note_url(current_user)
+      li = link_to "My notes", notes_url(subdomain: current_user.username)
+      li = link_to "New note", new_note_url(subdomain: current_user.username)

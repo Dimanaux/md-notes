@@ -10,15 +10,15 @@
           img data-email-hash=note.author.email_md5
         .cell.small-5
           | Posted by
-          =<> link_to note.author.username, user_profile_url(note.author)
+          =<> link_to note.author.username, user_url(subdomain: note.author.username)
           =<> "<#{note.author.email}>"
           | on
           =< note.created_at
         .cell.shrink
           - if allowed_to?(:destroy?, note)
-            => link_to "Destroy", user_note_url(note),
+            => link_to "Destroy", note_url(note, subdomain: note.author.username),
                   data: { confirm: "Are you sure?" },
                   method: :delete, class: "alert button"
           - if allowed_to?(:edit?, note)
-            = link_to "Edit", edit_user_note_url(note), class: "button"
+            = link_to "Edit", edit_note_url(note, subdomain: note.author.username), class: "button"
   => link_to "Back", notes_path
