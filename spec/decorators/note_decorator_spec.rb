@@ -18,12 +18,4 @@ RSpec.describe NoteDecorator do
 
     it { is_expected.to eq "Multi\n" }
   end
-
-  describe ".created_at" do
-    let(:wrappee) { build(:note, created_at: Date.new(1970, 1, 1)) }
-
-    it "formats date" do
-      expect(note.created_at).to eq("1970.01.01")
-    end
-  end
 end
