@@ -4,5 +4,4 @@ class ApplicationController < ActionController::Base
 
   include Authentication
   include BulletHelper
-  include SubdomainAsUserId
 end

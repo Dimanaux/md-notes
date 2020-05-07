@@ -7,6 +7,7 @@ describe "Password Reset" do
   def update_password
     fill_in "Enter new password", with: new_password
     fill_in "Confirm your new password", with: new_password
+
     click_button "Update password"
   end
 
