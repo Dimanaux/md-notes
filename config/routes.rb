@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  constraints subdomain: "www" do
+    devise_for :users, controllers: { registrations: "users/registrations" }
+    resources :subscriptions, only: %i[create destroy]
+    resources :notes, only: %i[index]
+  end
 
   constraints(SubdomainConstraint) do
     scope module: :users do
@@ -8,8 +12,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "notes#index"
-
-  resources :subscriptions, only: %i[create destroy]
-  resources :notes, only: %i[index]
+  root to: redirect("/notes")
 end
