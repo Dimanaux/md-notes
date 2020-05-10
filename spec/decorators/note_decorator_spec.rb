@@ -17,7 +17,7 @@ describe NoteDecorator do
 
     context "when not rated" do
       it "return false" do
-        expect(note.already_rated_by?(user)).to eq false
+        expect(decorated.already_rated_by?(user)).to eq false
       end
     end
   end
