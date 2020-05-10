@@ -3,15 +3,14 @@ source "https://rubygems.org"
 ruby "~> 2.6.5"
 
 gem "pg"
-gem "rails", "5.2.4.2"
+gem "rails", "~> 5.2.4.2"
 
 # assets
 gem "autoprefixer-rails"
-gem "coffee-rails"
 gem "foundation-icons-sass-rails"
-gem "foundation-rails", "~> 6.2.3"
+gem "foundation-rails", "~> 6.6.2.0"
 gem "premailer-rails"
-gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
+gem "sass-rails", "~> 5.0.6"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do
@@ -38,13 +37,17 @@ gem "health_check"
 gem "interactor"
 gem "kaminari"
 gem "memory_profiler"
+gem "pg_search"
 gem "puma"
 gem "rack-canonical-host"
 gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/rack-mini-profiler.git"
+gem "redcarpet"
 gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
 
 group :staging, :production do
   gem "newrelic_rpm"
@@ -72,7 +75,6 @@ group :development, :test do
   gem "bullet"
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "coffeelint"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "ffaker"

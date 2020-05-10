@@ -1,4 +1,9 @@
 class Note < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: %i[title content slug]
+
+  after_commit -> { Note.rehash }
+
   belongs_to :author, class_name: "User"
 
   has_many :ratings, dependent: :destroy
@@ -12,5 +17,9 @@ class Note < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def self.rehash
+    PgSearch::Multisearch.rebuild(self, false)
   end
 end

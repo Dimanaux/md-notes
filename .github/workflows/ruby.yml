@@ -32,9 +32,12 @@ jobs:
     services:
       db:
         image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
         ports: ['5432:5432']
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: md_notes
+          POSTGRES_PASSWORD: md_notes
+          RAILS_ENV: test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -62,14 +65,14 @@ jobs:
           cp .env.example .env
       - name: Test with RSpec
         env:
-          PGHOST: 127.0.0.1
-          PGUSER: postgres
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: md_notes
+          POSTGRES_PASSWORD: md_notes
           RAILS_ENV: test
-          POSTGRES_PASSWORD: postgres
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
-          bin/rspec
+          bundle exec rspec
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
