@@ -6,18 +6,12 @@
   .cell
     .grid-x
       .cell
-        p
-          => user.username
-          | has
-          =<> link_to "#{user.notes_count} #{'note'.pluralize(user.notes_count)}",
-                      user_notes_path(user)
-          | with average score ★
-          =< user.average_rating
+        p = user.info
       .cell
         - if current_user&.subscribed_to?(user)
-          = button_to "Unsubscribe", subscription_path(current_user.subscription_for(user)),
-                      method: :delete, data: { confirm: 'Are you sure?' }, class: "button"
+          = button_to t("common.unsubscribe"), subscription_path(current_user.subscription_for(user)),
+                      method: :delete, data: { confirm: t("common.confirm") }, class: "button"
         - else
-          = button_to "Subscribe", subscriptions_path, method: :post,
+          = button_to t("common.subscribe"), subscriptions_path, method: :post,
                       params: { subscription: { followee_id: user.id } },
                       class: "button"

@@ -1,0 +1,30 @@
+en:
+  users:
+    confirmations:
+      new:
+        title: "Didn't receive confirmation instructions?"
+        resend: "Resend confirmation instructions"
+    info:
+      html: "User %{username} has %{notes_link} with average score ★%{rating}"
+    registrations:
+      new:
+        title:
+          html: "Create your <b>%{app_name}</b> account"
+      edit:
+        title: "Edit %{username} account"
+        cancel: Cancel my account
+        unhappy: Unhappy?
+        locale:
+          title: Change language preferences
+    sessions:
+      new:
+        sign_in:
+          html: "Enter your <b>%{app_name}</b> account"
+    shared:
+      links:
+        more_actions: Anything else?
+        new_user: "Create a new account"
+        no_confirmation: "Didn't receive confirmation instructions?"
+        no_unlock: "Didn't receive unlock instructions?"
+        password_recovery: "Forgot your password?"
+        sign_in_with: "Sign in with %{provider}"

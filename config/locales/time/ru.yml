@@ -1,0 +1,8 @@
+ru:
+  time:
+    formats:
+      short_date: '%x'
+      long_date: '%a, %d %b %Y'
+      us: '%d.%m.%Y %H:%M'
+      us_date: '%m/%d/%Y'
+      us_time: '%I:%M %p'

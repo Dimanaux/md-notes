@@ -1,0 +1,3 @@
+ru:
+  action_policy:
+    unauthorized_error: "Вы не можете выполнить это действие."

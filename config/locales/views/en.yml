@@ -1,0 +1,6 @@
+en:
+  devise:
+    sessions:
+      user:
+        signed_out: Successfully logged out
+        signed_in: Successfully logged in
