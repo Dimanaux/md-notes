@@ -26,11 +26,11 @@ class UserDecorator < ApplicationDecorator
   end
 
   def notes_link
-    notes_count_as_string = """
-      #{notes_count}
-      #{I18n.t('active_record.models.note').pluralize(notes_count)}
-    """
     h.link_to(notes_count_as_string, h.user_notes_path(object))
+  end
+
+  def notes_count_as_string
+    "#{notes_count} #{I18n.t('active_record.models.note').pluralize(notes_count)}"
   end
 
   def info
