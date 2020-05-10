@@ -11,7 +11,7 @@ feature "Create Note" do
     fill_in "Title", with: "title 1"
     fill_in "Content", with: "content 1"
 
-    click_button "Create Note"
+    click_button "Create note"
 
     expect(page).to have_content("Note was successfully created")
     expect(page).to have_content("title 1")
@@ -24,7 +24,7 @@ feature "Create Note" do
     fill_in "Title", with: note.title
     fill_in "Content", with: "content 2"
 
-    click_button "Create Note"
+    click_button "Create note"
 
     expect(page).to have_content("already been taken")
   end

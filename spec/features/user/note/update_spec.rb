@@ -11,7 +11,7 @@ feature "Update Note" do
     fill_in :note_title, with: "My updated title"
     fill_in :note_content, with: "#{note.content} - said old content"
 
-    click_button "Update Note"
+    click_button "Update note"
 
     expect(page).to have_content("Note was successfully updated")
     expect(page).to have_content("My updated title")

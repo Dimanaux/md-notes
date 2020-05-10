@@ -1,0 +1,21 @@
+ru:
+  active_record:
+    models:
+      note: Заметка
+    attributes:
+      note:
+        title: Название
+        content: Текст
+        author: Автор
+  simple_form:
+    labels:
+      note:
+        new:
+          title: Название
+          content: Текст
+        edit:
+          title: Название
+          content: Текст
+    hints:
+      note:
+        edit:

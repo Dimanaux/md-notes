@@ -1,0 +1,17 @@
+.grid-y
+  .cell
+    h2 = title(user.username)
+  .cell
+    p = user.email
+  .cell
+    .grid-x
+      .cell
+        p = user.info
+      .cell
+        - if current_user&.subscribed_to?(user)
+          = button_to t("common.unsubscribe"), subscription_path(current_user.subscription_for(user)),
+                      method: :delete, data: { confirm: t("common.confirm") }, class: "button"
+        - else
+          = button_to t("common.subscribe"), subscriptions_path, method: :post,
+                      params: { subscription: { followee_id: user.id } },
+                      class: "button"

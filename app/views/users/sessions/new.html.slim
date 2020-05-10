@@ -1,6 +1,6 @@
 .grid-x
   .cell
-    h2 = title("Sign in")
+    h2 = title(t("common.sign_in"))
 
 .grid-x.grid-margin-x
   .cell.medium-4
@@ -9,11 +9,7 @@
         url: session_path(resource_name) do |f|
 
       legend
-        | Enter your
-        '
-        strong Rails Base example site
-        '
-        | account
+        = t(".sign_in.html", app_name: Rails.root.basename)
 
       .form-inputs
         = f.input :email, required: false, autofocus: true
@@ -21,7 +17,7 @@
         = f.input :remember_me, as: :boolean
 
       .form-actions
-        = f.button :submit, "Sign in"
+        = f.button :submit, t("common.sign_in")
 
   .cell.medium-6.medium-offset-1
     = render "users/shared/links"
