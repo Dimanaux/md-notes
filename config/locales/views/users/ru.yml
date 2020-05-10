@@ -1,0 +1,30 @@
+ru:
+  users:
+    confirmations:
+      new:
+        title: "Не получили письмо с подтверждением?"
+        resend: "Выслать инструкции с подтверждением ещё раз"
+    info:
+      html: "У пользователя %{username} %{notes_link} со средним рейтингом ★%{rating}"
+    registrations:
+      new:
+        title:
+          html: "Создайте ваш аккаунт для <b>%{app_name}</b>"
+      edit:
+        title: "Редактировать аккаунт %{username}"
+        cancel: Удалить мой аккаунт
+        unhappy: Не нравится?
+        locale:
+          title: Изменить языковые настройки
+    sessions:
+      new:
+        sign_in:
+          html: "Войдите в ваш <b>%{app_name}</b> аккаунт"
+    shared:
+      links:
+        more_actions: Что-то ещё?
+        new_user: "Создать аккаунт"
+        no_confirmation: "Не получили письмо с подтверждением?"
+        no_unlock: "Не получили инструкции для разблокировки?"
+        password_recovery: "Забыли пароль?"
+        sign_in_with: "Войти с %{provider}"

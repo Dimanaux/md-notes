@@ -1,0 +1,12 @@
+en:
+  users:
+    notes:
+      index:
+        title: Listing notes
+      edit:
+        title: Editing note
+      new:
+        title: New note
+      search:
+        label: Search
+        placeholder: Search notes

@@ -2,7 +2,7 @@
   = simple_form_for :search_form,
                     method: :get, html: { class: "menu" } do |f|
     li
-      = f.input :query, label: false, placeholder: "Search notes",
+      = f.input :query, label: false, placeholder: t(".placeholder"),
                 input_html: { value: filter_params[:query] }
     li
-      = f.submit "Search", class: "button"
+      = f.submit t(".label"), class: "button"

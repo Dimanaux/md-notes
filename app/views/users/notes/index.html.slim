@@ -1,13 +1,13 @@
-h1 Listing notes
+h1 = title(t(".title"))
 
 = render "users/notes/search"
 
 table
   thead
     tr
-      th Title
-      th Content
-      th User
+      th = t("active_record.attributes.note.title")
+      th = t("active_record.attributes.note.content")
+      th = t("active_record.attributes.note.author")
       th
       th
       th
@@ -18,18 +18,18 @@ table
         td = note.title
         td = note.preview
         td = link_to note.author.username, note.author
-        td = link_to 'Show', user_note_path(note.author, note)
+        td = link_to t("common.show"), user_note_path(note.author, note)
         td
           - if allowed_to?(:edit?, note, with: NotePolicy)
-            = link_to 'Edit', edit_user_note_path(note.author, note)
+            = link_to t("common.edit"), edit_user_note_path(note.author, note)
         td
           - if allowed_to?(:destroy?, note, with: NotePolicy)
-            = link_to 'Destroy', user_note_path(note.author, note),
-                      data: { confirm: 'Are you sure?' }, method: :delete
+            = link_to t("common.destroy"), user_note_path(note.author, note),
+                      data: { confirm: t("common.confirm") }, method: :delete
 
 = paginate notes
 
 br
 
 - if user_signed_in?
-  = link_to 'New Note', new_user_note_path(current_user)
+  = link_to t("common.new_note"), new_user_note_path(current_user)

@@ -1,17 +1,13 @@
 .grid-x
   .cell
-    h2 = title("Sign up")
+    h2 = title(t("common.sign_up"))
 
 .grid-x
   .cell.medium-4
     = simple_form_for resource,
         as: resource_name,
         url: registration_path(resource_name) do |f|
-
-      legend
-        | Create your
-        strong  Rails Base example site
-        |  account
+      legend = t(".title.html", app_name: Rails.root.basename)
 
       .form-inputs
         = f.input :username, required: true, autofocus: true
@@ -20,7 +16,7 @@
         = f.input :password_confirmation, required: true
 
       .form-actions
-        = f.button :submit, "Sign up"
+        = f.button :submit, t("common.sign_up")
 
   .cell.medium-4.medium-offset-1
     = render "users/shared/links"
