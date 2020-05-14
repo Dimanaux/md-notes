@@ -13,7 +13,6 @@ development:
 test:
   <<: *defaults
   database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_test
-  password: <%= ENV.fetch("POSTGRES_PASSWORD", "") %>
 
 production: &deploy
   <<: *defaults

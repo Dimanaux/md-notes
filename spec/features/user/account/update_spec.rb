@@ -4,7 +4,7 @@ describe "Update Account" do
   include_context "when user signed in"
 
   scenario "User updates account with valid data" do
-    visit edit_user_registration_path
+    visit edit_user_registration_url
     fill_form(:user, :edit, username: "new-username")
     click_on "Update"
 
@@ -12,7 +12,7 @@ describe "Update Account" do
   end
 
   scenario "User enters not matched passwords" do
-    visit edit_user_registration_path
+    visit edit_user_registration_url
 
     fill_form(:user, :edit, password: "qwerty", password_confirmation: "123123")
     click_on "Update"

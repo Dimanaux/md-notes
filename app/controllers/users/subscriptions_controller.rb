@@ -1,4 +1,4 @@
-class SubscriptionsController < ApplicationController
+class Users::SubscriptionsController < ApplicationController
   expose :subscription, parent: :current_user
 
   before_action :authenticate_user!

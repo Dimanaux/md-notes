@@ -5,7 +5,7 @@ describe "Sign In" do
   let(:unconfirmed_user) { create :user, :not_confirmed }
 
   def sign_in(email, password)
-    visit new_user_session_path
+    visit new_user_session_url
 
     fill_form(:user, email: email, password: password)
     click_button "Sign in"

@@ -9,7 +9,8 @@
         p = user.info
       .cell
         - if current_user&.subscribed_to?(user)
-          = button_to t("common.unsubscribe"), subscription_path(current_user.subscription_for(user)),
+          = button_to t("common.unsubscribe"),
+                      subscription_path(current_user.subscription_for(user)),
                       method: :delete, data: { confirm: t("common.confirm") }, class: "button"
         - else
           = button_to t("common.subscribe"), subscriptions_path, method: :post,

@@ -12,7 +12,7 @@ describe "Password Reset" do
   end
 
   it "Visitor resets his password" do
-    visit new_user_password_path
+    visit new_user_password_url
 
     fill_in "Enter your email address", with: user.email
     click_button "Send me reset password instructions"

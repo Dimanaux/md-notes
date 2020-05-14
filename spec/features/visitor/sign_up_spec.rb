@@ -7,7 +7,7 @@ describe "Sign Up" do
   let(:registered_user) { User.find_by(email: user_attributes[:email]) }
 
   it "Visitor signs up" do
-    visit new_user_registration_path
+    visit new_user_registration_url
 
     fill_form(:user, user_attributes)
     click_button "Sign up"

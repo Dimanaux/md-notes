@@ -1,6 +1,6 @@
 RSpec::Matchers.define :url_eq do |expected_url|
   match do |actual_url|
-    %r{^(https?://)?#{expected_url}/?$}i.match? actual_url
+    %r{^(https?://)?(www\.)?#{expected_url}/?$}i.match? actual_url
   end
 
   failure_message do |actual_url|
