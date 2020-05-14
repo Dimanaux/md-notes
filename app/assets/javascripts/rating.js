@@ -4,7 +4,6 @@
 class Rating {
     constructor(element) {
         let data = element[0].dataset;
-        this.method = data.method;
         this.path = data.path;
         this.rating = data.noteRating;
     }
@@ -22,7 +21,7 @@ class Rating {
 
     addRating(value) {
         $.ajax({
-            type: this.method,
+            type: "POST",
             url: this.path,
             dataType: 'json',
             contentType: 'application/json',

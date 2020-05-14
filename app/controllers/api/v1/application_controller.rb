@@ -8,6 +8,9 @@ module Api
       include BulletHelper
 
       protect_from_forgery with: :exception
+
+      before_action :authenticate_user!
+      before_action :authorize_resource!
     end
   end
 end

@@ -2,6 +2,6 @@ module Notes
   class Rate
     include Interactor::Organizer
 
-    organize Ratings::AssignAttributes, Ratings::Save, UpdateRating
+    organize Ratings::Find, Ratings::Save, UpdateRating
   end
 end

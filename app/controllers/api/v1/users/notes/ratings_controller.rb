@@ -9,19 +9,9 @@ module Api
           expose :rating, parent: :note
 
           def create
-            ::Notes::Rate.call(
-              rating: rating, rating_params: { user: current_user }
-            )
+            ::Notes::Rate.call(rating: rating)
 
-            respond_with :api, :v1, user, note, rating
-          end
-
-          def update
-            ::Notes::Rate.call(
-              rating: rating, rating_params: rating_params
-            )
-
-            render json: rating.note, status: :ok
+            respond_with note.reload, location: root_path
           end
 
           def destroy
@@ -33,7 +23,11 @@ module Api
           private
 
           def rating_params
-            params.require(:rating).permit(:value)
+            params.require(:rating).permit(:value).merge(user: current_user)
+          end
+
+          def authorize_resource!
+            authorize! rating
           end
         end
       end
