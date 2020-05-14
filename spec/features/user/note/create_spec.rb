@@ -26,6 +26,7 @@ feature "Create Note" do
 
     click_button "Create note"
 
+    # TODO: find out why error messages are not being shown
     expect(page).to have_content("already been taken")
   end
 end

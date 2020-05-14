@@ -9,5 +9,6 @@ describe Note do
 
   describe "associations" do
     it { is_expected.to belong_to :author }
+    it { is_expected.to have_many :ratings }
   end
 end
