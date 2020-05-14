@@ -7,10 +7,10 @@ module Notes
 
       def call
         found = Rating.find_by(user: rating.user, note: rating.note)
-        if found
-          found.value = rating.value
-          context.rating = found
-        end
+        return unless found
+
+        found.value = rating.value
+        context.rating = found
       end
     end
   end
