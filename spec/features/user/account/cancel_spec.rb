@@ -5,7 +5,6 @@ describe "Cancel Account" do
 
   scenario "User cancels account" do
     visit edit_user_registration_url
-    byebug
     click_link "Cancel my account"
 
     expect(page).to have_content("Sign in")
