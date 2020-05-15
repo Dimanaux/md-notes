@@ -7,6 +7,25 @@ RSpec.describe NoteDecorator do
     build(:note, content: "Multi\nline\ncontent\n", created_at: Date.new(1970, 1, 1))
   end
 
+  describe ".already_rated_by?" do
+    let(:wrappee) { create(:note) }
+    let(:user) { create(:user) }
+
+    context "when rated by user" do
+      before { create(:rating, note: wrappee, user: user) }
+
+      it "returns true" do
+        expect(note.already_rated_by?(user)).to eq true
+      end
+    end
+
+    context "when not rated" do
+      it "return false" do
+        expect(note.already_rated_by?(user)).to eq false
+      end
+    end
+  end
+
   describe ".created_at" do
     subject { note.created_at }
 

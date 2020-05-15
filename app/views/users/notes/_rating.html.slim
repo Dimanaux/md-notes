@@ -1,0 +1,6 @@
+span#js-note-rating[
+    data-path=api_v1_user_note_ratings_path(note.author, note)
+    data-note-rating=note.average_rating
+]
+  - (1..5).each do |star|
+    span data-star=star = (star <= note.average_rating ? '★' : '☆')

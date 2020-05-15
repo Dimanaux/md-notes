@@ -29,13 +29,13 @@ module Users
     end
 
     def create
-      Notes::Create.call(note: note)
+      ::Notes::Create.call(note: note)
 
       respond_with note
     end
 
     def update
-      Notes::Update.call(note: note, note_params: note_params)
+      ::Notes::Update.call(note: note, note_params: note_params)
 
       respond_with note
     end

@@ -7,6 +7,7 @@ class User < ApplicationRecord
             format: { with: /\A[A-Za-z0-9-]*\z/, message: I18n.t("errors.username") }
 
   has_many :notes, foreign_key: "author_id", dependent: :destroy, inverse_of: :author
+  has_many :ratings, dependent: :destroy
 
   has_many :followers_subscribtions,
            foreign_key: :followee_id, class_name: "Subscription",

@@ -15,6 +15,8 @@
           | on
           =< note.created_at
         .cell.shrink
+          = render 'users/notes/rating', note: note
+        .cell.shrink
           - if allowed_to?(:destroy?, note)
             => link_to t("common.destroy"), note_url(note, subdomain: note.author.username),
                   data: { confirm: t("common.confirm") },
@@ -22,5 +24,4 @@
           - if allowed_to?(:edit?, note)
             = link_to t("common.edit"), edit_note_url(note, subdomain: note.author.username), class: "button"
           = link_to t("common.pdf"), format: :pdf
-
   => link_to t("common.back"), notes_path

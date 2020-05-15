@@ -60,7 +60,7 @@ RSpec/ExampleLength:
 
 RSpec/ExpectActual:
   Exclude:
-    - spec/routing/**/*.rb
+    - spec/routing/**/*_spec.rb
 
 RSpec/DescribeClass:
   Enabled: false

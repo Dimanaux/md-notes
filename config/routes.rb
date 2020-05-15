@@ -12,5 +12,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [] do
+        resources :notes, only: [], module: :users do
+          resources :ratings, module: :notes, only: %i[create update destroy]
+        end
+      end
+    end
+  end
+
   root to: redirect(subdomain: "www", path: "/notes")
 end
