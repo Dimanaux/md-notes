@@ -1,32 +1,40 @@
 require "rails_helper"
 
-describe NoteDecorator do
-  subject(:decorated) { note.decorate }
+RSpec.describe NoteDecorator do
+  subject(:note) { described_class.new(wrappee) }
+
+  let(:wrappee) do
+    build(:note, content: "Multi\nline\ncontent\n", created_at: Date.new(1970, 1, 1))
+  end
 
   describe ".already_rated_by?" do
-    let(:note) { create(:note) }
+    let(:wrappee) { create(:note) }
     let(:user) { create(:user) }
 
     context "when rated by user" do
-      before { create(:rating, note: note, user: user) }
+      before { create(:rating, note: wrappee, user: user) }
 
       it "returns true" do
-        expect(decorated.already_rated_by?(user)).to eq true
+        expect(note.already_rated_by?(user)).to eq true
       end
     end
 
     context "when not rated" do
       it "return false" do
-        expect(decorated.already_rated_by?(user)).to eq false
+        expect(note.already_rated_by?(user)).to eq false
       end
     end
   end
 
   describe ".created_at" do
-    let(:note) { build(:note, created_at: Date.new(1970, 1, 1)) }
+    subject { note.created_at }
 
-    it "formats date" do
-      expect(decorated.created_at).to eq("1970.01.01")
-    end
+    it { is_expected.to eq "1970.01.01" }
+  end
+
+  describe ".preview" do
+    subject { note.preview }
+
+    it { is_expected.to eq "Multi\n" }
   end
 end

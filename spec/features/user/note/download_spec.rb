@@ -4,7 +4,7 @@ feature "Download note" do
   let(:note) { create(:note) }
 
   scenario "download" do
-    visit user_note_url(note.author, note)
+    visit note_url(note, subdomain: note.author.username)
 
     expect(page).to have_link "Export as PDF"
 

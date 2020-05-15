@@ -7,11 +7,12 @@ describe "Password Reset" do
   def update_password
     fill_in "Enter new password", with: new_password
     fill_in "Confirm your new password", with: new_password
+
     click_button "Update password"
   end
 
   it "Visitor resets his password" do
-    visit new_user_password_path
+    visit new_user_password_url
 
     fill_in "Enter your email address", with: user.email
     click_button "Send me reset password instructions"

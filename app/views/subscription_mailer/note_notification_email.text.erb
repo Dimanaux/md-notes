@@ -4,7 +4,7 @@ New note from <%= @note.author.username %>!
 Dear <%= @follower.username %>,
 You can read new note right now!
 
-Follow this link: <%= link_to @note.title, user_note_url(@note.author, @note) %>
+Follow this link: <%= link_to @note.title, note_url(@note, subdomain: @note.author.username) %>
 
 You have received this mail since you are subscribed
 to <%= @note.author.username %>'s updates.

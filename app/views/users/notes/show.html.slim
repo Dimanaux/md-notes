@@ -10,7 +10,7 @@
           img data-email-hash=note.author.email_md5
         .cell.small-5
           | Posted by
-          =<> link_to note.author.username, user_path(note.author)
+          =<> link_to note.author.username, user_root_url(subdomain: note.author.username)
           =<> "<#{note.author.email}>"
           | on
           =< note.created_at
@@ -18,10 +18,10 @@
           = render 'users/notes/rating', note: note
         .cell.shrink
           - if allowed_to?(:destroy?, note)
-            => link_to t("common.destroy"), user_note_path(note.author, note),
+            => link_to t("common.destroy"), note_url(note, subdomain: note.author.username),
                   data: { confirm: t("common.confirm") },
                   method: :delete, class: "alert button"
           - if allowed_to?(:edit?, note)
-            = link_to t("common.edit"), edit_user_note_path(note.author, note), class: "button"
+            = link_to t("common.edit"), edit_note_url(note, subdomain: note.author.username), class: "button"
           = link_to t("common.pdf"), format: :pdf
   => link_to t("common.back"), notes_path

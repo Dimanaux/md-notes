@@ -1,0 +1,23 @@
+.grid-y
+  .cell
+    h2 = title(current_author.username)
+  .cell
+    p = current_author.email
+  .cell
+    .grid-x
+      .cell
+        p
+          => current_author.username
+          | has
+          =<> link_to "#{current_author.notes_count} #{'note'.pluralize(current_author.notes_count)}",
+                      notes_url(subdomain: current_author.username)
+          | with average score ★
+          =< current_author.average_rating
+      .cell
+        - if current_user&.subscribed_to?(current_author)
+          = button_to "Unsubscribe", subscription_path(current_user.subscription_for(current_author)),
+                      method: :delete, data: { confirm: 'Are you sure?' }, class: "button"
+        - else
+          = button_to "Subscribe", subscriptions_path, method: :post,
+                      params: { subscription: { followee_id: current_author.id } },
+                      class: "button"
