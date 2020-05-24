@@ -4,6 +4,7 @@ module Users
 
     before_action :authenticate_user!
     before_action :authorize_resource!
+    before_action :current_author
 
     protect_from_forgery with: :exception
 
@@ -14,7 +15,11 @@ module Users
     helper_method :current_author
 
     def current_author
-      @current_author ||= User.find_by(username: request.subdomain).decorate
+      @current_author ||= User.find_by!(username: request.subdomain).decorate
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url(subdomain: "www"), notice: t(
+        "flash.no_such_user", user: request.subdomain
+      )
     end
   end
 end
