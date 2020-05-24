@@ -8,11 +8,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_dev
+  url: <%= ENV.fetch("DATABASE_URL") %>_dev
 
 test:
   <<: *defaults
-  database: <%= ENV.fetch("POSTGRES_DB", File.basename(Rails.root)).underscore %>_test
+  url: <%= ENV.fetch("DATABASE_URL") %>_test
 
 production: &deploy
   <<: *defaults
