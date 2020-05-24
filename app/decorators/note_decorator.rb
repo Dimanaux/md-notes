@@ -15,6 +15,6 @@ class NoteDecorator < ApplicationDecorator
   end
 
   def preview
-    object.content.lines.first
+    object.content.lines.first.sub(/^ *#+/, "")
   end
 end
