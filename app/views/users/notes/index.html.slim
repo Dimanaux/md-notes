@@ -16,7 +16,7 @@ table
     - notes.each do |note|
       tr
         td = note.title
-        td = note.preview
+        td data-behaviour="markdown" = note.preview
         td = link_to note.author.username, user_root_url(subdomain: note.author.username)
         td = link_to t("common.show"), note_url(note, subdomain: note.author.username)
         td
