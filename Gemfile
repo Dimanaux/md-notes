@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "~> 2.6.5"
 
 gem "pg"
-gem "rails", "~> 5.2.4.2"
+gem "rails", "5.2.4.3"
 
 # assets
 gem "autoprefixer-rails"
