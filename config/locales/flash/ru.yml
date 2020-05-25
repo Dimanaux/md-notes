@@ -19,3 +19,4 @@ ru:
       destroy:
         notice: "%{resource_name} успешно удалён."
         alert: "%{resource_name} не может быть удалён."
+    no_such_user: "Пользователя с именем %{user} не существует"
